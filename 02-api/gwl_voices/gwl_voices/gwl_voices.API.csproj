@@ -10,4 +10,9 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\gwl_voices.CrossCutting\gwl_voices.CrossCutting.csproj" />
+    <ProjectReference Include="..\gwl_voices.DataAccess\gwl_voices.DataAccess.csproj" />
+  </ItemGroup>
+
 </Project>

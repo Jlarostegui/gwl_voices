@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\gwl_voices.Application\gwl_voices.Application.csproj" />
+    <ProjectReference Include="..\gwl_voices.DataAccess\gwl_voices.DataAccess.csproj" />
+  </ItemGroup>
+
+</Project>
