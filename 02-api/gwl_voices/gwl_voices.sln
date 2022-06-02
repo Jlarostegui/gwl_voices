@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32526.322
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gwl_voices.API", "gwl_voices\gwl_voices.API.csproj", "{66488242-C95C-45E5-AEAA-09622FF0BF8B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1-Distributed Services", "1-Distributed Services", "{7EBD6665-FC7C-4BBC-AA64-211BFA290008}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2-Application", "2-Application", "{3E828D60-E108-413B-9FB0-11CF997A235B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3-Business", "3-Business", "{2F64E595-D598-4516-A8A1-AD58CBB58563}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4-DataAccess", "4-DataAccess", "{9DC59E30-AD4C-4103-9936-1E55FA7DFAA8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5-Cross Cutting", "5-Cross Cutting", "{39214636-A189-41B5-84B2-312E2B9797EE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{66488242-C95C-45E5-AEAA-09622FF0BF8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66488242-C95C-45E5-AEAA-09622FF0BF8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66488242-C95C-45E5-AEAA-09622FF0BF8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66488242-C95C-45E5-AEAA-09622FF0BF8B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{66488242-C95C-45E5-AEAA-09622FF0BF8B} = {7EBD6665-FC7C-4BBC-AA64-211BFA290008}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {49C2A928-4FE0-4B97-B633-DDC00B9C552B}
+	EndGlobalSection
+EndGlobal
