@@ -22,4 +22,8 @@
     <ProjectReference Include="..\gwl_voices.DataAccess\gwl_voices.DataAccess.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+  </ItemGroup>
+
 </Project>
