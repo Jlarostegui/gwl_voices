@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using gwl_voices.DataAccess.gwl_Context;
+﻿using gwl_voices.DataAccess.gwl_Context;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace gwl_voices.DataAccess
 {

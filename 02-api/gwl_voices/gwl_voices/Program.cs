@@ -12,6 +12,9 @@ builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
 
 string mySqlConnectionStr = builder.Configuration.GetConnectionString("DefaultConnection");
 
+builder.Services.AddDbContext<heroku_7ff63ad7795b383Context>(
+    item => item.UseMySql(mySqlConnectionStr, ServerVersion.AutoDetect(mySqlConnectionStr)));
+
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
