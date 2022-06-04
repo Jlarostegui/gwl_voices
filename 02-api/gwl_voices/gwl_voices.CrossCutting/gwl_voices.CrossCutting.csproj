@@ -7,6 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\gwl_voices.Application\gwl_voices.Application.csproj" />
     <ProjectReference Include="..\gwl_voices.DataAccess\gwl_voices.DataAccess.csproj" />
   </ItemGroup>
