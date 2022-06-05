@@ -9,6 +9,7 @@
   <ItemGroup>
     <ProjectReference Include="..\gwl_voices.ApplicationContracts\gwl_voices.ApplicationContracts.csproj" />
     <ProjectReference Include="..\gwl_voices.DataAccess.Contracts\gwl_voices.DataAccess.Contracts.csproj" />
+    <ProjectReference Include="..\gwl_voices.DataAccess\gwl_voices.DataAccess.csproj" />
   </ItemGroup>
 
 </Project>

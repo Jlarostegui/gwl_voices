@@ -2,6 +2,6 @@
 {
     public interface IUnitOfWork
     {
-        void commit();
+        void Commit();
     }
 }

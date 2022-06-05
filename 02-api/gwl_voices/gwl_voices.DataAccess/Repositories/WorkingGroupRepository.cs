@@ -1,6 +1,5 @@
 ﻿using gwl_voices.DataAccess.Contracts.Dto;
 using gwl_voices.DataAccess.Contracts.Repositories;
-using gwl_voices.DataAccess.gwl_Context;
 
 namespace gwl_voices.DataAccess.Repositories
 {

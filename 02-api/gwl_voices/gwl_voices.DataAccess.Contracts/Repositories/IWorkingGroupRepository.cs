@@ -4,6 +4,6 @@ namespace gwl_voices.DataAccess.Contracts.Repositories
 {
     public interface IWorkingGroupRepository
     {
-        WorkingGroupDto GetWorkingGroupById(int id);
+        WorkingGroupDto? GetWorkingGroupById(int id);
     }
 }

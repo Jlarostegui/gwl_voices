@@ -1,16 +1,14 @@
+using gwl_voices.CrossCutting.Configuration;
 using gwl_voices.DataAccess;
-using gwl_voices.DataAccess.Contracts;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
 // Add services to the container.
-//IoC.Register(builder.Services, builder.Configuration);
-
-
-builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
-
+IoC.Register(builder.Services, builder.Configuration);
 string mySqlConnectionStr = builder.Configuration.GetConnectionString("DefaultConnection");
+
 
 builder.Services.AddDbContext<heroku_7ff63ad7795b383Context>(
     item => item.UseMySql(mySqlConnectionStr, ServerVersion.AutoDetect(mySqlConnectionStr)));
