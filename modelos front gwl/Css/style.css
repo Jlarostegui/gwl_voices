@@ -40,8 +40,8 @@ body{
 .header{
 	
 		position: absolute;
-		top: calc(10% - 75px);
-		left: calc(50% - 285px);
+		top: calc(10% - 95px);
+		left: calc(50% - 335px);
 		z-index: 2;
 	
 }
@@ -106,7 +106,7 @@ video {
 }
 
 .login input[type=button]{
-	width: 260px;
+	width: 128px;
 	height: 35px;
 	background: rgba(1, 5, 252, 0.596);
 	border: 1px solid #fff;
@@ -118,7 +118,9 @@ video {
 	font-weight: 400;
 	padding: 6px;
 	margin-top: 10px;
+	
 }
+
 
 .login input[type=button]:hover{
 	background-color:aqua;
