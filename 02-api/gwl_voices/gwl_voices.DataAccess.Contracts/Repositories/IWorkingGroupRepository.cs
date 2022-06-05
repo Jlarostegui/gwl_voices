@@ -1,7 +1,9 @@
-﻿namespace gwl_voices.DataAccess.Contracts.Repositories
+﻿using gwl_voices.DataAccess.Contracts.Dto;
+
+namespace gwl_voices.DataAccess.Contracts.Repositories
 {
     public interface IWorkingGroupRepository
     {
-        string Name { get; set; }
+        WorkingGroupDto GetWorkingGroupById(int id);
     }
 }

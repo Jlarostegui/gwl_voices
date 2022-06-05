@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32526.322
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gwl_voices.API", "gwl_voices\gwl_voices.API.csproj", "{66488242-C95C-45E5-AEAA-09622FF0BF8B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "gwl_voices.API", "gwl_voices\gwl_voices.API.csproj", "{66488242-C95C-45E5-AEAA-09622FF0BF8B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1-Distributed Services", "1-Distributed Services", "{7EBD6665-FC7C-4BBC-AA64-211BFA290008}"
 EndProject
@@ -15,17 +15,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4-DataAccess", "4-DataAcces
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5-Cross Cutting", "5-Cross Cutting", "{39214636-A189-41B5-84B2-312E2B9797EE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gwl_voices.CrossCutting", "gwl_voices.CrossCutting\gwl_voices.CrossCutting.csproj", "{AA2D2BFB-B5FA-4840-B095-E337A8701AB8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "gwl_voices.CrossCutting", "gwl_voices.CrossCutting\gwl_voices.CrossCutting.csproj", "{AA2D2BFB-B5FA-4840-B095-E337A8701AB8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gwl_voices.DataAccess", "gwl_voices.DataAccess\gwl_voices.DataAccess.csproj", "{FDB48D94-3F13-4421-BAAD-31801916ACA3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "gwl_voices.DataAccess", "gwl_voices.DataAccess\gwl_voices.DataAccess.csproj", "{FDB48D94-3F13-4421-BAAD-31801916ACA3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gwl_voices.DataAccess.Contracts", "gwl_voices.DataAccess.Contracts\gwl_voices.DataAccess.Contracts.csproj", "{0C39EF80-F07B-4DEE-8F08-320AEAC5CABC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "gwl_voices.DataAccess.Contracts", "gwl_voices.DataAccess.Contracts\gwl_voices.DataAccess.Contracts.csproj", "{0C39EF80-F07B-4DEE-8F08-320AEAC5CABC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gwl_voices.BusinessModels", "gwl_voices.BusinessModels\gwl_voices.BusinessModels.csproj", "{89661003-3994-4E52-BCE1-3748BAD57B66}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "gwl_voices.BusinessModels", "gwl_voices.BusinessModels\gwl_voices.BusinessModels.csproj", "{89661003-3994-4E52-BCE1-3748BAD57B66}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gwl_voices.Application", "gwl_voices.Application\gwl_voices.Application.csproj", "{A34775A9-B038-4D30-85E3-76CEE28AD076}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "gwl_voices.Application", "gwl_voices.Application\gwl_voices.Application.csproj", "{A34775A9-B038-4D30-85E3-76CEE28AD076}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gwl_voices.ApplicationContracts", "gwl_voices.ApplicationContracts\gwl_voices.ApplicationContracts.csproj", "{7010C711-8C59-4ECC-8FAA-B7570C938C18}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "gwl_voices.ApplicationContracts", "gwl_voices.ApplicationContracts\gwl_voices.ApplicationContracts.csproj", "{7010C711-8C59-4ECC-8FAA-B7570C938C18}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
