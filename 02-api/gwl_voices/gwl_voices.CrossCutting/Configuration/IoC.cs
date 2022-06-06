@@ -16,6 +16,8 @@ namespace gwl_voices.CrossCutting.Configuration
             services.AddTransient<IUnitOfWork, UnitOfWork>();
             services.AddTransient<IWorkingGroupRepository, WorkingGroupRepository>();
             services.AddTransient<IWorkingGroupService, WorkingGroupService>();
+            services.AddTransient<IUserRepository, UserRepository>();
+            services.AddTransient<IUserService, UserService>();
 
             return services;
         }
