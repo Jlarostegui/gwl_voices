@@ -25,7 +25,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "gwl_voices.BusinessModels",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "gwl_voices.Application", "gwl_voices.Application\gwl_voices.Application.csproj", "{A34775A9-B038-4D30-85E3-76CEE28AD076}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "gwl_voices.ApplicationContracts", "gwl_voices.ApplicationContracts\gwl_voices.ApplicationContracts.csproj", "{7010C711-8C59-4ECC-8FAA-B7570C938C18}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "gwl_voices.Application.Contracts", "gwl_voices.ApplicationContracts\gwl_voices.Application.Contracts.csproj", "{7010C711-8C59-4ECC-8FAA-B7570C938C18}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
