@@ -1,5 +1,6 @@
 ﻿using gwl_voices.DataAccess.Contracts.Dto;
 using gwl_voices.DataAccess.Contracts.Repositories;
+using gwl_voices.DataAccess.gwl_Context;
 
 namespace gwl_voices.DataAccess.Repositories
 {
@@ -17,22 +18,22 @@ namespace gwl_voices.DataAccess.Repositories
         {
 
             var query =
-                from u in _context.Users
-                where u.Name == name
+                from user in _context.Users
+                where user.Name == name
                 select new UserDto
                 {
 
-                    Id = u.Id,
-                    Username = u.Username,
-                    Password = u.Password,
-                    Rol = u.Rol,
-                    Name = u.Name, 
-                    Surname = u.Surname,
-                    Email = u.Email,
-                    Img = u.Img,
-                    Phone = u.Phone,
-                    Adress = u.Adress,
-                    UrlGwl = u.UrlGwl,
+                    Id = user.Id,
+                    Username = user.Username,
+                    Password = user.Password,
+                    Rol = user.Rol,
+                    Name = user.Name, 
+                    Surname = user.Surname,
+                    Email = user.Email,
+                    Img = user.Img,
+                    Phone = user.Phone,
+                    Adress = user.Adress,
+                    UrlGwl = user.UrlGwl,
 
 
                 };
@@ -40,5 +41,49 @@ namespace gwl_voices.DataAccess.Repositories
 
             return query.FirstOrDefault();
         }
-    }
+
+        public UserDto AddUser(UserDto user)
+        {
+            User newUser = new User
+            {
+              
+                Username = user.Username,
+                Password = user.Password,
+                Rol = user.Rol,
+                Name = user.Name,
+                Surname = user.Surname,
+                Email = user.Email,
+                Img = user.Img,
+                Phone = user.Phone,
+                Adress = user.Adress,
+                UrlGwl = user.UrlGwl,
+            };
+
+            var userInserted = _context.Users.Add(newUser);
+
+            UserDto result = new UserDto
+
+            {
+                Id = userInserted.Entity.Id,
+                Username = userInserted.Entity.Username,
+                Password = userInserted.Entity.Password,
+                Rol = userInserted.Entity.Rol,
+                Name = userInserted.Entity.Name,
+                Surname = userInserted.Entity.Surname,
+                Email = userInserted.Entity.Email,
+                Img = userInserted.Entity.Img,
+                Phone = userInserted.Entity.Phone,
+                Adress = userInserted.Entity.Adress,
+                UrlGwl = userInserted.Entity.UrlGwl,
+            };
+
+            return result;
+
+         }
+
+
+
+     }
+
+
 }

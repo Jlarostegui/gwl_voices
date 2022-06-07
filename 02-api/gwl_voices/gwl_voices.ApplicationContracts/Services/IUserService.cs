@@ -6,5 +6,7 @@ namespace gwl_voices.ApplicationContracts.Services
     {
 
         UserResponse? GetUserByName(string name);
+
+        UserResponse AddUser(UserRequest user);
     }
 }

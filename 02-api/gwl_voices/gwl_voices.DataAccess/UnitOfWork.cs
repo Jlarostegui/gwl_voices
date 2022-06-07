@@ -10,10 +10,11 @@ namespace gwl_voices.DataAccess
             _context = context;
         }
 
-        public void Commit()
+        public void SaveChanges()
         {
             _context.SaveChanges();
         }
 
+       
     }
 }

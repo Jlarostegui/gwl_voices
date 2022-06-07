@@ -6,5 +6,7 @@ namespace gwl_voices.DataAccess.Contracts.Repositories
     {
 
         UserDto? GetUserByName(string name);
+
+        UserDto AddUser(UserDto user);
     }
 }

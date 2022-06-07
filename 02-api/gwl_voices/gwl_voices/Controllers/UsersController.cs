@@ -33,6 +33,12 @@ namespace gwl_voices.API.Controllers
             }
         }
 
+        [HttpPost]
+        public IActionResult AddUser(UserRequest user)
+        {
+            UserResponse newUser = _userService.AddUser(user);
 
+            return Ok(newUser);
+        }
     }
 }
