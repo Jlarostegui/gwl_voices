@@ -30,60 +30,6 @@ namespace gwl_voices.Application.Services
                 response.WorkingGroupName = workingGroup.Name;
             }
 
-            return response;
-        }
-
-        public async Task<List<WorkingGroupResponse>> GetAllWorkingGroups()
-        {
-                var response = new List<WorkingGroupResponse>();
-            try
-            {
-                var workingGroups = await _workingGroupRepository.GetAllWorkingGroups();
-                foreach(var workingGroup in workingGroups)
-                {
-                    var wkresponse = new WorkingGroupResponse
-                    {
-                        WorkingGroupName = workingGroup.Name
-                    };
-
-                    response.Add(wkresponse);
-                }
-                
-                
-                return response;
-            }
-            catch (Exception oException)
-            {
-                throw oException;
-            }
-
-
-        }
-
-        public WorkingGroupResponse? AddWorkingGroup(WorkingGroupRequest workingGroup)
-        {
-            if (string.IsNullOrEmpty(workingGroup.Name))
-                return new WorkingGroupResponse { Error = "Name is obligatory field" };
-
-            //ToDo Verificar si el Name existe en la bbdd;
-
-            WorkingGroupDto newWorkingGroup = new WorkingGroupDto
-            {
-                Name = workingGroup.Name
-            };
-
-            WorkingGroupDto workingGroupInserted = _workingGroupRepository.AddWorkingGroup(newWorkingGroup);
-            _uOw.SaveChanges();
-
-            WorkingGroupResponse response = new WorkingGroupResponse
-            {
-                WorkingGroupName = workingGroup.Name,
-            };
-
-            return response;
-
-        }
-
         public WorkingGroupResponse? UpdateWorkingGroup(WorkingGroupRequest workingGroup)
         {
  
