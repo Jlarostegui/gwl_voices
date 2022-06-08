@@ -7,12 +7,12 @@ namespace gwl_voices.API.Controllers
 
     [Route("api/[controller]")]
     [ApiController]
-    public class WorkingGroupsController : Controller
+    public class working_groupscontroller : Controller
     {
 
         private IWorkingGroupService _workingGroupService;
 
-        public WorkingGroupsController(IWorkingGroupService workingGroupService)
+        public working_groupscontroller(IWorkingGroupService workingGroupService)
         {
            _workingGroupService = workingGroupService;
         }
@@ -36,9 +36,7 @@ namespace gwl_voices.API.Controllers
 
 
 
-        //No funciona correctamente Revisar query
         [HttpGet]
-        [Route("all")]
         public async Task<IActionResult> GetAllWorkingGroups()
         {
             List<WorkingGroupResponse> workingGroups = await _workingGroupService.GetAllWorkingGroups();
@@ -51,7 +49,6 @@ namespace gwl_voices.API.Controllers
 
 
         [HttpPost]
-        [Route("New")]
         [ProducesResponseType(typeof(WorkingGroupResponse),StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
@@ -66,8 +63,7 @@ namespace gwl_voices.API.Controllers
 
         }
 
-        [HttpPost]
-        [Route("Update")]
+        [HttpPut]
         [ProducesResponseType(typeof(WorkingGroupResponse), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
@@ -82,7 +78,6 @@ namespace gwl_voices.API.Controllers
         }
 
         [HttpDelete]
-        [Route("Delete")]
         public IActionResult DeleteWorkingGroup(int Id)
         {
 
