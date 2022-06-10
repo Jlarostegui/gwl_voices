@@ -20,8 +20,4 @@
     <ProjectReference Include="..\gwl_voices.DataAccess.Contracts\gwl_voices.DataAccess.Contracts.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Mappers\" />
-  </ItemGroup>
-
 </Project>

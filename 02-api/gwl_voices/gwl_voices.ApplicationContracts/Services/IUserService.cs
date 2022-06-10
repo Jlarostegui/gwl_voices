@@ -7,6 +7,11 @@ namespace gwl_voices.ApplicationContracts.Services
 
         UserResponse? GetUserByName(string name);
 
+        UserResponse? GetUserById(int id);
         UserResponse AddUser(UserRequest user);
+
+        bool DeleteUser(int id);
+
+        UserResponse UpdateUser(UserUpdateRequest user, int id);
     }
 }

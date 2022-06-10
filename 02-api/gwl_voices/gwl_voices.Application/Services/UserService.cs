@@ -1,4 +1,5 @@
-﻿using gwl_voices.ApplicationContracts.Services;
+﻿using gwl_voices.Application.Mappers;
+using gwl_voices.ApplicationContracts.Services;
 using gwl_voices.BusinessModels.Models.User;
 using gwl_voices.DataAccess.Contracts;
 using gwl_voices.DataAccess.Contracts.Dto;
@@ -24,8 +25,7 @@ namespace gwl_voices.Application.Services
 
             if (user != null)
             {
-                result.UserName = user.Username;
-                result.Name = user.Name;
+                result = UserMapper.MapToUserResponseFromUserDto(user);
             }
             else return null;
             return result;
@@ -33,12 +33,56 @@ namespace gwl_voices.Application.Services
            
         }
 
+        public UserResponse? GetUserById(int id)
+        {
+            UserDto? user = _userRepository.GetUserById(id);
+
+            UserResponse result = new UserResponse();
+            if (user != null)
+            {
+                result = UserMapper.MapToUserResponseFromUserDto(user);
+            }
+            else return null;
+            return result;
+        }
+
 
         public UserResponse AddUser(UserRequest user)
         {
+            UserDto newUser = UserMapper.MapToUserDtoFromUserRequest(user);
+
+            UserDto userInserted = _userRepository.AddUser(newUser);
+
+            _uOw.SaveChanges();
+
+            UserResponse result = UserMapper.MapToUserResponseFromUserDto(userInserted);
+            return result;
+        }
+
+
+        public bool DeleteUser(int id)
+        {
+            UserDto? user = _userRepository.GetUserById(id);
+
+            if (user == null)
+            {
+                return false;
+            }
+            else
+            {
+                _userRepository.DeleteUser(user);
+
+                _uOw.SaveChanges();
+                return true;
+
+            }
+        }
+
+        public UserResponse UpdateUser(UserUpdateRequest user, int id)
+        {
             UserDto newUser = new UserDto
             {
-                Id = user.Id,
+                Id = id,
                 Username = user.Username,
                 Password = user.Password,
                 Rol = user.Rol,
@@ -51,17 +95,14 @@ namespace gwl_voices.Application.Services
                 UrlGwl = user.UrlGwl,
             };
 
-            UserDto userInserted = _userRepository.AddUser(newUser);
+            UserDto userUpdated = _userRepository.UpdateUser(newUser);
 
             _uOw.SaveChanges();
 
-            UserResponse result = new UserResponse
-            {
-                 UserName = userInserted.Username,
-                 Name = userInserted.Name,
-        };
+            UserResponse result = UserMapper.MapToUserResponseFromUserDto(userUpdated);
 
             return result;
         }
+
     }
 }

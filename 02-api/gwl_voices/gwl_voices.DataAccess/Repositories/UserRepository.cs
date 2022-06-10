@@ -1,6 +1,7 @@
 ﻿using gwl_voices.DataAccess.Contracts.Dto;
 using gwl_voices.DataAccess.Contracts.Repositories;
 using gwl_voices.DataAccess.gwl_Context;
+using gwl_voices.DataAccess.Mappers;
 
 namespace gwl_voices.DataAccess.Repositories
 {
@@ -20,70 +21,52 @@ namespace gwl_voices.DataAccess.Repositories
             var query =
                 from user in _context.Users
                 where user.Name == name
-                select new UserDto
-                {
-
-                    Id = user.Id,
-                    Username = user.Username,
-                    Password = user.Password,
-                    Rol = user.Rol,
-                    Name = user.Name, 
-                    Surname = user.Surname,
-                    Email = user.Email,
-                    Img = user.Img,
-                    Phone = user.Phone,
-                    Adress = user.Adress,
-                    UrlGwl = user.UrlGwl,
+                select UserMapper.MapToUserDtoFromUser(user);
 
 
-                };
+            return query.FirstOrDefault();
+        }
 
+        public UserDto? GetUserById(int id)
+        {
+            var query =
+                from user in _context.Users
+                where user.Id == id
+                select UserMapper.MapToUserDtoFromUser(user);
 
             return query.FirstOrDefault();
         }
 
         public UserDto AddUser(UserDto user)
         {
-            User newUser = new User
-            {
-              
-                Username = user.Username,
-                Password = user.Password,
-                Rol = user.Rol,
-                Name = user.Name,
-                Surname = user.Surname,
-                Email = user.Email,
-                Img = user.Img,
-                Phone = user.Phone,
-                Adress = user.Adress,
-                UrlGwl = user.UrlGwl,
-            };
+            User newUser = UserMapper.MapToUserFromUserDto(user);
 
             var userInserted = _context.Users.Add(newUser);
 
-            UserDto result = new UserDto
-
-            {
-                Id = userInserted.Entity.Id,
-                Username = userInserted.Entity.Username,
-                Password = userInserted.Entity.Password,
-                Rol = userInserted.Entity.Rol,
-                Name = userInserted.Entity.Name,
-                Surname = userInserted.Entity.Surname,
-                Email = userInserted.Entity.Email,
-                Img = userInserted.Entity.Img,
-                Phone = userInserted.Entity.Phone,
-                Adress = userInserted.Entity.Adress,
-                UrlGwl = userInserted.Entity.UrlGwl,
-            };
+            UserDto result = UserMapper.MapToUserDtoFromUser(userInserted.Entity);
 
             return result;
 
          }
 
+        public void DeleteUser(UserDto user)
+        {
+            User userToDelete = UserMapper.MapToUserFromUserDto(user);
+            _context.Users.Remove(userToDelete);
+        }
 
 
-     }
+        public UserDto UpdateUser(UserDto user)
+        {
+            User userToUpdate = UserMapper.MapToUserFromUserDto(user);
+
+            var userUpdated = _context.Users.Update(userToUpdate);
+
+            UserDto result = UserMapper.MapToUserDtoFromUser(userUpdated.Entity);
+            return result;
+
+        }
+    }
 
 
 }

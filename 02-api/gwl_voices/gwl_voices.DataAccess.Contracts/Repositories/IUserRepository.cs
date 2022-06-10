@@ -7,6 +7,12 @@ namespace gwl_voices.DataAccess.Contracts.Repositories
 
         UserDto? GetUserByName(string name);
 
+        UserDto? GetUserById(int id);
+
         UserDto AddUser(UserDto user);
+
+        void DeleteUser(UserDto user);
+
+        UserDto UpdateUser(UserDto user);
     }
 }
