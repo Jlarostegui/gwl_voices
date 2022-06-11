@@ -1,6 +1,7 @@
 ﻿using gwl_voices.ApplicationContracts.Services;
 using gwl_voices.BusinessModels.Models.WorkingGroup;
 using Microsoft.AspNetCore.Mvc;
+using System.Web.Http.Cors;
 
 namespace gwl_voices.API.Controllers
 {
@@ -16,7 +17,7 @@ namespace gwl_voices.API.Controllers
         {
            _workingGroupService = workingGroupService;
         }
-
+    
         [HttpGet]
         [Route("{id}")]
         public IActionResult GetWorkingGroupById(int id)
@@ -78,12 +79,14 @@ namespace gwl_voices.API.Controllers
         }
 
         [HttpDelete]
-        public IActionResult DeleteWorkingGroup(int Id)
+        [Route("{id}")]
+
+        public IActionResult DeleteWorkingGroup(int id)
         {
 
-            bool  deleteWorkingGroup = _workingGroupService.DeleteWorkingGroup(Id);
+            bool  deleteWorkingGroup = _workingGroupService.DeleteWorkingGroup(id);
             if (deleteWorkingGroup)
-                return Ok(Id);
+                return Ok(id);
             else
                 return NoContent();
 

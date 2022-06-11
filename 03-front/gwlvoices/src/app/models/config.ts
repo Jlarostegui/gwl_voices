@@ -1,0 +1,1 @@
+export const ROOT_URL: string = "https://localhost:7153/api/working_groups";

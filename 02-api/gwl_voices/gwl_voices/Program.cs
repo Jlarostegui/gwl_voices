@@ -2,6 +2,8 @@ using gwl_voices.CrossCutting.Configuration;
 using gwl_voices.DataAccess;
 using Microsoft.EntityFrameworkCore;
 
+
+var MyAllowSpecificOrigins = "_MyAllowSubdomainPolicy";
 var builder = WebApplication.CreateBuilder(args);
 
 
@@ -12,6 +14,27 @@ string mySqlConnectionStr = builder.Configuration.GetConnectionString("DefaultCo
 
 builder.Services.AddDbContext<heroku_7ff63ad7795b383Context>(
     item => item.UseMySql(mySqlConnectionStr, ServerVersion.AutoDetect(mySqlConnectionStr)));
+
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(
+        policy =>
+        {
+            policy.WithOrigins("http://localhost:4200").AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+        });
+});
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+        policy =>
+        {
+            policy.WithOrigins("http://localhost:4200")
+                   .AllowAnyHeader();
+        });
+});
+
+
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -27,7 +50,14 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseCors();
 app.UseHttpsRedirection();
+app.UseStaticFiles();
+app.UseRouting();
+
+
+app.UseHttpsRedirection();
+
 
 app.UseAuthorization();
 

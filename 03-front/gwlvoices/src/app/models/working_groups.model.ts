@@ -1,10 +1,13 @@
-export class workig_groups {
-  id: number;
-  workingGroup: string;
+export class Working_groups {
 
-  constructor(id: number, workingGroup: string) {
-    this.id = id;
-    this.workingGroup = workingGroup;
+  Id?: number;
+  Name?: string;
+
+
+  constructor(item?: Partial<Working_groups>) {
+    this.Id = item?.Id;
+    this.Name = item?.Name;
+
+
   }
-
-};
+}

@@ -2,12 +2,8 @@
 {
     public class WorkingGroupResponse : BaseResponse
     {
-        public int ? WgId { get; set; }
-        public String? WorkingGroupName { get; set; }
+        public int ? id { get; set; }
+        public String? Name { get; set; }
 
-        public static implicit operator List<object>(WorkingGroupResponse v)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

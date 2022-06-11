@@ -27,8 +27,8 @@ namespace gwl_voices.Application.Services
 
             if (workingGroup != null)
             {
-                response.WorkingGroupName = workingGroup.Name;
-                response.WgId = workingGroup.Id;
+                response.Name = workingGroup.Name;
+                response.id = workingGroup.Id;
             }
 
             return response;
@@ -44,8 +44,8 @@ namespace gwl_voices.Application.Services
                 {
                     var wkresponse = new WorkingGroupResponse
                     {
-                        WorkingGroupName = workingGroup.Name,
-                        WgId = workingGroup.Id,
+                        Name = workingGroup.Name,
+                        id = workingGroup.Id,
 
                     };
 
@@ -80,7 +80,7 @@ namespace gwl_voices.Application.Services
 
             WorkingGroupResponse response = new WorkingGroupResponse
             {
-                WorkingGroupName = workingGroup.Name,
+                Name = workingGroup.Name,
             };
 
             return response;
@@ -104,7 +104,7 @@ namespace gwl_voices.Application.Services
 
             WorkingGroupResponse response = new WorkingGroupResponse
             {
-                WorkingGroupName = workingGroupUpdate.Name,
+                Name = workingGroupUpdate.Name,
             };
             return response;
         }
