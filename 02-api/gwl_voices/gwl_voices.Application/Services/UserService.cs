@@ -49,6 +49,18 @@ namespace gwl_voices.Application.Services
 
         public UserResponse AddUser(UserRequest user)
         {
+            if (string.IsNullOrEmpty(user.Username)
+            || string.IsNullOrEmpty(user.Password)
+            || string.IsNullOrEmpty(user.Rol)
+            || string.IsNullOrEmpty(user.Name)
+            || string.IsNullOrEmpty(user.Surname)
+            || string.IsNullOrEmpty(user.Email)
+            || string.IsNullOrEmpty(user.Img)
+            || string.IsNullOrEmpty(user.Phone)
+            || string.IsNullOrEmpty(user.Adress)
+            || string.IsNullOrEmpty(user.UrlGwl)
+            ) return new UserResponse { Error = "Todos los campos son obligatorios" };
+
             UserDto newUser = UserMapper.MapToUserDtoFromUserRequest(user);
 
             UserDto userInserted = _userRepository.AddUser(newUser);
@@ -80,6 +92,27 @@ namespace gwl_voices.Application.Services
 
         public UserResponse UpdateUser(UserUpdateRequest user, int id)
         {
+            if (id == 0)
+                return new UserResponse {  Error = "El id del usuario no puede ser 0"};
+
+            if (string.IsNullOrEmpty(user.Username)
+            || string.IsNullOrEmpty(user.Password)
+            || string.IsNullOrEmpty(user.Rol)
+            || string.IsNullOrEmpty(user.Name)
+            || string.IsNullOrEmpty(user.Surname)
+            || string.IsNullOrEmpty(user.Email)
+            || string.IsNullOrEmpty(user.Img)
+            || string.IsNullOrEmpty(user.Phone)
+            || string.IsNullOrEmpty(user.Adress)
+            || string.IsNullOrEmpty(user.UrlGwl)
+            ) return new UserResponse { Error = "Todos los campos son obligatorios" };
+
+            UserDto? existingUser = _userRepository.GetUserById(id);
+
+            if (existingUser == null)
+                return new UserResponse { Error = "El usuario no existe en BBDD" };
+
+
             UserDto newUser = new UserDto
             {
                 Id = id,
@@ -94,6 +127,7 @@ namespace gwl_voices.Application.Services
                 Adress = user.Adress,
                 UrlGwl = user.UrlGwl,
             };
+
 
             UserDto userUpdated = _userRepository.UpdateUser(newUser);
 

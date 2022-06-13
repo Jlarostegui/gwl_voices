@@ -19,6 +19,9 @@ namespace gwl_voices.API.Controllers
 
         [HttpGet]
         [Route("{name}")]
+        [ProducesResponseType(typeof(UserResponse), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public IActionResult GetUserByName(string name)
         {
             UserResponse? user = _userService.GetUserByName(name);
@@ -35,6 +38,9 @@ namespace gwl_voices.API.Controllers
 
         [HttpGet]
         [Route("{id:int}")]
+        [ProducesResponseType(typeof(UserResponse), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public IActionResult GetUserById(int id)
         {
             UserResponse? user = _userService.GetUserById(id);
@@ -51,6 +57,8 @@ namespace gwl_voices.API.Controllers
 
 
         [HttpPost]
+        [ProducesResponseType(typeof(UserResponse), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public IActionResult AddUser(UserRequest user)
         {
             UserResponse newUser = _userService.AddUser(user);
@@ -61,6 +69,9 @@ namespace gwl_voices.API.Controllers
 
         [HttpDelete]
         [Route("{id}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public IActionResult DeleteUser(int id)
         {
             bool result = _userService.DeleteUser(id);
@@ -79,10 +90,18 @@ namespace gwl_voices.API.Controllers
 
         [HttpPut]
         [Route("{id}")]
+        [ProducesResponseType(typeof(UserResponse), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public IActionResult UpdateUser(UserUpdateRequest user, int id)
         {
+            
             UserResponse userUpdated = _userService.UpdateUser(user, id);
-            return Ok(userUpdated);
+
+            if (string.IsNullOrEmpty(userUpdated.Error))
+                return Ok(userUpdated);
+            else
+                return BadRequest(userUpdated.Error);
         }
     }
 }
