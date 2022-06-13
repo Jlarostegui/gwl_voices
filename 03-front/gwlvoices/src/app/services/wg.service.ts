@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Working_groups } from '../models/working_groups.model';
-import { lastValueFrom } from 'rxjs';
+import { lastValueFrom, map } from 'rxjs';
 import { ROOT_URL_WK } from '../models/config';
 
 @Injectable({
@@ -10,6 +10,9 @@ import { ROOT_URL_WK } from '../models/config';
 export class WgService {
 
   constructor(private httpClient: HttpClient) { }
+
+
+
 
   // OK => Devuelve un Array de Objetos {id:"", name:"", error:""}
   getAllWorkingGroups(): Promise<any[]> {

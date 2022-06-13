@@ -1,6 +1,6 @@
-import { COMPILER_OPTIONS, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Working_groups } from 'src/app/models/working_groups.model';
-import { UserService } from 'src/app/services/user-service';
+import { UserService } from 'src/app/services/user.service';
 import { WgService } from 'src/app/services/wg.service';
 
 @Component({
@@ -11,7 +11,7 @@ import { WgService } from 'src/app/services/wg.service';
 export class TestWGComponent implements OnInit {
 
 
-  ArrworkingGroups: Working_groups[];
+  ArrworkingGroups: Working_groups[] = [];
   workinggroup: Working_groups[] = [];
 
   newWg: Working_groups = new Working_groups(
@@ -25,15 +25,16 @@ export class TestWGComponent implements OnInit {
   constructor(
     private wgservice: WgService,
     private userservice: UserService) {
-    this.ArrworkingGroups = new Array();
+    // this.ArrworkingGroups = new Array();
   }
 
   async ngOnInit() {
 
     try {
 
-      let response = await this.userservice.getUserById(20);
-      console.log(response)
+
+      // let response = await this.userservice.getUserById(20);
+      // console.log(response)
       // let response = await this.wgservice.getAllWorkingGroups();
       // console.log(response)
       // response.forEach(wkname => this.ArrworkingGroups.push(wkname['name']));

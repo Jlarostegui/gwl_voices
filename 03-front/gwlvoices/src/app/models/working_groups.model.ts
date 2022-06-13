@@ -7,7 +7,5 @@ export class Working_groups {
   constructor(item?: Partial<Working_groups>) {
     this.Id = item?.Id;
     this.Name = item?.Name;
-
-
   }
 }
