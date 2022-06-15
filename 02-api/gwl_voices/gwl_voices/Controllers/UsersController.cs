@@ -57,7 +57,7 @@ namespace gwl_voices.API.Controllers
 
 
         [HttpGet]
-        [Route("allUsers")]
+        [Route("all")]
         [ProducesResponseType(typeof(UserResponse), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
