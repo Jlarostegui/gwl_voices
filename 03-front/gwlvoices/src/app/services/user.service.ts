@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { ROOT_URL_US } from '../models/config';
+import { ROOT_URL_US } from '../../environments/config';
 import { User } from '../models/index.model'
 import { lastValueFrom } from 'rxjs';
 
@@ -16,6 +16,12 @@ export class UserService {
   getUserById(pId: number): Promise<User> {
     let result = lastValueFrom(this.httpClient.get<User>(`${ROOT_URL_US}/${pId}`))
     console.log(result);
+    return result
+  }
+
+  getAllUser(): Promise<any[]> {
+    let result = lastValueFrom(this.httpClient.get<any[]>(`${ROOT_URL_US}/all`))
+    console.log(result, "servicio user");
     return result
   }
 
