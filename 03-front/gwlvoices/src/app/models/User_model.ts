@@ -1,5 +1,3 @@
-import { IterableDiffers } from "@angular/core";
-
 export class User {
 
   Id?: number;

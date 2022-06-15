@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Working_groups } from '../models/working_groups.model';
 import { lastValueFrom, map } from 'rxjs';
-import { ROOT_URL_WK } from '../models/config';
+import { ROOT_URL_WK } from '../../environments/config';
 
 @Injectable({
   providedIn: 'root'
