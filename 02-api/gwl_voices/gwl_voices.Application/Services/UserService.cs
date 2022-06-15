@@ -47,6 +47,49 @@ namespace gwl_voices.Application.Services
         }
 
 
+        public async Task<List<UserResponse>> GetAllUsers()
+        {
+            var response = new List<UserResponse>();
+           
+              try
+            {
+                var users = await _userRepository.GetAllUsers();
+                foreach (var user in users)
+                {
+                    var uResponse = new UserResponse
+                    {
+                        Id = user.Id,
+                        Name = user.Name,
+                        Surname = user.Surname,
+                        Password = user.Password,
+                        Username = user.Username,
+                        Adress = user.Adress,
+                        UrlGwl = user.UrlGwl,
+                        Email = user.Email,
+                        Img = user.Img,
+                        Phone = user.Phone,
+                        Rol = user.Rol,
+
+
+
+                    };
+
+                    response.Add(uResponse);
+                }
+
+
+            return response;
+
+            }
+                
+
+             catch (Exception oException)
+            {
+                throw oException;
+            }
+        }
+
+
         public UserResponse AddUser(UserRequest user)
         {
             if (string.IsNullOrEmpty(user.Username)

@@ -9,6 +9,8 @@ namespace gwl_voices.DataAccess.Contracts.Repositories
 
         UserDto? GetUserById(int id);
 
+        Task<List<UserDto>> GetAllUsers();
+
         UserDto AddUser(UserDto user);
 
         void DeleteUser(UserDto user);

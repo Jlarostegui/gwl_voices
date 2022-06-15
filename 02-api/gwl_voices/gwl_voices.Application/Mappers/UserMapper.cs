@@ -9,9 +9,9 @@ namespace gwl_voices.Application.Mappers
         {
             UserResponse result = new UserResponse
             {
-                UserName = userDto.Username,
+                Username = userDto.Username,
                 Name = userDto.Name,
-                id = userDto.Id,
+                Id = userDto.Id,
             };
 
             return result;

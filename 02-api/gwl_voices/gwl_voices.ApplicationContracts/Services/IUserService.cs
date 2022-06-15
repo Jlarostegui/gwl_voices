@@ -8,6 +8,8 @@ namespace gwl_voices.ApplicationContracts.Services
         UserResponse? GetUserByName(string name);
 
         UserResponse? GetUserById(int id);
+
+        Task<List<UserResponse>> GetAllUsers();
         UserResponse AddUser(UserRequest user);
 
         bool DeleteUser(int id);

@@ -2,6 +2,7 @@
 using gwl_voices.DataAccess.Contracts.Repositories;
 using gwl_voices.DataAccess.gwl_Context;
 using gwl_voices.DataAccess.Mappers;
+using Microsoft.EntityFrameworkCore;
 
 namespace gwl_voices.DataAccess.Repositories
 {
@@ -35,6 +36,42 @@ namespace gwl_voices.DataAccess.Repositories
                 select UserMapper.MapToUserDtoFromUser(user);
 
             return query.FirstOrDefault();
+        }
+
+        public async Task<List<UserDto>> GetAllUsers()
+        {
+            
+                try
+                {
+                    var response = await _context.Users
+                                 .Select(u => new UserDto
+                                 {
+                                     Id = u.Id,
+                                     Name = u.Name,
+                                     Surname = u.Surname,
+                                     Password = u.Password,
+                                     Username = u.Username,
+                                     Adress = u.Adress,
+                                     UrlGwl = u.UrlGwl,
+                                     Email = u.Email,
+                                     Img = u.Img,
+                                     Phone = u.Phone,
+                                     Rol = u.Rol,
+                                     
+
+                                 })
+                                 .ToListAsync();
+                    return response;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+
+            
+
+
+
         }
 
         public UserDto AddUser(UserDto user)
