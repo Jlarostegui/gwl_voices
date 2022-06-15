@@ -20,22 +20,17 @@ export class UserService {
   }
 
   getAllUser(): Promise<any[]> {
-    const httpOptions = {
-      headers: new HttpHeaders(
-        {
-          'Content-type': 'application/json; charset=UTF-8'
-        })
-    }
-    let result = lastValueFrom(this.httpClient.get<any>(`${ROOT_URL_US}/all`, httpOptions))
+
+    let result = lastValueFrom(this.httpClient.get<any>(`${ROOT_URL_US}/all`))
     console.log(result, "servicio user");
     return result
   }
 
-  getUserByName(pName: string): Promise<User> {
-    let result = lastValueFrom(this.httpClient.get<User>(`${ROOT_URL_US}/${pName}`))
-    console.log(result)
-    return result;
-  }
+  // getUserByName(pName: string): Promise<User> {
+  //   let result = lastValueFrom(this.httpClient.get<User>(`${ROOT_URL_US}/${pName}`))
+  //   console.log(result)
+  //   return result;
+  // }
 
   // getAllUsers(): Promise<any[]> {
   //   let result = lastValueFrom(this.httpClient.get<any[]>(`${ROOT_URL_US}/all`))
