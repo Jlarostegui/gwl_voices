@@ -1,30 +1,34 @@
-// import { Component, OnInit } from '@angular/core';
-// import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { UserService } from 'src/app/services/user.service';
 
-// @Component({
-//   selector: 'app-index',
-//   templateUrl: './index.component.html',
-//   styleUrls: ['./index.component.css']
-// })
-// export class IndexComponent implements OnInit {
+@Component({
+  selector: 'app-index',
+  templateUrl: './index.component.html',
+  styleUrls: ['./index.component.css']
+})
+export class IndexComponent implements OnInit {
 
-//   loginform: FormGroup;
 
-//   constructor(private formBuilder: FormBuilder) {
 
-//     this.loginform = formBuilder.group({
-//       user: [''],
-//       password: [''],
-//     })
+  constructor(
+    private userservice: UserService
+  ) {
 
-//   }
+  }
 
-//   ngOnInit(): void {
-//   }
+  async ngOnInit() {
 
-// //   getLoginData(pLoginForm: Astrabc) {
-// //     console.log(pLoginForm.value);
-// //     pLoginForm.value.reset();
-// //   }
 
-// // }
+
+  }
+
+  // async getLoginData(pLogin: any) {
+  //   console.log(pLogin.value)
+  //   const response = await this.userservice.getUserByName(pLogin.value)
+  //   console.log(response);
+  // }
+
+
+
+
+}

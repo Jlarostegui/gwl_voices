@@ -20,11 +20,11 @@ export class UserService {
   }
 
 
-  getUserByName(pName: string): Promise<User> {
-    let result = lastValueFrom(this.httpClient.get<User>(`${ROOT_URL_US}/${pName}`))
-    console.log(result)
-    return result;
-  }
+  // getUserByName(pName: string): Promise<User> {
+  //   let result = lastValueFrom(this.httpClient.get<User>(`${ROOT_URL_US}/${pName}`))
+  //   console.log(result)
+  //   return result;
+  // }
 
   getAllUsers(): Promise<any[]> {
     let result = lastValueFrom(this.httpClient.get<any[]>(`${ROOT_URL_US}/all`))
