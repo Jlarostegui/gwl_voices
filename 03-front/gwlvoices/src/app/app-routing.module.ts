@@ -6,7 +6,7 @@ import { TestUsersComponent } from './components/test-users/test-users.component
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/index' },
-  { path: 'index', component: TestWGComponent },
+  { path: 'index', component: TestUsersComponent },
   { path: '**', redirectTo: '/index' }
 ];
 
