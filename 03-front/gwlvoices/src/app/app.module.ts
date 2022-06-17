@@ -8,13 +8,19 @@ import { AppComponent } from './app.component';
 import { TestWGComponent } from './components/test-wg/test-wg.component';
 import { CommonModule } from '@angular/common';
 import { TestUsersComponent } from './components/test-users/test-users.component';
-// import { IndexComponent } from './components/index/index.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { IndexComponent } from './components/index/index.component';
+
+
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
     AppComponent,
     TestWGComponent,
-   TestUsersComponent
+    TestUsersComponent,
+    IndexComponent
 
   ],
   imports: [
@@ -23,6 +29,10 @@ import { TestUsersComponent } from './components/test-users/test-users.component
     HttpClientModule,
     ReactiveFormsModule,
     CommonModule,
+    BrowserAnimationsModule,
+    MatFormFieldModule,
+    MatInputModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

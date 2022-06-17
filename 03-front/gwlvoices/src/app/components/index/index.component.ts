@@ -22,11 +22,7 @@ export class IndexComponent implements OnInit {
 
   }
 
-  // async getLoginData(pLogin: any) {
-  //   console.log(pLogin.value)
-  //   const response = await this.userservice.getUserByName(pLogin.value)
-  //   console.log(response);
-  // }
+
 
 
 

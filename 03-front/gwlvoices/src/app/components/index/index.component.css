@@ -1,3 +1,18 @@
-body {
-  background-image: url('../../../assets/img/Map-gradient-GWL-voices-change-inclusion-international-women-background.jpg');
+.logo {
+  display: flex;
+  justify-content: center;
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+  color: #d5e848;
+}
+
+div.mat-form-field-outline {
+  color: blue;
+}
+
+.mat-form-field-outline {
+  color: #d5e848;
 }
