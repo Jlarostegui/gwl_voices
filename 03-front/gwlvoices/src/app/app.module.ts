@@ -6,12 +6,15 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TestWGComponent } from './components/test-wg/test-wg.component';
+import { CommonModule } from '@angular/common';
+import { TestUsersComponent } from './components/test-users/test-users.component';
 // import { IndexComponent } from './components/index/index.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TestWGComponent,
+   TestUsersComponent
 
   ],
   imports: [
@@ -19,6 +22,7 @@ import { TestWGComponent } from './components/test-wg/test-wg.component';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+    CommonModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

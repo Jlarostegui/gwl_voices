@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
-import {User} from 'src/app/models/User_model';
+import {User} from 'src/app/models/user_model';
 
 
 
@@ -34,9 +34,19 @@ export class TestUsersComponent implements OnInit {
 
       //  let response = await this.userService.getUserByName("Ana");
 
-
-       console.log(response);
+       response.forEach(x => this.ArrUsers.push(new User({
+         Id: x['id'],
+         Name: x['name'],
+         Email: x['email'],
+         Password: x['password'],
+         Rol: x['rol'],
+         Surname: x['surname'],
       
+       })));
+
+       
+       console.log(this.ArrUsers);
+
      } catch (error) {
        console.log(error);
      }
