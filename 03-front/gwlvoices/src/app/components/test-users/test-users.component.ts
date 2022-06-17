@@ -7,7 +7,7 @@ import {User} from 'src/app/models/user_model';
 @Component({
   selector: 'app-test-users',
   templateUrl: './test-users.component.html',
-  styleUrls: ['./test-users.component.css']
+  styleUrls: ['./test-users.component.scss']
 })
 export class TestUsersComponent implements OnInit {
 

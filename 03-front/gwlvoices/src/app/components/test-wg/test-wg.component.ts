@@ -8,7 +8,7 @@ import { WgService } from 'src/app/services/wg.service';
 @Component({
   selector: 'app-test-wg',
   templateUrl: './test-wg.component.html',
-  styleUrls: ['./test-wg.component.css']
+  styleUrls: ['./test-wg.component.scss']
 })
 export class TestWGComponent implements OnInit {
 
