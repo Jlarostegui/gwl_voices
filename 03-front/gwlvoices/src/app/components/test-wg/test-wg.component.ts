@@ -33,8 +33,8 @@ export class TestWGComponent implements OnInit {
     try {
 
 
-      let response = await this.userservice.getAllUser();
-      console.log(response, ' desde wg component')
+      let response = await this.wgservice.getuser().subscribe(data => data.forEach(user => console.log(user)))
+
       // let response = await this.wgservice.getAllWorkingGroups();
       // console.log(response)
       // response.forEach(wkname => this.ArrworkingGroups.push(wkname['name']));
