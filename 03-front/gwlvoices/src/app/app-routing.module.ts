@@ -6,11 +6,7 @@ import { IndexComponent } from './components/index/index.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/index' },
-<<<<<<< HEAD
-  { path: 'index', component: IndexComponent },
-=======
   { path: 'index', component: TestUsersComponent },
->>>>>>> 0f32e2dade72e94dd6fb68d35f7b059ad60512cc
   { path: '**', redirectTo: '/index' }
 ];
 
