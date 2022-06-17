@@ -3,6 +3,8 @@ import { Working_groups } from 'src/app/models/working_groups.model';
 import { UserService } from 'src/app/services/user.service';
 import { WgService } from 'src/app/services/wg.service';
 
+
+
 @Component({
   selector: 'app-test-wg',
   templateUrl: './test-wg.component.html',
@@ -13,6 +15,7 @@ export class TestWGComponent implements OnInit {
 
   ArrworkingGroups: Working_groups[] = [];
   workinggroup: Working_groups[] = [];
+ 
 
   newWg: Working_groups = new Working_groups(
     { Name: "test" }
@@ -24,7 +27,7 @@ export class TestWGComponent implements OnInit {
 
   constructor(
     private wgservice: WgService,
-    private userservice: UserService) {
+    private userService: UserService) {
     // this.ArrworkingGroups = new Array();
   }
 
@@ -33,8 +36,17 @@ export class TestWGComponent implements OnInit {
     try {
 
 
+<<<<<<< HEAD
       let response = await this.wgservice.getuser().subscribe(data => data.forEach(user => console.log(user)))
 
+=======
+
+      //  let response = await this.userService.getUserById(3);
+
+      //  let response = await this.userService.getUserByName("Ana");
+
+     
+>>>>>>> 0f32e2dade72e94dd6fb68d35f7b059ad60512cc
       // let response = await this.wgservice.getAllWorkingGroups();
       // console.log(response)
       // response.forEach(wkname => this.ArrworkingGroups.push(wkname['name']));
