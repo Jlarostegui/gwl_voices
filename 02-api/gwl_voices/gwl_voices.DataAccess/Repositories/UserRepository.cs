@@ -21,7 +21,7 @@ namespace gwl_voices.DataAccess.Repositories
 
             var query =
                 from user in _context.Users
-                where user.Username == name
+                where user.Name == name
                 select UserMapper.MapToUserDtoFromUser(user);
 
 

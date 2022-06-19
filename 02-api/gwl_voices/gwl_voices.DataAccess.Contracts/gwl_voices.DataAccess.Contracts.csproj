@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\gwl_voices.BusinessModels\gwl_voices.BusinessModels.csproj" />
+  </ItemGroup>
+
 </Project>

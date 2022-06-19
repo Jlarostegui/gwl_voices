@@ -1,4 +1,5 @@
-﻿using gwl_voices.Application.Services;
+﻿using gwl_voices.Application.Contracts.Services;
+using gwl_voices.Application.Services;
 using gwl_voices.ApplicationContracts.Services;
 using gwl_voices.DataAccess;
 using gwl_voices.DataAccess.Contracts;
@@ -18,7 +19,8 @@ namespace gwl_voices.CrossCutting.Configuration
             services.AddTransient<IWorkingGroupService, WorkingGroupService>();
             services.AddTransient<IUserRepository, UserRepository>();
             services.AddTransient<IUserService, UserService>();
-
+            services.AddTransient<ILoginRepository, LoginRepository>();
+            services.AddTransient<ILoginService, loginService>();
             return services;
         }
 

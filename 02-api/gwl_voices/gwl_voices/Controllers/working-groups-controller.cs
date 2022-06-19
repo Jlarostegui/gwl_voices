@@ -6,8 +6,7 @@ using System.Web.Http.Cors;
 namespace gwl_voices.API.Controllers
 {
 
-    [Route("api/[controller]")]
-    [ApiController]
+  
     public class working_groupscontroller : Controller
     {
 

@@ -1,10 +1,11 @@
 ﻿using gwl_voices.ApplicationContracts.Services;
 using gwl_voices.BusinessModels.Models.User;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Web.Http.Cors;
 
 namespace gwl_voices.API.Controllers
-{
+{   
+    
     [Route("api/[controller]")]
     [ApiController]
     public class usersController : Controller
@@ -19,6 +20,7 @@ namespace gwl_voices.API.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         [Route("{name}")]
         [ProducesResponseType(typeof(UserResponse), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]

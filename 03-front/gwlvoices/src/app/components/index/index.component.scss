@@ -1,3 +1,5 @@
+@import url(../../app.component.scss);
+
 .logo {
   display: flex;
   justify-content: center;
@@ -5,14 +7,25 @@
 
 .form {
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  color: #d5e848;
+  align-items: center;
+  color: white;
 }
 
-div.mat-form-field-outline {
-  color: blue;
-}
+::ng-deep {
 
-.mat-form-field-outline {
-  color: #d5e848;
+  .mat-form-field-appearance-outline .mat-form-field-outline {
+    color: white;
+  }
+
+  mat-form-field {
+
+    .mat-hint,
+    input,
+    ::placeholder,
+    .mat-form-field-label {
+      color: white;
+    }
+  }
 }

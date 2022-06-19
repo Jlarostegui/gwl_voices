@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from 'src/app/services/user.service';
+import { AbstractControl, FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-index',
@@ -8,21 +9,26 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class IndexComponent implements OnInit {
 
+  loginForm: FormGroup;
 
 
   constructor(
-    private userservice: UserService
+    private fctrl: FormBuilder,
+    private loginService: LoginService
   ) {
+
+    this.loginForm = this.fctrl.group({ user: '', password: '' });
 
   }
 
   async ngOnInit() {
 
-
-
   }
 
-
+  onSubmit(loginForm: AbstractControl) {
+    console.log(loginForm.value)
+    loginForm.reset();
+  }
 
 
 

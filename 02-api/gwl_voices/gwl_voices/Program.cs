@@ -1,7 +1,9 @@
 using gwl_voices.CrossCutting.Configuration;
 using gwl_voices.DataAccess;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
-
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 var MyAllowSpecificOrigins = "_MyAllowSubdomainPolicy";
 var builder = WebApplication.CreateBuilder(args);
@@ -9,6 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 IoC.Register(builder.Services, builder.Configuration);
+
 string mySqlConnectionStr = builder.Configuration.GetConnectionString("DefaultConnection");
 
 
@@ -34,7 +37,19 @@ builder.Services.AddCors(options =>
         });
 });
 
-
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, jwtBearerOptions =>
+    {
+        jwtBearerOptions.TokenValidationParameters = new TokenValidationParameters
+        {
+            IssuerSigningKey = new SymmetricSecurityKey(
+                    Encoding.UTF8.GetBytes("kjiouhvbuhvoiearhçpqvhbaUYVCCBÑDEVkLNSJDBCLLdvlmms")
+                  ),
+                    ValidateIssuer = false,
+                    ValidateAudience = false,
+        };
+    }
+);
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -43,13 +58,19 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
+
 // Configure the HTTP request pipeline.
+
+
+
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
+app.UseAuthentication();
 app.UseCors();
 app.UseHttpsRedirection();
 app.UseStaticFiles();
