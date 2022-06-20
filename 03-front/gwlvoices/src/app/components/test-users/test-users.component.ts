@@ -30,13 +30,13 @@ export class TestUsersComponent implements OnInit {
     );
      }
 
-   }
+  }
 
-   async ngOnInit() {
-      
-     try {
-       
-       let response = await this.userService.getAllUsers();
+  async ngOnInit() {
+
+    try {
+
+      let response = await this.userService.getAllUsers();
 
       //  let response = await this.userService.getUserById(3);
 
@@ -54,12 +54,12 @@ export class TestUsersComponent implements OnInit {
       
        })));
 
-       
-       console.log(this.ArrUsers);
 
-     } catch (error) {
-       console.log(error);
-     }
-      
+      console.log(this.ArrUsers);
+
+    } catch (error) {
+      console.log(error);
     }
+
+  }
 }
