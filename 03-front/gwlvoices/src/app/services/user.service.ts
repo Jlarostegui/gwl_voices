@@ -28,9 +28,8 @@ export class UserService {
 
   getAllUsers(): Promise<any[]> {
     let result = lastValueFrom(this.httpClient.get<any[]>(`${ROOT_URL_US}/all`))
-    console.log(result);
     return result;
-   }
+  }
 
 
   addNewUser(newUser: User): Promise<User> {

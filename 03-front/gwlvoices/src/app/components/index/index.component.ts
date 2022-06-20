@@ -10,7 +10,7 @@ import { LoginService } from 'src/app/services/login.service';
 export class IndexComponent implements OnInit {
 
   loginForm: FormGroup;
-
+  token: string = "";
 
   constructor(
     private fctrl: FormBuilder,
@@ -26,7 +26,7 @@ export class IndexComponent implements OnInit {
   }
 
   onSubmit(loginForm: AbstractControl) {
-    console.log(loginForm.value)
+    let response = this.loginService.login(loginForm.value)
     loginForm.reset();
   }
 

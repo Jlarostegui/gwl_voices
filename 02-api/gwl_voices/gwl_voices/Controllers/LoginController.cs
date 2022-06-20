@@ -24,8 +24,9 @@ namespace gwl_voices.API.Controllers
         public IActionResult Login(LoginRequest login)
         {
             var user = _LoginService.login(login);
+            string token = _LoginService.GenerateToken(user.Name);
             if (user.Password == login.password)
-                return Ok(_LoginService.GenerateToken(user.Name));
+                return Ok(token);
             else
                 return Unauthorized();
             

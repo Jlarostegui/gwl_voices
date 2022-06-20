@@ -41,11 +41,10 @@ export class TestUsersComponent implements OnInit {
         Password: x['password'],
         Rol: x['rol'],
         Surname: x['surname'],
+        Img: x['img']
 
       })));
-
-
-      console.log(this.ArrUsers);
+      console.log(this.ArrUsers)
 
     } catch (error) {
       console.log(error);
