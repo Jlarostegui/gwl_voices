@@ -1,0 +1,17 @@
+@import url(../../app.component.scss);
+
+.example-card {
+  max-width: 400px;
+  margin: 16px auto;
+  padding: 50px;
+}
+
+.example-header-image {
+  background-image: url('https://cdn.icon-icons.com/icons2/208/PNG/256/woman256_24802.png');
+  background-size: cover;
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+}

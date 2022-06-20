@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
-import {User} from 'src/app/models/user_model';
+import { User } from 'src/app/models/user_model';
+import { MatIconRegistry } from "@angular/material/icon";
+import  {DomSanitizer}  from "@angular/platform-browser";
 
 
 
@@ -16,10 +18,16 @@ export class TestUsersComponent implements OnInit {
 
   constructor(
     private userService: UserService,
+    private matIconRegistry: MatIconRegistry,
+    private domSanitizer: DomSanitizer
    ) {
      {
       this.ArrUsers = new Array();
       this.user = new Array();
+      this.matIconRegistry.addSvgIcon(
+      "musicon",
+      this.domSanitizer.bypassSecurityTrustResourceUrl("https://cdn.icon-icons.com/icons2/208/PNG/256/woman256_24802.png")
+    );
      }
 
    }
@@ -41,6 +49,8 @@ export class TestUsersComponent implements OnInit {
          Password: x['password'],
          Rol: x['rol'],
          Surname: x['surname'],
+          Img: x['img'],
+         Phone: x['phone'],
       
        })));
 
