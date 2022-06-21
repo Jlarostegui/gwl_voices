@@ -13,10 +13,10 @@ export class LoginService {
   constructor(private httpClient: HttpClient) { }
 
 
-  login(loginForm: User): Observable<any> {
+  login(loginForm: User): void {
 
     let data = this.httpClient.post<any>(ROOT_URL_ACCESS, loginForm)
-    return data
+    console.log(data.subscribe(data => { token: data }));
   }
 
 

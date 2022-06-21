@@ -15,6 +15,7 @@ export class TestUsersComponent implements OnInit {
 
   ArrUsers: User[];
   user: User[];
+  imgroute: string = "../../../assets/img/";
 
   constructor(
     private userService: UserService,
@@ -38,6 +39,7 @@ export class TestUsersComponent implements OnInit {
 
       let response = await this.userService.getAllUsers();
 
+
       //  let response = await this.userService.getUserById(3);
 
       //  let response = await this.userService.getUserByName("Ana");
@@ -55,7 +57,7 @@ export class TestUsersComponent implements OnInit {
       })));
 
 
-      console.log(this.ArrUsers);
+      console.log(this.ArrUsers, "test");
 
     } catch (error) {
       console.log(error);

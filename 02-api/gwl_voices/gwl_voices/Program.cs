@@ -13,6 +13,7 @@ var builder = WebApplication.CreateBuilder(args);
 IoC.Register(builder.Services, builder.Configuration);
 
 string mySqlConnectionStr = builder.Configuration.GetConnectionString("DefaultConnection");
+string secret_key = builder.Configuration.GetValue<string>("secretKey");
 
 
 builder.Services.AddDbContext<heroku_7ff63ad7795b383Context>(
@@ -43,7 +44,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         jwtBearerOptions.TokenValidationParameters = new TokenValidationParameters
         {
             IssuerSigningKey = new SymmetricSecurityKey(
-                    Encoding.UTF8.GetBytes("kjiouhvbuhvoiearhçpqvhbaUYVCCBÑDEVkLNSJDBCLLdvlmms")
+                    Encoding.UTF8.GetBytes(secret_key)
                   ),
                     ValidateIssuer = false,
                     ValidateAudience = false,

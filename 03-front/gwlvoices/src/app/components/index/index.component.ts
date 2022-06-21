@@ -27,6 +27,7 @@ export class IndexComponent implements OnInit {
 
   onSubmit(loginForm: AbstractControl) {
     let response = this.loginService.login(loginForm.value)
+    console.log(response)
     loginForm.reset();
   }
 
