@@ -27,15 +27,15 @@ export class IndexComponent implements OnInit {
 
   }
 
-  // onSubmit(loginForm: AbstractControl) {
-  //   this.user = this.loginService.login(loginForm.value)
+  onSubmit(loginForm: AbstractControl) {
 
-  //   console.log(this.user['Token']);
+    let response = this.loginService.login(loginForm.value)
+
+    console.log(response, "Index");
 
 
-
-  //   loginForm.reset();
-  // }
+    loginForm.reset();
+  }
 
 
 
