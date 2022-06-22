@@ -23,10 +23,12 @@ namespace gwl_voices.API.Controllers
         [HttpPost]
         public IActionResult Login(LoginRequest login)
         {
-            var user = _LoginService.login(login);
+            LoginResponse user = _LoginService.login(login);
             string token = _LoginService.GenerateToken(user.Name);
+            user.token = token;
+            
             if (user.Password == login.password)
-                return Ok(token);
+                return Ok(user);
             else
                 return Unauthorized();
             

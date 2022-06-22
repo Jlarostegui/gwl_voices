@@ -37,7 +37,6 @@ namespace gwl_voices.Application.Services
                 result.Phone = user.Phone;
                 result.Adress = user.Adress;
                 result.UrlGwl = user.UrlGwl;
-        
              }
             else return null;
             return result;

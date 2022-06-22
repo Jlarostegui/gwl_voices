@@ -14,10 +14,7 @@
         public string Phone { get; set; } = null!;
         public string Adress { get; set; } = null!;
         public string UrlGwl { get; set; } = null!;
-
-        public static implicit operator List<object>(UserDto v)
-        {
-            throw new NotImplementedException();
-        }
+        
+        
     }
 }

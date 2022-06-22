@@ -11,6 +11,7 @@ export class User {
   Phone?: string;
   Adress?: string;
   UrlGwl?: string;
+  Token?: string;
 
   constructor(item?: Partial<User>) {
 
@@ -25,7 +26,7 @@ export class User {
     this.Phone = item?.Phone;
     this.Adress = item?.Adress;
     this.UrlGwl = item?.UrlGwl;
-
+    this.Token = item?.Token;
   }
 
 

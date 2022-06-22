@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
+import { JSDocComment, Token } from '@angular/compiler';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { ROOT_URL_ACCESS } from 'src/environments/config';
 import { User } from '../models/user_model';
 
@@ -13,11 +14,23 @@ export class LoginService {
   constructor(private httpClient: HttpClient) { }
 
 
-  login(loginForm: User): void {
+  // login(loginForm: User): User {
+  //   let request = this.httpClient.post<User>(ROOT_URL_ACCESS, loginForm)
+  //   let response;
+  //   request.subscribe(resp => {
 
-    let data = this.httpClient.post<any>(ROOT_URL_ACCESS, loginForm)
-    console.log(data.subscribe(data => { token: data }));
-  }
+
+
+
+
+
+
+
+  //     console.log(response);
+
+  //   })
+  //   return response;
+  // }
 
 
 

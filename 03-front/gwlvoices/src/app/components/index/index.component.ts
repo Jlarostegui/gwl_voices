@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { User } from 'src/app/models/user_model';
 import { LoginService } from 'src/app/services/login.service';
 
 @Component({
@@ -10,7 +11,8 @@ import { LoginService } from 'src/app/services/login.service';
 export class IndexComponent implements OnInit {
 
   loginForm: FormGroup;
-  token: string = "";
+  user: User;
+  token?: string = "";
 
   constructor(
     private fctrl: FormBuilder,
@@ -18,18 +20,22 @@ export class IndexComponent implements OnInit {
   ) {
 
     this.loginForm = this.fctrl.group({ user: '', password: '' });
-
+    this.user = new User();
   }
 
   async ngOnInit() {
 
   }
 
-  onSubmit(loginForm: AbstractControl) {
-    let response = this.loginService.login(loginForm.value)
-    console.log(response)
-    loginForm.reset();
-  }
+  // onSubmit(loginForm: AbstractControl) {
+  //   this.user = this.loginService.login(loginForm.value)
+
+  //   console.log(this.user['Token']);
+
+
+
+  //   loginForm.reset();
+  // }
 
 
 
