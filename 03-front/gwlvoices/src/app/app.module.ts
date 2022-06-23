@@ -20,6 +20,9 @@ import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { RegisterComponent } from './components/register/register.component';
 import { MatSelectModule } from '@angular/material/select';
+import { UserCardComponent } from './components/user-card/user-card.component';
+import { UserDetailComponent } from './components/user-detail/user-detail.component';
+import { UserListComponent } from './components/user-list/user-list.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,10 @@ import { MatSelectModule } from '@angular/material/select';
     TestWGComponent,
     TestUsersComponent,
     IndexComponent,
-    RegisterComponent
+    RegisterComponent,
+    UserCardComponent,
+    UserDetailComponent,
+    UserListComponent
 
   ],
   imports: [

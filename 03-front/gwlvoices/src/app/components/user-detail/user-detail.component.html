@@ -1,0 +1,24 @@
+
+
+<section class="container mt-3 p-3">
+
+  <div class="card p-4">
+    <img class="img-fluid card-img-top" src="../../../assets/img/{{user?.id}}.png" alt="Photo usuaria">
+
+    <div class="card-body">
+
+      <h2 class="card-title">{{user?.username}}</h2>
+      <div class="card-text">
+        <ul>
+          <li>Name: {{ user?.name}}</li>
+          <li>Surname: {{ user?.surname}}</li>
+          <li class="text-muted small">urlGWL: {{ user?.urlGwl}}</li>
+        </ul>
+        
+      </div>
+
+    </div>
+  </div>
+  <a class="btn btn-warning w-100 mt-3" [routerLink]="['/home']">Volver al listado</a>
+
+</section>

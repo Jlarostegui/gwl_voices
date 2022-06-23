@@ -1,52 +1,39 @@
-<!-- <h1>test-Users</h1> -->
-<section>
-  <!-- <ul *ngFor="let u of ArrUsers">
-    <li>Nombre: </li>
-    <li>{{u.Name}}</li>
-    <li>Apellido: </li>
-    <li>{{u.Surname}}</li>
-    <li>Email: </li>
-    <li>{{u.Email}}</li>
-    <li>Password: </li>
-    <li>{{u.Password}}</li>
-    <li>Rol: </li>
-    <li>{{u.Rol}}</li>
-    <li>{{u.Img}}</li>
-    <div>
-      <img src={{u.Img}} alt="">
-    </ul>
-    </div> -->
-
-  <h1>Test-Users</h1>
-
-  <mat-grid-list class="my-grid-list" cols="2" rowHeight="700px">
-
-    <mat-grid-tile class="my-grid-tile">
-      <mat-card class="example-card" *ngFor="let u of ArrUsers">
-        <mat-card-header>
-          <div mat-card-avatar class="example-header-image"></div>
-          <mat-card-title>{{u.name}} {{u.surname}}</mat-card-title>
-          <mat-card-subtitle>{{u.rol}}</mat-card-subtitle>
-        </mat-card-header>
-        <img mat-card-image class="img" src="../../../assets/img/{{u.id}}.png" alt="Photo usuaria">
-        <mat-card-content>
-          <section>
-            <ul>
-              <li>{{u.email}}</li>
-              <li>{{u.phone}}</li>
-            </ul>
 
 
-          </section>
-        </mat-card-content>
+ <div class="container">
+<div class="logo">
+  <img src="../../../assets/img/logo_Blanco.png">
+</div>  
+<mat-grid-list class="my-grid-list" cols="2" rowHeight="700px">
 
-      </mat-card>
-    </mat-grid-tile>
+  <mat-grid-tile class="my-grid-tile">
+    <mat-card class="example-card" *ngFor="let u of ArrUsers">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>{{u.name}} {{u.surname}}</mat-card-title>
+        <mat-card-subtitle>{{u.rol}}</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image class="img" src="../../../assets/img/{{u.id}}.png" alt="Photo usuaria">
+      <mat-card-content>
+        <section>
+          <ul>
+            <li>{{u.email}}</li>
+            <li>{{u.phone}}</li>
+          </ul>
+
+
+        </section>
+      </mat-card-content>
+
+    </mat-card>
+  </mat-grid-tile>
 
 
 
-  </mat-grid-list>
+</mat-grid-list>
 
 
+ </div>
+ 
 
-</section>
+
