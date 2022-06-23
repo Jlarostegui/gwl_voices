@@ -15,14 +15,14 @@ export class TestWGComponent implements OnInit {
 
   ArrworkingGroups: Working_groups[] = [];
   workinggroup: Working_groups[] = [];
- 
+
 
   newWg: Working_groups = new Working_groups(
     { Name: "test" }
   );
 
   update: Working_groups = new Working_groups(
-    { Id: 501, Name: "tets1" }
+    { id: 501, Name: "tets1" }
   )
 
   constructor(
@@ -41,7 +41,7 @@ export class TestWGComponent implements OnInit {
 
       //  let response = await this.userService.getUserByName("Ana");
 
-     
+
       // let response = await this.wgservice.getAllWorkingGroups();
       // console.log(response)
       // response.forEach(wkname => this.ArrworkingGroups.push(wkname['name']));

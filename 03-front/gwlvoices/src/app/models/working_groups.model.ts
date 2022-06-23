@@ -1,11 +1,11 @@
 export class Working_groups {
 
-  Id?: number;
+  id?: number;
   Name?: string;
 
 
   constructor(item?: Partial<Working_groups>) {
-    this.Id = item?.Id;
+    this.id = item?.id;
     this.Name = item?.Name;
   }
 }
