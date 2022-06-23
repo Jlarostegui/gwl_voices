@@ -5,6 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 
 
+import { AuthService } from './services/auth.service';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TestWGComponent } from './components/test-wg/test-wg.component';
@@ -21,7 +22,9 @@ import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { RegisterComponent } from './components/register/register.component';
 import { MatSelectModule } from '@angular/material/select';
-import { AuthService } from './services/auth.service';
+import { UserCardComponent } from './components/user-card/user-card.component';
+import { UserDetailComponent } from './components/user-detail/user-detail.component';
+import { UserListComponent } from './components/user-list/user-list.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +32,10 @@ import { AuthService } from './services/auth.service';
     TestWGComponent,
     TestUsersComponent,
     IndexComponent,
-    RegisterComponent
+    RegisterComponent,
+    UserCardComponent,
+    UserDetailComponent,
+    UserListComponent
 
   ],
   imports: [
