@@ -3,16 +3,45 @@
   max-width: 500px;
   width: 100%;
   padding: 100px;
-  font-weight: bold;
   color: azure;
+  
 }
 
 .example-full-width {
   width: 100%;
-  font-weight: bold;
     color: azure;
 }
 
 td {
   padding-right: 8px;
+}
+
+::ng-deep {
+
+  .mat-form-field-appearance-outline .mat-form-field-outline {
+    color: white;
+  }
+
+  mat-form-field {
+
+    .mat-hint,
+    input,
+    ::placeholder,
+    .mat-form-field-label {
+      color: white;
+    }
+  }
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
 }
