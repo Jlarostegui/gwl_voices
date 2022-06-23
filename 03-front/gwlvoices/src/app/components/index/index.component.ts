@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { User } from 'src/app/models/user_model';
 import { LoginService } from 'src/app/services/login.service';
 
@@ -12,13 +13,15 @@ export class IndexComponent implements OnInit {
 
   loginForm: FormGroup;
   user: User;
-  token?: string = "";
+  token?: string;
 
   constructor(
     private fctrl: FormBuilder,
-    private loginService: LoginService
+    private loginService: LoginService,
+    private router: Router
   ) {
 
+    this.token = ""
     this.loginForm = this.fctrl.group({ user: '', password: '' });
     this.user = new User();
   }
@@ -31,14 +34,18 @@ export class IndexComponent implements OnInit {
 
   onSubmit(loginForm: AbstractControl) {
 
-    let response = this.loginService.login(loginForm.value)
+    return this.loginService.login(loginForm.value).subscribe(
+      resp => {
+        this.token = resp.token;
+        if (this.token != null) {
+          localStorage.setItem('token', this.token)
+        }
+        loginForm.reset();
 
-    console.log(response, "Index");
-
-
-    loginForm.reset();
-
+      }
+    )
   }
+
 
 
 
