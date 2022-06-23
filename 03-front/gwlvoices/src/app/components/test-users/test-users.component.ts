@@ -45,14 +45,14 @@ export class TestUsersComponent implements OnInit {
       //  let response = await this.userService.getUserByName("Ana");
 
       response.forEach(x => this.ArrUsers.push(new User({
-        Id: x['id'],
-        Name: x['name'],
-        Email: x['email'],
-        Password: x['password'],
-        Rol: x['rol'],
-        Surname: x['surname'],
-        Img: x['img'],
-        Phone: x['phone'],
+        id: x['id'],
+        name: x['name'],
+        email: x['email'],
+        password: x['password'],
+        rol: x['rol'],
+        surname: x['surname'],
+        img: x['img'],
+        phone: x['phone'],
 
       })));
 

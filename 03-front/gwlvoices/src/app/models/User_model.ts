@@ -1,32 +1,32 @@
 export class User {
 
-  Id?: number;
-  Username?: string;
-  Password?: string;
-  Rol?: string;
-  Name?: string;
-  Surname?: string;
-  Email?: string;
-  Img?: string;
-  Phone?: string;
-  Adress?: string;
-  UrlGwl?: string;
-  Token?: string;
+  id?: number;
+  username?: string;
+  password?: string;
+  rol?: string;
+  name?: string;
+  surname?: string;
+  email?: string;
+  img?: string;
+  phone?: string;
+  adress?: string;
+  urlGwl?: string;
+  token?: string;
 
   constructor(item?: Partial<User>) {
 
-    this.Id = item?.Id;
-    this.Username = item?.Username;
-    this.Password = item?.Password;
-    this.Rol = item?.Rol;
-    this.Name = item?.Name;
-    this.Surname = item?.Surname;
-    this.Email = item?.Email;
-    this.Img = item?.Img;
-    this.Phone = item?.Phone;
-    this.Adress = item?.Adress;
-    this.UrlGwl = item?.UrlGwl;
-    this.Token = item?.Token;
+    this.id = item?.id;
+    this.username = item?.username;
+    this.password = item?.password;
+    this.rol = item?.rol;
+    this.name = item?.name;
+    this.surname = item?.surname;
+    this.email = item?.email;
+    this.img = item?.img;
+    this.phone = item?.phone;
+    this.adress = item?.adress;
+    this.urlGwl = item?.urlGwl;
+    this.token = item?.token;
   }
 
 
