@@ -63,10 +63,10 @@ namespace gwl_voices.Application.Services
             return tokenHandler.WriteToken(token);
         }
 
-        public int? ValidateToken(string token)
+        public bool ValidateToken(string token)
         {
             if (token == null)
-                return null;
+                return false;
 
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes("kjiouhvbuhvoiearhçpqvhbaUYVCCBÑDEVkLNSJDBCLLdvlmms");
@@ -83,12 +83,14 @@ namespace gwl_voices.Application.Services
 
                 var jwtToken = (JwtSecurityToken)validatedToken;
                 var userId = int.Parse(jwtToken.Claims.First(x => x.Type == "id").Value);
-
-                return userId;
+                if (userId != 0)
+                    return true;
+                else
+                    return false; 
             }
             catch
             {
-                return null;
+                return false;
             }
         }
     }

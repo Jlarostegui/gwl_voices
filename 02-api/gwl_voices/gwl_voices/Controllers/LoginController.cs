@@ -7,7 +7,7 @@ namespace gwl_voices.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class LoginController : Controller
+    public class LoginController : Controller 
     {
 
 
@@ -34,6 +34,26 @@ namespace gwl_voices.API.Controllers
             else
                 return Unauthorized();
             
+        }
+
+
+
+        [Route("api//[controller]")]
+        [HttpPost]
+        
+        public IActionResult VerifyToken(string token)
+        {
+            
+            bool valid = _LoginService.ValidateToken(token);
+            if(valid)
+            {
+                return Ok(true);
+            }
+            else
+            {
+                return Unauthorized(new JsonResult(new { message = "token invalido" }) { StatusCode = StatusCodes.Status401Unauthorized });
+            }
+
         }
 
 

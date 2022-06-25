@@ -13,12 +13,12 @@ namespace gwl_voices.API.Controllers
         {
             ILoginService loginService = context.HttpContext.RequestServices.GetService<ILoginService>();
             string token = context.HttpContext.Request.Headers.Authorization;
-            int? id = loginService.ValidateToken(token);
-            if (id == null)
+            bool access = loginService.ValidateToken(token);
+            if (!access)
             {
                 context.Result = new JsonResult(new { message = "Unauthorized" }) { StatusCode = StatusCodes.Status401Unauthorized };
             }
-            
+         
         }
     }
 }

@@ -52,8 +52,7 @@ import { UserListComponent } from './components/user-list/user-list.component';
     MatIconModule,
     MatCardModule,
     MatGridListModule,
-    MatSelectModule
-
+    MatSelectModule,
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
