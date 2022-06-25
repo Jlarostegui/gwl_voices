@@ -8,6 +8,7 @@ using gwl_voices.DataAccess.Repositories;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
+
 namespace gwl_voices.CrossCutting.Configuration
 {
     public static class IoC
@@ -21,6 +22,9 @@ namespace gwl_voices.CrossCutting.Configuration
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<ILoginRepository, LoginRepository>();
             services.AddTransient<ILoginService, loginService>();
+     
+
+
             return services;
         }
 

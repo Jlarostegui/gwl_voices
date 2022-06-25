@@ -5,9 +5,9 @@ namespace gwl_voices.DataAccess.Mappers
 {
     public static class UserMapper
     {
-        public static UserDto MapToUserDtoFromUser(User user)
+        public static loginResponse MapToUserDtoFromUser(User user)
         {
-            UserDto result = new UserDto
+            loginResponse result = new loginResponse
 
             {
                 Id = user.Id,
@@ -26,7 +26,7 @@ namespace gwl_voices.DataAccess.Mappers
             return result;
         }
 
-        public static User MapToUserFromUserDto(UserDto userDto)
+        public static User MapToUserFromUserDto(loginResponse userDto)
         {
             User user = new User
             {

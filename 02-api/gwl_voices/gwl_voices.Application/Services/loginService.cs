@@ -12,14 +12,17 @@ namespace gwl_voices.Application.Services
     public class loginService : ILoginService
     {
         private ILoginRepository _loginRepository;
+
+
         public loginService(ILoginRepository loginRepository)
         {
             _loginRepository = loginRepository;
+
         }
 
         public LoginResponse? login(LoginRequest login)
         {
-            UserDto? user = _loginRepository.login(login);
+            loginResponse? user = _loginRepository.login(login);
 
             LoginResponse result = new LoginResponse();
 
@@ -37,35 +40,56 @@ namespace gwl_voices.Application.Services
                 result.Phone = user.Phone;
                 result.Adress = user.Adress;
                 result.UrlGwl = user.UrlGwl;
-             }
+            }
             else return null;
             return result;
-            
+
         }
 
-        public string GenerateToken(string username)
+
+
+        public string GenerateToken(LoginResponse user)
         {
-            var header = new JwtHeader(
-                new SigningCredentials(
-                    new SymmetricSecurityKey(
-                        Encoding.UTF8.GetBytes("kjiouhvbuhvoiearhçpqvhbaUYVCCBÑDEVkLNSJDBCLLdvlmms")
-                    ),
-                    SecurityAlgorithms.HmacSha256)
-            );
-
-            var claims = new Claim[]
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var secret_key = Encoding.ASCII.GetBytes("kjiouhvbuhvoiearhçpqvhbaUYVCCBÑDEVkLNSJDBCLLdvlmms");
+            var tokenDescriptor = new SecurityTokenDescriptor
             {
-            new Claim(JwtRegisteredClaimNames.UniqueName, username),
-            new Claim(ClaimTypes.Role, "admin"),
-            new Claim(ClaimTypes.Role, "user"),
+                Subject = new ClaimsIdentity(new[] { new Claim("id", user.Id.ToString()) }),
+                Expires = DateTime.UtcNow.AddHours(2),
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(secret_key), SecurityAlgorithms.HmacSha256Signature)
             };
-            var payload = new JwtPayload(claims);
 
-            var token = new JwtSecurityToken(header, payload);
-            return new JwtSecurityTokenHandler().WriteToken(token);
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+            return tokenHandler.WriteToken(token);
         }
 
+        public int? ValidateToken(string token)
+        {
+            if (token == null)
+                return null;
 
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var key = Encoding.ASCII.GetBytes("kjiouhvbuhvoiearhçpqvhbaUYVCCBÑDEVkLNSJDBCLLdvlmms");
+            try
+            {
+                tokenHandler.ValidateToken(token, new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(key),
+                    ValidateIssuer = false,
+                    ValidateAudience = false,
+                    ClockSkew = TimeSpan.Zero
+                }, out SecurityToken validatedToken);
 
+                var jwtToken = (JwtSecurityToken)validatedToken;
+                var userId = int.Parse(jwtToken.Claims.First(x => x.Type == "id").Value);
+
+                return userId;
+            }
+            catch
+            {
+                return null;
+            }
+        }
     }
 }

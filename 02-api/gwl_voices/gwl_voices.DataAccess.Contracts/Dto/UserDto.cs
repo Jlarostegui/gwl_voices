@@ -1,6 +1,6 @@
 ﻿namespace gwl_voices.DataAccess.Contracts.Dto
 {
-    public class UserDto
+    public class loginResponse
     {
 
         public int Id { get; set; }

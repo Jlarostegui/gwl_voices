@@ -5,6 +5,6 @@ namespace gwl_voices.DataAccess.Contracts.Repositories
 {
     public interface ILoginRepository
     {
-        UserDto? login(LoginRequest login);
+        loginResponse? login(LoginRequest login);
     }
 }

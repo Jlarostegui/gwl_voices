@@ -19,7 +19,7 @@ namespace gwl_voices.Application.Services
         }
         public UserResponse? GetUserByName(string name)
         {
-            UserDto? user = _userRepository.GetUserByName(name);
+            loginResponse? user = _userRepository.GetUserByName(name);
 
             UserResponse result = new UserResponse();
 
@@ -35,7 +35,7 @@ namespace gwl_voices.Application.Services
 
         public UserResponse? GetUserById(int id)
         {
-            UserDto? user = _userRepository.GetUserById(id);
+            loginResponse? user = _userRepository.GetUserById(id);
 
             UserResponse result = new UserResponse();
             if (user != null)
@@ -104,9 +104,9 @@ namespace gwl_voices.Application.Services
             || string.IsNullOrEmpty(user.UrlGwl)
             ) return new UserResponse { Error = "Todos los campos son obligatorios" };
 
-            UserDto newUser = UserMapper.MapToUserDtoFromUserRequest(user);
+            loginResponse newUser = UserMapper.MapToUserDtoFromUserRequest(user);
 
-            UserDto userInserted = _userRepository.AddUser(newUser);
+            loginResponse userInserted = _userRepository.AddUser(newUser);
 
             _uOw.SaveChanges();
 
@@ -117,7 +117,7 @@ namespace gwl_voices.Application.Services
 
         public bool DeleteUser(int id)
         {
-            UserDto? user = _userRepository.GetUserById(id);
+            loginResponse? user = _userRepository.GetUserById(id);
 
             if (user == null)
             {
@@ -150,13 +150,13 @@ namespace gwl_voices.Application.Services
             || string.IsNullOrEmpty(user.UrlGwl)
             ) return new UserResponse { Error = "Todos los campos son obligatorios" };
 
-            UserDto? existingUser = _userRepository.GetUserById(id);
+            loginResponse? existingUser = _userRepository.GetUserById(id);
 
             if (existingUser == null)
                 return new UserResponse { Error = "El usuario no existe en BBDD" };
 
 
-            UserDto newUser = new UserDto
+            loginResponse newUser = new loginResponse
             {
                 Id = id,
                 Username = user.Username,
@@ -172,7 +172,7 @@ namespace gwl_voices.Application.Services
             };
 
 
-            UserDto userUpdated = _userRepository.UpdateUser(newUser);
+            loginResponse userUpdated = _userRepository.UpdateUser(newUser);
 
             _uOw.SaveChanges();
 
