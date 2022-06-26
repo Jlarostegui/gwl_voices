@@ -38,23 +38,23 @@ namespace gwl_voices.API.Controllers
 
 
 
-        [Route("api//[controller]")]
-        [HttpPost]
+        //[Route("api/[controller]/")]
+        //[HttpPost]
         
-        public IActionResult VerifyToken(string token)
-        {
+        //public IActionResult VerifyToken(string token)
+        //{
             
-            bool valid = _LoginService.ValidateToken(token);
-            if(valid)
-            {
-                return Ok(true);
-            }
-            else
-            {
-                return Unauthorized(new JsonResult(new { message = "token invalido" }) { StatusCode = StatusCodes.Status401Unauthorized });
-            }
+        //    bool valid = _LoginService.ValidateToken(token);
+        //    if(valid)
+        //    {
+        //        return Ok(true);
+        //    }
+        //    else
+        //    {
+        //        return Unauthorized(new JsonResult(new { message = "token invalido" }) { StatusCode = StatusCodes.Status401Unauthorized });
+        //    }
 
-        }
+        //}
 
 
       

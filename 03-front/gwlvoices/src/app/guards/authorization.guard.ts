@@ -17,11 +17,12 @@ export class AuthorizationGuard implements CanActivate {
     private router: Router) { }
 
   canActivate(): boolean {
-
-    if (this.token) {
-      let result = this.logiservice.verifyToken()
+    if (sessionStorage.getItem('token') !== null) {
+      return true
+    } else {
+      this.router.navigate(['/login']);
+      return false;
     }
-    return true
 
   }
 

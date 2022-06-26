@@ -1,7 +1,6 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { observableToBeFn } from 'rxjs/internal/testing/TestScheduler';
 import { ROOT_URL_ACCESS } from 'src/environments/config';
 import { User } from '../models/user_model';
 
@@ -18,9 +17,9 @@ export class LoginService {
     return this.http.post<User>(ROOT_URL_ACCESS, loginForm);
   }
 
-  verifyToken(): void {
-    this.http.get<any>(ROOT_URL_ACCESS).subscribe(resp => {
-      console.log(resp);
-    });
-  }
+  // verifyToken(): void {
+  //   this.http.get<any>(ROOT_URL_ACCESS).subscribe(resp => {
+  //     console.log(resp);
+  //   });
+  // }
 }
