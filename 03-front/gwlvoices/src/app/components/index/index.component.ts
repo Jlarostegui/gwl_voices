@@ -55,7 +55,7 @@ export class IndexComponent implements OnInit {
           const alert = Swal.mixin({
             // toast: false,
             showConfirmButton: false,
-            timer: 1000,
+            timer: 3000,
             timerProgressBar: true,
             didOpen: (alert) => {
               alert.addEventListener('mouseenter', Swal.stopTimer)
@@ -67,7 +67,6 @@ export class IndexComponent implements OnInit {
           alert.fire({
             icon: 'success',
             title: 'Welcome   ' + this.name,
-            continued
           });
 
           this.router.navigate(['/users'])
