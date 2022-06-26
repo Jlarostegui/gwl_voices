@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { timer } from 'rxjs';
 import { User } from 'src/app/models/user_model';
 import { LoginService } from 'src/app/services/login.service';
 
@@ -26,7 +27,12 @@ export class IndexComponent implements OnInit {
   ) {
 
     this.token = ""
-    this.loginForm = this.fctrl.group({ user: '', password: '' });
+    this.loginForm = this.fctrl.group(
+      {
+        user: ['', Validators.required],
+        password: ['', Validators.required]
+      });
+
     this.user = new User();
   }
 
@@ -46,21 +52,24 @@ export class IndexComponent implements OnInit {
         if (this.token != null) {
           sessionStorage.setItem('token', this.token)
 
-          const Toast = Swal.mixin({
-            toast: true,
+          const alert = Swal.mixin({
+            // toast: false,
             showConfirmButton: false,
-            timer: 3000,
+            timer: 1000,
             timerProgressBar: true,
-            didOpen: (toast) => {
-              toast.addEventListener('mouseenter', Swal.stopTimer)
-              toast.addEventListener('mouseleave', Swal.resumeTimer)
+            didOpen: (alert) => {
+              alert.addEventListener('mouseenter', Swal.stopTimer)
+              alert.addEventListener('mouseleave', Swal.resumeTimer)
             }
-          })
 
-          Toast.fire({
+          });
+
+          alert.fire({
             icon: 'success',
-            title: 'welcome'
-          })
+            title: 'Welcome   ' + this.name,
+            continued
+          });
+
           this.router.navigate(['/users'])
         }
         loginForm.reset();
@@ -69,9 +78,4 @@ export class IndexComponent implements OnInit {
 
     )
   }
-
-
-
-
-
 }
