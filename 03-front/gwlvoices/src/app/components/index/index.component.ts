@@ -34,6 +34,7 @@ export class IndexComponent implements OnInit {
       });
 
     this.user = new User();
+
   }
 
   async ngOnInit() {
@@ -45,8 +46,11 @@ export class IndexComponent implements OnInit {
 
   onSubmit(loginForm: AbstractControl) {
 
+
+
     return this.loginService.login(loginForm.value).subscribe(
       resp => {
+
         this.token = resp.token;
         this.name = resp.name;
         if (this.token != null) {
@@ -55,7 +59,7 @@ export class IndexComponent implements OnInit {
           const alert = Swal.mixin({
             // toast: false,
             showConfirmButton: false,
-            timer: 3000,
+            timer: 2500,
             timerProgressBar: true,
             didOpen: (alert) => {
               alert.addEventListener('mouseenter', Swal.stopTimer)
@@ -69,10 +73,16 @@ export class IndexComponent implements OnInit {
             title: 'Welcome   ' + this.name,
           });
 
-          this.router.navigate(['/users'])
+        }
+        else {
+
+          console.log('error usuario o password incorrecto');
+
+          ;
         }
         loginForm.reset();
 
+        this.router.navigate(['/users'])
       }
 
     )

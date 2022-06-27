@@ -14,7 +14,10 @@ export class LoginService {
 
 
   login(loginForm: User): Observable<User> {
-    return this.http.post<User>(ROOT_URL_ACCESS, loginForm);
+    let response = this.http.post<User>(ROOT_URL_ACCESS, loginForm);
+    response.forEach(item => console.log(item));
+
+    return response;
   }
 
   // verifyToken(): void {

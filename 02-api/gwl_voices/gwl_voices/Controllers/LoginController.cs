@@ -26,11 +26,13 @@ namespace gwl_voices.API.Controllers
         public IActionResult Login(LoginRequest login)
         {
             LoginResponse user = _LoginService.login(login);
-            string token = _LoginService.GenerateToken(user);
-            user.token = token;
             
-            if (user.Password == login.password)
+            if (user !=  null && user.Password == login.password)
+            {
+                string token = _LoginService.GenerateToken(user);
+                user.token = token;
                 return Ok(user);
+            }
             else
                 return Unauthorized();
             

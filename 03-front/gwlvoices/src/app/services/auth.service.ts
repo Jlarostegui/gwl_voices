@@ -2,6 +2,7 @@ import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpErrorResponse
 import { Injectable } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root'
@@ -30,10 +31,27 @@ export class AuthService implements HttpInterceptor {
       catchError((err: HttpErrorResponse) => {
 
         if (err.status === 401) {
+          const alert = Swal.mixin({
+            // toast: false,
+            showConfirmButton: false,
+            timer: 2500,
+            timerProgressBar: true,
+            didOpen: (alert) => {
+              alert.addEventListener('mouseenter', Swal.stopTimer)
+              alert.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+
+          });
+
+          alert.fire({
+            icon: 'error',
+            title: 'User or password incorrect',
+          })
           this.router.navigateByUrl('/login');
         }
 
-        return throwError(() => err);
+        return throwError(() => console.log()
+        );
 
       })
     );
