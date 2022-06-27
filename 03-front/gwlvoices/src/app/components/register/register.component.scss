@@ -5,6 +5,7 @@
   justify-content: center;
   align-items: center;
   color: white;
+  
 
 
   ::placeholder {
@@ -23,6 +24,8 @@
   mat-form-field {
 
     padding: 1px;
+    margin: 10px;
+    
 
 
     .mat-hint,
@@ -38,3 +41,4 @@
   display: flex;
   justify-content: center;
 }
+

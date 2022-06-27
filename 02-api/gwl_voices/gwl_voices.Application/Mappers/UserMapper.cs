@@ -12,6 +12,11 @@ namespace gwl_voices.Application.Mappers
                 Username = userDto.Username,
                 Name = userDto.Name,
                 Id = userDto.Id,
+                Surname = userDto.Surname,
+                Rol = userDto.Rol,
+                Phone = userDto.Phone,
+                Email = userDto.Email,
+
             };
 
             return result;

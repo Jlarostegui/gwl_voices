@@ -7,18 +7,18 @@
 
     <div class="card-body">
 
-      <h2 class="card-title">{{user?.username}}</h2>
+      <h2 class="card-title">USERPHONE: {{user?.phone}}</h2>
       <div class="card-text">
         <ul>
           <li>Name: {{ user?.name}}</li>
           <li>Surname: {{ user?.surname}}</li>
-          <li class="text-muted small">urlGWL: {{ user?.urlGwl}}</li>
+          <li class="text-muted small">Email: {{ user?.email}}</li>
         </ul>
         
       </div>
 
     </div>
   </div>
-  <a class="btn btn-warning w-100 mt-3" [routerLink]="['/home']">Volver al listado</a>
+  <a class="btn w-100 mt-3" [routerLink]="['/users']">Volver al listado</a>
 
 </section>

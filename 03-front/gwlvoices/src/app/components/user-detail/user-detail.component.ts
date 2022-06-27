@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/models/user_model';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-user-detail',
@@ -13,9 +14,26 @@ export class UserDetailComponent implements OnInit {
 
   constructor(
     private userService: UserService,
+    private activatedRoute: ActivatedRoute,
   ) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+
+   try {
+  
+    this.activatedRoute.params.subscribe(async params => {
+       let id = parseInt(params['iduser']);
+      this.user = await this.userService.getUserById(id);
+      
+      console.log(this.user);
+     })
+     
+    
+   } catch (error) {
+     console.log(error);
+
+   }
+
   }
 
 }

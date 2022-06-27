@@ -1,16 +1,14 @@
-<p>user-list works!</p>
-
 
 <section class="container mt-5">
 
   <div class="d-flex justify-content-around">
-    <h2 class="text-center mb-3">Listado de Usuarias</h2>
+    <h2 class="text-center mb-3 titulo">Listado de Usuarias</h2>
    
 
   </div>
   <div class="row">
 
-    <article class="col-12 col-md-6 col-lg-4" *ngFor="let user of ArrUsers">
+    <article class="col-12 col-md-6 col-lg-3" *ngFor="let user of ArrUsers">
       <app-user-card [myUser]="user"></app-user-card>
     </article>
 

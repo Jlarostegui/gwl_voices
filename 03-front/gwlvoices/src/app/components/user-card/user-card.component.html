@@ -1,27 +1,26 @@
 
 <section class="container mt-3 p-3">
 
-  <div class="card p-4">
-    <!-- <mat-card class="example-card">
+  <!-- <div class="card p-4"> -->
+    <mat-card class="example-card">
       <mat-card-header>
         <div mat-card-avatar class="example-header-image"></div>
-        <mat-card-title>{{user?.name}} {{user?.surname}}</mat-card-title>
-        <mat-card-subtitle>{{user?.rol}}</mat-card-subtitle>
+        <mat-card-title>{{user?.name}}</mat-card-title>
+        <mat-card-subtitle>{{user?.surname}}</mat-card-subtitle>
       </mat-card-header>
-      <img mat-card-image class="img" src="../../../assets/img/{{u.id}}.png" alt="Photo usuaria">
+      <img mat-card-image class="img" src="../../../assets/img/{{user?.id}}.png" alt="Photo usuaria">
       <mat-card-content>
         <section>
           <ul>
-            <li>{{user?.email}}</li>
-            <li>{{user?.phone}}</li>
+            <li>Email: {{user?.email}}</li>
           </ul>
     
     
         </section>
       </mat-card-content>
     
-    </mat-card> -->
-    <img class="img-fluid card-img-top card-img-fill" src="../../../assets/img/{{user?.id}}.png" alt="Photo usuaria">
+    </mat-card>
+    <!-- <img class="img-fluid card-img-top card-img-fill" src="../../../assets/img/{{user?.id}}.png" alt="Photo usuaria">
 
     <div class="card-body">
 
@@ -30,13 +29,13 @@
         <ul>
           <li>Name: {{ user?.name}}</li>
           <li>Surname: {{ user?.surname}}</li>
-          <li class="text-muted small">urlGWL: {{ user?.urlGwl}}</li>
+          <li class="text-muted small">Email: {{ user?.email}}</li>
         </ul>
        
       </div>
 
-    </div>
-  </div>
+    </div> -->
+  <!-- </div> -->
 
-  <a class="btn btn-danger w-100 mt-2" [routerLink]="['/detail', user?.id]">Ver Detalle</a>
+  <a class="btn w-100 mt-2" [routerLink]="['/detail', user?.id]">Ver Detalle</a>
 </section>

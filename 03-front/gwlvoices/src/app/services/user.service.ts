@@ -15,7 +15,7 @@ export class UserService {
   // OK => Devuelve un Objeto 
   getUserById(pId: number): Promise<User> {
     let result = lastValueFrom(this.httpClient.get<User>(`${ROOT_URL_US}/${pId}`))
-    console.log(result);
+   
     return result
   }
 
