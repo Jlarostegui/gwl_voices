@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { timer } from 'rxjs';
 import { User } from 'src/app/models/user_model';
 import { LoginService } from 'src/app/services/login.service';
 
@@ -72,6 +71,7 @@ export class IndexComponent implements OnInit {
             icon: 'success',
             title: 'Welcome   ' + this.name,
           });
+
 
         }
         else {

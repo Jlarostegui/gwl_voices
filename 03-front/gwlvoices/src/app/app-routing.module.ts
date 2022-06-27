@@ -6,14 +6,16 @@ import { RegisterComponent } from './components/register/register.component';
 import { UserDetailComponent } from './components/user-detail/user-detail.component';
 import { UserListComponent } from './components/user-list/user-list.component';
 import { AuthorizationGuard } from './guards/authorization.guard'
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/login' },
   { path: 'login', component: IndexComponent },
+  { path: 'forgot', component: ForgotPasswordComponent },
   { path: 'users', component: UserListComponent, canActivate: [AuthorizationGuard] },
-  { path: 'wk', component: TestWGComponent },
-  { path: 'register', component: RegisterComponent },
-  { path: 'detail/:iduser', component: UserDetailComponent },
+  { path: 'wk', component: TestWGComponent, canActivate: [AuthorizationGuard] },
+  { path: 'register', component: RegisterComponent, canActivate: [AuthorizationGuard] },
+  { path: 'detail/:iduser', component: UserDetailComponent, canActivate: [AuthorizationGuard] },
   { path: '**', redirectTo: '/login' }
 ];
 
