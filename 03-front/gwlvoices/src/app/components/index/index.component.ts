@@ -59,7 +59,7 @@ export class IndexComponent implements OnInit {
           const alert = Swal.mixin({
             // toast: false,
             showConfirmButton: false,
-            timer: 2500,
+            timer: 2000,
             timerProgressBar: true,
             didOpen: (alert) => {
               alert.addEventListener('mouseenter', Swal.stopTimer)
@@ -81,8 +81,10 @@ export class IndexComponent implements OnInit {
           ;
         }
         loginForm.reset();
+        setTimeout(() => {
+          this.router.navigate(['/users'])
 
-        this.router.navigate(['/users'])
+        }, 2000);
       }
 
     )

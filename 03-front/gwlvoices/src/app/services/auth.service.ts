@@ -34,7 +34,7 @@ export class AuthService implements HttpInterceptor {
           const alert = Swal.mixin({
             // toast: false,
             showConfirmButton: false,
-            timer: 2500,
+            timer: 1500,
             timerProgressBar: true,
             didOpen: (alert) => {
               alert.addEventListener('mouseenter', Swal.stopTimer)
@@ -47,6 +47,7 @@ export class AuthService implements HttpInterceptor {
             icon: 'error',
             title: 'User or password incorrect',
           })
+
           this.router.navigateByUrl('/login');
         }
 
