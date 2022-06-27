@@ -1,8 +1,7 @@
-
-.formulario .example-form {
+.formulario {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: wrap;
+  justify-content: space-between;
   align-items: center;
   color: white;
   
@@ -13,12 +12,17 @@
   }
 }
 
+mat-form-field {
+  margin: 20px;
+}
+
 
 ::ng-deep {
 
   .mat-form-field-appearance-outline .mat-form-field-outline {
+
     color: white;
-   
+
   }
 
   mat-form-field {

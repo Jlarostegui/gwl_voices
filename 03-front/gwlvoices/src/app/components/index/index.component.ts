@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { timer } from 'rxjs';
 import { User } from 'src/app/models/user_model';
 import { LoginService } from 'src/app/services/login.service';
 
@@ -59,7 +58,7 @@ export class IndexComponent implements OnInit {
           const alert = Swal.mixin({
             // toast: false,
             showConfirmButton: false,
-            timer: 2500,
+            timer: 2000,
             timerProgressBar: true,
             didOpen: (alert) => {
               alert.addEventListener('mouseenter', Swal.stopTimer)
@@ -73,6 +72,7 @@ export class IndexComponent implements OnInit {
             title: 'Welcome   ' + this.name,
           });
 
+
         }
         else {
 
@@ -81,8 +81,10 @@ export class IndexComponent implements OnInit {
           ;
         }
         loginForm.reset();
+        setTimeout(() => {
+          this.router.navigate(['/users'])
 
-        this.router.navigate(['/users'])
+        }, 2000);
       }
 
     )

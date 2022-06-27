@@ -3,6 +3,7 @@ import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/models/user_model';
 import { MatIconRegistry } from "@angular/material/icon";
 import { DomSanitizer } from "@angular/platform-browser";
+import { NULL_EXPR } from '@angular/compiler/src/output/output_ast';
 
 
 
@@ -14,7 +15,7 @@ import { DomSanitizer } from "@angular/platform-browser";
 export class TestUsersComponent implements OnInit {
 
   ArrUsers: User[];
-  user: User[];
+  user: User;
   imgroute: string = "../../../assets/img/";
 
   constructor(
@@ -24,7 +25,7 @@ export class TestUsersComponent implements OnInit {
   ) {
     {
       this.ArrUsers = new Array();
-      this.user = new Array();
+      this.user = new User();
       this.matIconRegistry.addSvgIcon(
         "musicon",
         this.domSanitizer.bypassSecurityTrustResourceUrl("https://cdn.icon-icons.com/icons2/208/PNG/256/woman256_24802.png")
@@ -37,24 +38,24 @@ export class TestUsersComponent implements OnInit {
 
     try {
 
-      let response = await this.userService.getAllUsers();
+      // let response = await this.userService.getAllUsers();
 
 
-      //  let response = await this.userService.getUserById(3);
+      this.user = await this.userService.getUserById(3);
 
       //  let response = await this.userService.getUserByName("Ana");
 
-      response.forEach(x => this.ArrUsers.push(new User({
-        id: x['id'],
-        name: x['name'],
-        email: x['email'],
-        password: x['password'],
-        rol: x['rol'],
-        surname: x['surname'],
-        img: x['img'],
-        phone: x['phone'],
+      // response.forEach(x => this.ArrUsers.push(new User({
+      //   id: x['id'],
+      //   name: x['name'],
+      //   email: x['email'],
+      //   password: x['password'],
+      //   rol: x['rol'],
+      //   surname: x['surname'],
+      //   img: x['img'],
+      //   phone: x['phone'],
 
-      })));
+      // })));
 
 
       console.log(this.ArrUsers, "test");
