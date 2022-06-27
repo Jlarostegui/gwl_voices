@@ -1,8 +1,6 @@
 using gwl_voices.CrossCutting.Configuration;
 using gwl_voices.DataAccess;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
-
 
 var builder = WebApplication.CreateBuilder(args);
 var env = builder.Environment;
@@ -17,7 +15,8 @@ builder.Services.AddDbContext<heroku_7ff63ad7795b383Context>(
 
 builder.Services.AddCors();
 builder.Services.AddAuthentication();
-  
+
+
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

@@ -20,9 +20,7 @@ export class LoginService {
     return response;
   }
 
-  // verifyToken(): void {
-  //   this.http.get<any>(ROOT_URL_ACCESS).subscribe(resp => {
-  //     console.log(resp);
-  //   });
-  // }
+  forgotPassword(mail: string): void {
+    this.http.put<string>(ROOT_URL_ACCESS, mail)
+  }
 }

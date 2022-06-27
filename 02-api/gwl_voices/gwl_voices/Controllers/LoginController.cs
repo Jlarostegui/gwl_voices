@@ -38,6 +38,12 @@ namespace gwl_voices.API.Controllers
             
         }
 
+        //[AllowAnonymous]
+        //[HttpPut]
+        //public IActionResult reserPassword(string mail)
+        //{
+           
+        //}
 
 
         //[Route("api/[controller]/")]
