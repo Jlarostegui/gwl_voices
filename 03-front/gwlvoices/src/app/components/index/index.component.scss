@@ -1,8 +1,5 @@
 @import url(../../app.component.scss);
 
-form {
-  margin-top: 25vh;
-}
 
 .logo {
   display: flex;
@@ -10,12 +7,16 @@ form {
 }
 
 .form {
+  margin-top: 25vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   color: white;
+  width: 100%;
 }
+
+
 
 button {
   font-style: italic;

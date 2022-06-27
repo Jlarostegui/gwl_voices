@@ -3,11 +3,11 @@
     <img src="../../../assets/img/logo_Blanco.png">
   </div>
   <form class="form" novalidate [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm)">
-    <mat-form-field appearance="outline" color="accent">
+    <mat-form-field class=".form .formfield" appearance="outline" color="accent">
       <mat-label>User: </mat-label>
       <input formControlName="user" matInput placeholder="user">
     </mat-form-field>
-    <mat-form-field appearance="outline" color="accent">
+    <mat-form-field class=".form .formfield" appearance="outline" color="accent">
       <mat-label>Password: </mat-label>
       <input formControlName="password" matInput type="password" placeholder="password">
     </mat-form-field>

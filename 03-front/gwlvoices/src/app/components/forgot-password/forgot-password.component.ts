@@ -7,14 +7,14 @@ import { FormControl, Validators, FormBuilder, AbstractControl, FormGroup } from
   styleUrls: ['./forgot-password.component.scss']
 })
 export class ForgotPasswordComponent implements OnInit {
-  registerForm: FormGroup;
+  email: FormGroup;
 
 
   constructor(
     private formBuilder: FormBuilder
   ) {
-    this.registerForm = this.formBuilder.group({
-      email: ['', Validators.required, Validators.email]
+    this.email = this.formBuilder.group({
+      email: ['', Validators.email]
     });
 
   }
