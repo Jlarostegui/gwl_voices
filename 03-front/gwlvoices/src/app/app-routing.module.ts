@@ -7,11 +7,13 @@ import { UserDetailComponent } from './components/user-detail/user-detail.compon
 import { UserListComponent } from './components/user-list/user-list.component';
 import { AuthorizationGuard } from './guards/authorization.guard'
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { AdminPanelComponent } from './components/admin-panel/admin-panel.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/login' },
   { path: 'login', component: IndexComponent },
   { path: 'forgot', component: ForgotPasswordComponent },
+  { path: 'admin', component: AdminPanelComponent, canActivate: [AuthorizationGuard] },
   { path: 'users', component: UserListComponent, canActivate: [AuthorizationGuard] },
   { path: 'wk', component: TestWGComponent, canActivate: [AuthorizationGuard] },
   { path: 'register', component: RegisterComponent, canActivate: [AuthorizationGuard] },

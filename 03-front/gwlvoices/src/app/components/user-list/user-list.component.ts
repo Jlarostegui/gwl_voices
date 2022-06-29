@@ -9,13 +9,13 @@ import { User } from 'src/app/models/user_model';
 })
 export class UserListComponent implements OnInit {
 
- ArrUsers: User[];
+  ArrUsers: User[];
 
   constructor(private userService: UserService) {
     this.ArrUsers = new Array();
-   }
+  }
 
- async ngOnInit() {
+  async ngOnInit() {
     try {
 
       let response = await this.userService.getAllUsers();
@@ -45,6 +45,6 @@ export class UserListComponent implements OnInit {
     }
 
   }
-  }
+}
 
 

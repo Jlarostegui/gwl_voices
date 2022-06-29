@@ -13,6 +13,10 @@ import { TestWGComponent } from './components/test-wg/test-wg.component';
 import { TestUsersComponent } from './components/test-users/test-users.component';
 import { IndexComponent } from './components/index/index.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { AdminPanelComponent } from './components/admin-panel/admin-panel.component';
+import { UserCardComponent } from './components/user-card/user-card.component';
+import { UserDetailComponent } from './components/user-detail/user-detail.component';
+import { UserListComponent } from './components/user-list/user-list.component';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -23,9 +27,10 @@ import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { RegisterComponent } from './components/register/register.component';
 import { MatSelectModule } from '@angular/material/select';
-import { UserCardComponent } from './components/user-card/user-card.component';
-import { UserDetailComponent } from './components/user-detail/user-detail.component';
-import { UserListComponent } from './components/user-list/user-list.component';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatTableModule } from '@angular/material/table';
+
+
 
 @NgModule({
   declarations: [
@@ -38,6 +43,7 @@ import { UserListComponent } from './components/user-list/user-list.component';
     UserDetailComponent,
     UserListComponent,
     ForgotPasswordComponent,
+    AdminPanelComponent,
 
   ],
   imports: [
@@ -55,7 +61,8 @@ import { UserListComponent } from './components/user-list/user-list.component';
     MatCardModule,
     MatGridListModule,
     MatSelectModule,
-
+    MatTabsModule,
+    MatTableModule,
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

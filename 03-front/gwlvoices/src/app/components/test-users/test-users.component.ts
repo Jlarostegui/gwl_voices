@@ -41,7 +41,7 @@ export class TestUsersComponent implements OnInit {
       // let response = await this.userService.getAllUsers();
 
 
-      this.user = await this.userService.getUserById(3);
+      // this.user = await this.userService.getUserById(3);
 
       //  let response = await this.userService.getUserByName("Ana");
 

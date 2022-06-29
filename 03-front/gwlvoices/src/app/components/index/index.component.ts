@@ -14,9 +14,9 @@ import Swal from 'sweetalert2';
 export class IndexComponent implements OnInit {
 
   loginForm: FormGroup;
-  user: User;
   token?: string;
-  name?: string = "";
+  name?: string = '';
+  rol?: string = '';
 
   constructor(
     private fctrl: FormBuilder,
@@ -25,33 +25,26 @@ export class IndexComponent implements OnInit {
 
   ) {
 
-    this.token = ""
     this.loginForm = this.fctrl.group(
       {
         user: ['', Validators.required],
         password: ['', Validators.required]
       });
 
-    this.user = new User();
 
   }
 
-  async ngOnInit() {
-
-
-  }
-
-
+  async ngOnInit() { }
 
   onSubmit(loginForm: AbstractControl) {
-
-
 
     return this.loginService.login(loginForm.value).subscribe(
       resp => {
 
         this.token = resp.token;
         this.name = resp.name;
+        this.rol = resp.rol;
+
         if (this.token != null) {
           sessionStorage.setItem('token', this.token)
 
@@ -71,20 +64,20 @@ export class IndexComponent implements OnInit {
             icon: 'success',
             title: 'Welcome   ' + this.name,
           });
+        };
 
-
+        if (this.rol === 'user') {
+          loginForm.reset();
+          setTimeout(() => {
+            this.router.navigate(['/users'])
+          }, 2000);
+        } else {
+          loginForm.reset();
+          setTimeout(() => {
+            this.router.navigate(['/admin'])
+          }, 2000);
         }
-        else {
 
-          console.log('error usuario o password incorrecto');
-
-          ;
-        }
-        loginForm.reset();
-        setTimeout(() => {
-          this.router.navigate(['/users'])
-
-        }, 2000);
       }
 
     )
