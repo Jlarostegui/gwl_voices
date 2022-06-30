@@ -10,7 +10,6 @@ import { UserService } from 'src/app/services/user.service';
 export class AdminPanelComponent implements OnInit {
 
 
-
   constructor() { }
 
   async ngOnInit() {

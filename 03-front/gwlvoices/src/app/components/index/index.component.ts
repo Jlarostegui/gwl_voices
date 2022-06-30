@@ -14,9 +14,7 @@ import Swal from 'sweetalert2';
 export class IndexComponent implements OnInit {
 
   loginForm: FormGroup;
-  token?: string;
-  name?: string = '';
-  rol?: string = '';
+  user: User;
 
   constructor(
     private fctrl: FormBuilder,
@@ -31,7 +29,7 @@ export class IndexComponent implements OnInit {
         password: ['', Validators.required]
       });
 
-
+    this.user = new User();
   }
 
   async ngOnInit() { }
@@ -41,12 +39,10 @@ export class IndexComponent implements OnInit {
     return this.loginService.login(loginForm.value).subscribe(
       resp => {
 
-        this.token = resp.token;
-        this.name = resp.name;
-        this.rol = resp.rol;
+        this.user = resp;
 
-        if (this.token != null) {
-          sessionStorage.setItem('token', this.token)
+        if (this.user.token != null) {
+          sessionStorage.setItem('token', this.user.token)
 
           const alert = Swal.mixin({
             // toast: false,
@@ -62,11 +58,11 @@ export class IndexComponent implements OnInit {
 
           alert.fire({
             icon: 'success',
-            title: 'Welcome   ' + this.name,
+            title: 'Welcome   ' + this.user.name,
           });
         };
 
-        if (this.rol === 'user') {
+        if (this.user.rol === 'user') {
           loginForm.reset();
           setTimeout(() => {
             this.router.navigate(['/users'])
@@ -74,7 +70,7 @@ export class IndexComponent implements OnInit {
         } else {
           loginForm.reset();
           setTimeout(() => {
-            this.router.navigate(['/admin'])
+            this.router.navigate([`/admin/`, this.user.id])
           }, 2000);
         }
 

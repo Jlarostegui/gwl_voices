@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/login' },
   { path: 'login', component: IndexComponent },
   { path: 'forgot', component: ForgotPasswordComponent },
-  { path: 'admin', component: AdminPanelComponent, canActivate: [AuthorizationGuard] },
+  { path: 'admin/:iduser', component: AdminPanelComponent, canActivate: [AuthorizationGuard] },
   { path: 'users', component: UserListComponent, canActivate: [AuthorizationGuard] },
   { path: 'users/:numpag', component: UserListComponent, canActivate: [AuthorizationGuard] },
   { path: 'wk', component: TestWGComponent, canActivate: [AuthorizationGuard] },
