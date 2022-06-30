@@ -64,9 +64,9 @@ namespace gwl_voices.API.Controllers
         [ProducesResponseType(typeof(UserResponse), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> GetAllUsers()
+        public async Task<IActionResult> GetAllUsers(int numPag, int elementPag)
         {
-            List<UserResponse> users = await _userService.GetAllUsers();
+            List<UserResponse> users = await _userService.GetAllUsers(numPag, elementPag);
             if (users == null)
                 return NoContent();
             else

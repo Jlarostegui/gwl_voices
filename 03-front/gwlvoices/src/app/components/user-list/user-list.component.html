@@ -12,7 +12,14 @@
       <app-user-card [myUser]="user"></app-user-card>
     </article>
 
-
+    <nav class="mt-5">
+      <ul class="pagination pagination-sm">
+        <li *ngFor="let page of ArrPagesButtons, let i = index" class="page-item" aria-current="page"
+          routerLinkActive="active" [routerLink]="['/users', i+1]">
+          <span class="page-link">{{i + 1}}</span>
+        </li>
+      </ul>
+    </nav>
 
    
   

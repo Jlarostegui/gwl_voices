@@ -47,13 +47,13 @@ namespace gwl_voices.Application.Services
         }
 
 
-        public async Task<List<UserResponse>> GetAllUsers()
+        public async Task<List<UserResponse>> GetAllUsers(int numPag, int elementPag)
         {
             var response = new List<UserResponse>();
            
               try
             {
-                var users = await _userRepository.GetAllUsers();
+                var users = await _userRepository.GetAllUsers(numPag, elementPag);
                 foreach (var user in users)
                 {
                     var uResponse = new UserResponse

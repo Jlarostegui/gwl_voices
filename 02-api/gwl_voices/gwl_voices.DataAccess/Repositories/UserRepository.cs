@@ -38,12 +38,13 @@ namespace gwl_voices.DataAccess.Repositories
             return query.FirstOrDefault();
         }
 
-        public async Task<List<loginResponse>> GetAllUsers()
+        public async Task<List<loginResponse>> GetAllUsers(int numPag,
+                                                           int elementPag)
         {
             
                 try
                 {
-                    var response = await _context.Users
+                    var query = await _context.Users
                                  .Select(u => new loginResponse
                                  {
                                      Id = u.Id,
@@ -61,15 +62,20 @@ namespace gwl_voices.DataAccess.Repositories
 
                                  })
                                  .ToListAsync();
-                    return response;
+
+                    //UserDtoList result = new UserDtoList();
+
+                    //int skip = (numPag - 1) * elementPag;
+
+                    //result.Results =  query.Skip(skip).Take(elementPag).ToList();
+                    //result.Total = query.Count();
+
+                     return query;
                 }
                 catch (Exception ex)
                 {
                     throw ex;
                 }
-
-            
-
 
 
         }

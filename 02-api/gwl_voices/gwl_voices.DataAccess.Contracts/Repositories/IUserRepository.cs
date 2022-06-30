@@ -9,12 +9,14 @@ namespace gwl_voices.DataAccess.Contracts.Repositories
 
         loginResponse? GetUserById(int id);
 
-        Task<List<loginResponse>> GetAllUsers();
+        Task<List<loginResponse>> GetAllUsers(int numPag, int elementPag);
 
         loginResponse AddUser(loginResponse user);
 
         void DeleteUser(loginResponse user);
 
         loginResponse UpdateUser(loginResponse user);
+
+        
     }
 }

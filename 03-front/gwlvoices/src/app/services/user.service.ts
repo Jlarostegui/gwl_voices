@@ -26,8 +26,8 @@ export class UserService {
     return result;
   }
 
-  getAllUsers(): Promise<any[]> {
-    let result = lastValueFrom(this.httpClient.get<any[]>(`${ROOT_URL_US}/all`))
+  getAllUsers(pPage: number = 1): Promise<any[]> {
+    let result = lastValueFrom(this.httpClient.get<any[]>(`${ROOT_URL_US}/all?numPag=` + pPage + `&elementPag=10`))
     return result;
   }
 
@@ -50,6 +50,6 @@ export class UserService {
     return result;
   }
 
-
+ 
 
 }
