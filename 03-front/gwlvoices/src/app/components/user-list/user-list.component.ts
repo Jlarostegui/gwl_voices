@@ -18,9 +18,9 @@ export class UserListComponent implements OnInit {
   constructor(private userService: UserService,
   private activatedRoute: ActivatedRoute) {
     this.ArrUsers = new Array();
-   }
+  }
 
- async ngOnInit() {
+  async ngOnInit() {
     try {
 
       
@@ -58,6 +58,6 @@ export class UserListComponent implements OnInit {
     }
 
   }
-  }
+}
 
 

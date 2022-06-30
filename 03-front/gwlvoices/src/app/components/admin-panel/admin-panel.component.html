@@ -1,0 +1,18 @@
+<mat-tab-group backgroundColor="primary">
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <img src="../../../assets/img/logo_Blanco.png" alt="">
+    </ng-template>
+  </mat-tab>
+  <mat-tab label="Users">
+    <ng-template>
+      <ul *ngFor="let user of listUsers">
+        <li>{{listUsers[0]}}</li>
+      </ul>
+    </ng-template>
+  </mat-tab>
+  <mat-tab label="Working Groups"> Content 2 </mat-tab>
+  <mat-tab label="Events">Events</mat-tab>
+  <mat-tab label="Attachments">Attachments</mat-tab>
+  <mat-tab MatTabBodyPositionState="right" label="USUARIOLOGEADO"></mat-tab>
+</mat-tab-group>
