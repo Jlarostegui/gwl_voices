@@ -10,6 +10,7 @@ import { UserService } from 'src/app/services/user.service';
 export class TableUsersComponent implements OnInit {
 
   listUsers = new Array();
+  editar: Boolean = false;
 
   constructor(
     private userService: UserService
@@ -20,23 +21,11 @@ export class TableUsersComponent implements OnInit {
   async ngOnInit() {
 
     let response = await this.userService.getAllUsers();
-    response.forEach(x => this.listUsers.push(new User({
-      id: x['id'],
-      name: x['name'],
-      email: x['email'],
-      rol: x['rol'],
-      surname: x['surname'],
-      img: x['img'],
-      phone: x['phone'],
-      username: x['username']
-    })));
-
-    this.listUsers.forEach(x => console.log(x)
-    )
-
-
+    response.forEach(x => this.listUsers.push(new User(x)));
   }
 
+  editUser() {
 
+  }
 
 }

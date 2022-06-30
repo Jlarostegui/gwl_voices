@@ -9,7 +9,6 @@
         <th scope="col">Email</th>
         <th scope="col">Phone</th>
         <th scope="col">Actions</th>
-        <th scope="col"></th>
 
       </tr>
     </thead>
@@ -19,18 +18,18 @@
         <td>
           <img src="../../../assets/img/{{user.id}}.png" alt="">
         </td>
-        <td>{{user.name}}</td>
+        <td>
+
+          {{user.name}}
+        </td>
         <td>{{user.surname}}</td>
         <td>{{user.username}}</td>
         <td>{{user.email}}</td>
         <td>{{user.phone}}</td>
 
         <td>
-          <button mat-button color="primary">Edit</button>
-        </td>
-        <td>
-          <button mat-button color="warn">Delete
-          </button>
+          <button (click)="editUser()" mat-button color="accent">Edit</button>
+          <button mat-button color="warn">Delete</button>
         </td>
       </tr>
     </tbody>
