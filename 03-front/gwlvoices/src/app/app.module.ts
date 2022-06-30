@@ -17,6 +17,7 @@ import { AdminPanelComponent } from './components/admin-panel/admin-panel.compon
 import { UserCardComponent } from './components/user-card/user-card.component';
 import { UserDetailComponent } from './components/user-detail/user-detail.component';
 import { UserListComponent } from './components/user-list/user-list.component';
+import { TableUsersComponent } from './components/table-users/table-users.component';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -44,6 +45,7 @@ import { MatTableModule } from '@angular/material/table';
     UserListComponent,
     ForgotPasswordComponent,
     AdminPanelComponent,
+    TableUsersComponent,
 
   ],
   imports: [

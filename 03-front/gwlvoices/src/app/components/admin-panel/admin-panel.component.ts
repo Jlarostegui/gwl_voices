@@ -9,27 +9,11 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class AdminPanelComponent implements OnInit {
 
-  listUsers: User[] = new Array();
 
-  constructor(
-    private userService: UserService
-  ) { }
+
+  constructor() { }
 
   async ngOnInit() {
-
-    let response = await this.userService.getAllUsers();
-    response.forEach(x => this.listUsers.push(new User({
-      id: x['id'],
-      name: x['name'],
-      email: x['email'],
-      password: x['password'],
-      rol: x['rol'],
-      surname: x['surname'],
-      img: x['img'],
-      phone: x['phone'],
-    })));
-
-    console.log(this.listUsers);
 
   }
 

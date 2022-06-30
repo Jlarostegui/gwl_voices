@@ -1,0 +1,38 @@
+<div class="">
+  <table class="table table-info">
+    <thead>
+      <tr>
+        <th scope="col">img</th>
+        <th scope="col">Name</th>
+        <th scope="col">Surname</th>
+        <th scope="col">User</th>
+        <th scope="col">Email</th>
+        <th scope="col">Phone</th>
+        <th scope="col">Actions</th>
+        <th scope="col"></th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <th scope="row"></th>
+      <tr *ngFor="let user of listUsers">
+        <td>
+          <img src="../../../assets/img/{{user.id}}.png" alt="">
+        </td>
+        <td>{{user.name}}</td>
+        <td>{{user.surname}}</td>
+        <td>{{user.username}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.phone}}</td>
+
+        <td>
+          <button mat-button color="primary">Edit</button>
+        </td>
+        <td>
+          <button mat-button color="warn">Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

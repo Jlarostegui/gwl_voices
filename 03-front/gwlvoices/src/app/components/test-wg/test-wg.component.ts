@@ -43,8 +43,8 @@ export class TestWGComponent implements OnInit {
 
 
       // let response = await this.wgservice.getAllWorkingGroups();
-      // console.log(response)
       // response.forEach(wkname => this.ArrworkingGroups.push(wkname['name']));
+      // console.log(this.ArrworkingGroups)
 
       // let re = await this.wgservice.getWorkingGroupById(1);
       // this.workinggroup = Object.values(re);
