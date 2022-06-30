@@ -39,7 +39,7 @@ namespace gwl_voices.DataAccess.Repositories
         }
 
         public async Task<List<UserDto>> GetAllUsers(int numPag,
-                                                           int elementPag)
+                                                     int elementPag)
         {
             
                 try
@@ -63,14 +63,16 @@ namespace gwl_voices.DataAccess.Repositories
                                  })
                                  .ToListAsync();
 
-                    //UserDtoList result = new UserDtoList();
 
-                    //int skip = (numPag - 1) * elementPag;
 
-                    //result.Results =  query.Skip(skip).Take(elementPag).ToList();
-                    //result.Total = query.Count();
+                UserDtoList result = new UserDtoList();
 
-                     return query;
+                int skip = (numPag - 1) * elementPag;
+
+                result.Results = query.Skip(skip).Take(elementPag).ToList();
+                result.Total = query.Count();
+
+                return query;
                 }
                 catch (Exception ex)
                 {
