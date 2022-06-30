@@ -22,7 +22,7 @@ namespace gwl_voices.Application.Services
 
         public LoginResponse? login(LoginRequest login)
         {
-            loginResponse? user = _loginRepository.login(login);
+            LoginResponse? user = _loginRepository.login(login);
 
             LoginResponse result = new LoginResponse();
 

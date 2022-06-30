@@ -13,12 +13,12 @@ namespace gwl_voices.DataAccess.Repositories
             _context = context;
         }
 
-        public loginResponse? login(LoginRequest login)
+        public LoginResponse? login(LoginRequest login)
         {
             var query =
                 from user in _context.Users
                 where user.Username ==  login.user && user.Password == login.password
-                select new loginResponse
+                select new LoginResponse
                 {
                     Id = user.Id,
                     Username = user.Username,

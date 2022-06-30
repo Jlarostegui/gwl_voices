@@ -16,7 +16,7 @@ namespace gwl_voices.DataAccess.Repositories
             _context = context;
         }
 
-        public loginResponse? GetUserByName(string name)
+        public UserDto? GetUserByName(string name)
         {
 
             var query =
@@ -28,7 +28,7 @@ namespace gwl_voices.DataAccess.Repositories
             return query.FirstOrDefault();
         }
 
-        public loginResponse? GetUserById(int id)
+        public UserDto? GetUserById(int id)
         {
             var query =
                 from user in _context.Users
@@ -38,14 +38,14 @@ namespace gwl_voices.DataAccess.Repositories
             return query.FirstOrDefault();
         }
 
-        public async Task<List<loginResponse>> GetAllUsers(int numPag,
+        public async Task<List<UserDto>> GetAllUsers(int numPag,
                                                            int elementPag)
         {
             
                 try
                 {
                     var query = await _context.Users
-                                 .Select(u => new loginResponse
+                                 .Select(u => new UserDto
                                  {
                                      Id = u.Id,
                                      Name = u.Name,
@@ -80,32 +80,32 @@ namespace gwl_voices.DataAccess.Repositories
 
         }
 
-        public loginResponse AddUser(loginResponse user)
+        public UserDto AddUser(UserDto user)
         {
             User newUser = UserMapper.MapToUserFromUserDto(user);
 
             var userInserted = _context.Users.Add(newUser);
 
-            loginResponse result = UserMapper.MapToUserDtoFromUser(userInserted.Entity);
+            UserDto result = UserMapper.MapToUserDtoFromUser(userInserted.Entity);
 
             return result;
 
          }
 
-        public void DeleteUser(loginResponse user)
+        public void DeleteUser(UserDto user)
         {
             User userToDelete = UserMapper.MapToUserFromUserDto(user);
             _context.Users.Remove(userToDelete);
         }
 
 
-        public loginResponse UpdateUser(loginResponse user)
+        public UserDto UpdateUser(UserDto user)
         {
             User userToUpdate = UserMapper.MapToUserFromUserDto(user);
 
             var userUpdated = _context.Users.Update(userToUpdate);
 
-            loginResponse result = UserMapper.MapToUserDtoFromUser(userUpdated.Entity);
+            UserDto result = UserMapper.MapToUserDtoFromUser(userUpdated.Entity);
             return result;
 
         }

@@ -5,17 +5,17 @@ namespace gwl_voices.DataAccess.Contracts.Repositories
     public interface IUserRepository
     {
 
-        loginResponse? GetUserByName(string name);
+        UserDto? GetUserByName(string name);
 
-        loginResponse? GetUserById(int id);
+        UserDto? GetUserById(int id);
 
-        Task<List<loginResponse>> GetAllUsers(int numPag, int elementPag);
+        Task<List<UserDto>> GetAllUsers(int numPag, int elementPag);
 
-        loginResponse AddUser(loginResponse user);
+        UserDto AddUser(UserDto user);
 
-        void DeleteUser(loginResponse user);
+        void DeleteUser(UserDto user);
 
-        loginResponse UpdateUser(loginResponse user);
+        UserDto UpdateUser(UserDto user);
 
         
     }
