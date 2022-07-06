@@ -1,4 +1,4 @@
-<div class="">
+<!-- <div class="">
   <table class="table table-info">
     <thead>
       <tr>
@@ -6,9 +6,12 @@
         <th scope="col">Name</th>
         <th scope="col">Surname</th>
         <th scope="col">User</th>
+        <th scope="col">Password</th>
         <th scope="col">Email</th>
         <th scope="col">Phone</th>
+        <th scope="col">Adress</th>
         <th scope="col">Actions</th>
+        <th></th>
 
       </tr>
     </thead>
@@ -19,19 +22,101 @@
           <img src="../../../assets/img/{{user.id}}.png" alt="">
         </td>
         <td>
-
-          {{user.name}}
+          <mat-form-field>
+            <input readonly matInput placeholder="{{user.name}}">
+          </mat-form-field>
         </td>
-        <td>{{user.surname}}</td>
-        <td>{{user.username}}</td>
-        <td>{{user.email}}</td>
-        <td>{{user.phone}}</td>
-
         <td>
-          <button (click)="editUser()" mat-button color="accent">Edit</button>
-          <button mat-button color="warn">Delete</button>
+          <mat-form-field>
+            <input readonly matInput placeholder="{{user.surname}}">
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field>
+            <input readonly matInput placeholder="{{user.username}}">
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field>
+            <input readonly matInput placeholder="{{user.password}}">
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field>
+            <input readonly matInput placeholder="{{user.name}}">
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field>
+            <input readonly matInput placeholder="{{user.name}}">
+          </mat-form-field>
+        </td>
+        <td>
+        </td>
+        <td class="buttons">
+          <button mat-raised-button (click)="editUser()" color="accent">Edit</button>
+        </td>
+        <td>
+          <button mat-raised-button color="warn">Delete</button>
         </td>
       </tr>
     </tbody>
   </table>
-</div>
+</div> -->
+
+<mat-card>
+  <mat-accordion MatAccordionDisplayMode="flat" color="accent" *ngFor="let user of listUsers">
+    <mat-expansion-panel hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <img src="../../../assets/img/{{user.id}}.png" alt="">
+          {{user.name}}
+          {{user.surname}}
+        </mat-panel-title>
+        <mat-panel-description>
+          Edit User
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <form [formGroup]="updatedUser" (ngSubmit)="onSubmit(updatedUser)">
+        <mat-label>Name: </mat-label>
+        <mat-form-field appearance="fill">
+          <input formControlName="name" matInput placeholder="{{user.name}}">
+        </mat-form-field>
+        <mat-label>Surname: </mat-label>
+        <mat-form-field appearance="fill">
+          <input formControlName="surname" value="1" matInput placeholder="{{user.surname}}">
+        </mat-form-field>
+        <mat-label>Phone: </mat-label>
+        <mat-form-field appearance="fill">
+          <input formControlName="phone" matInput placeholder="{{user.phone}}">
+        </mat-form-field>
+        <mat-label>Adress: </mat-label>
+        <mat-form-field appearance="fill">
+          <input formControlName="address" matInput placeholder="{{user.adress}}">
+        </mat-form-field>
+        <mat-label>Email: </mat-label>
+        <mat-form-field appearance="fill">
+          <input formControlName="email" matInput placeholder="{{user.email}}">
+        </mat-form-field>
+        <mat-label>UserName: </mat-label>
+        <mat-form-field appearance="fill">
+          <input formControlName="username" matInput placeholder="{{user.username}}">
+        </mat-form-field>
+        <mat-label>Password: </mat-label>
+        <mat-form-field appearance="fill">
+          <input formControlName="password" matInput placeholder="{{user.password}}">
+        </mat-form-field>
+        <mat-label>Rol:</mat-label>
+        <mat-form-field appearance="fill">
+          <mat-select formControlName="rol">
+            <mat-option value="admin">Administrator </mat-option>
+            <mat-option value="user">User</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <div>
+          <button type="submit" mat-raised-button color="accent">Save change</button>
+        </div>
+      </form>
+    </mat-expansion-panel>
+  </mat-accordion>
+</mat-card>

@@ -18,11 +18,11 @@ export class TestWGComponent implements OnInit {
 
 
   newWg: Working_groups = new Working_groups(
-    { Name: "test" }
+    { name: "test" }
   );
 
   update: Working_groups = new Working_groups(
-    { id: 501, Name: "tets1" }
+    { id: 501, name: "tets1" }
   )
 
   constructor(

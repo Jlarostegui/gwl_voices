@@ -5,7 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
-
+// components
 import { AuthService } from './services/auth.service';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,7 +18,11 @@ import { UserCardComponent } from './components/user-card/user-card.component';
 import { UserDetailComponent } from './components/user-detail/user-detail.component';
 import { UserListComponent } from './components/user-list/user-list.component';
 import { TableUsersComponent } from './components/table-users/table-users.component';
+import { TabeWorkingGroupsComponent } from './components/tabe-working-groups/tabe-working-groups.component';
+import { FilesComponent } from './components/files/files.component';
 
+
+// Material modules
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule } from '@angular/material/input';
@@ -30,6 +34,9 @@ import { RegisterComponent } from './components/register/register.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatTableModule } from '@angular/material/table';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatRadioModule } from '@angular/material/radio';
 
 
 
@@ -46,6 +53,9 @@ import { MatTableModule } from '@angular/material/table';
     ForgotPasswordComponent,
     AdminPanelComponent,
     TableUsersComponent,
+    TabeWorkingGroupsComponent,
+    FilesComponent,
+
 
   ],
   imports: [
@@ -65,6 +75,9 @@ import { MatTableModule } from '@angular/material/table';
     MatSelectModule,
     MatTabsModule,
     MatTableModule,
+    MatExpansionModule,
+    MatProgressBarModule,
+    MatRadioModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

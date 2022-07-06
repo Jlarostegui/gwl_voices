@@ -19,20 +19,20 @@ export class UserDetailComponent implements OnInit {
 
   ngOnInit() {
 
-   try {
-  
-    this.activatedRoute.params.subscribe(async params => {
-       let id = parseInt(params['iduser']);
-      this.user = await this.userService.getUserById(id);
-      
-      console.log(this.user);
-     })
-     
-    
-   } catch (error) {
-     console.log(error);
+    try {
 
-   }
+      this.activatedRoute.params.subscribe(async params => {
+        let id = parseInt(params['iduser']);
+        this.user = await this.userService.getUserById(id);
+
+
+      })
+
+
+    } catch (error) {
+      console.log(error);
+
+    }
 
   }
 
