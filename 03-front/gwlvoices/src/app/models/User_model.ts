@@ -12,6 +12,7 @@ export class User {
   adress?: string;
   urlGwl?: string;
   token?: string;
+  edit?: boolean;
 
   constructor(item?: Partial<User>) {
 
@@ -27,6 +28,7 @@ export class User {
     this.adress = item?.adress;
     this.urlGwl = item?.urlGwl;
     this.token = item?.token;
+    this.edit = item?.edit;
   }
 
 

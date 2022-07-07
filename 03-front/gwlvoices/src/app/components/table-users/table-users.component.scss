@@ -1,4 +1,4 @@
-@import url(../../app.component.scss);
+// @import url(../../app.component.scss);
 
 // td {
 //   color: #0e6ebe;
@@ -12,21 +12,21 @@ img {
   margin: 5px;
 }
 
+// // form {
+// //   display: grow;
+// // }
 // form {
-//   display: grow;
+//   width: 50%;
 // }
-form {
-  width: 50%;
-}
 
-mat-form-field {
-  width: 100%;
-}
+// mat-form-field {
+//   width: 100%;
+// }
 
-div {
+// div {
 
-  flex-direction: column;
-}
+//   flex-direction: column;
+// }
 
 // div {
 //   justify-content: start;
@@ -57,21 +57,21 @@ div {
 //     }
 //   }
 // }
-mat-panel-title {
-  color: #0e6ebe;
-}
+// mat-panel-title {
+//   color: #0e6ebe;
+// }
 
-mat-panel-description {
-  justify-content: end;
-  color: #0e6ebe;
-}
+// mat-panel-description {
+//   justify-content: end;
+//   color: #0e6ebe;
+// }
 
 
-mat-expansion-panel {
-  // background-color: white;
-  color: #0e6ebe;
-}
+// mat-expansion-panel {
+//   // background-color: white;
+//   color: #0e6ebe;
+// }
 
-#id {
-  display: none;
-}
+// #id {
+//   display: none;
+// }

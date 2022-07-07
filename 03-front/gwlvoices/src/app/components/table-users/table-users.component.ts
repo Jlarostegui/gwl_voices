@@ -1,51 +1,57 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { User } from 'src/app/models/user_model';
+import { LoginService } from 'src/app/services/login.service';
 import { UserService } from 'src/app/services/user.service';
-import { AbstractControl, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-table-users',
   styleUrls: ['./table-users.component.scss'],
   templateUrl: './table-users.component.html',
 })
+
+
+
 export class TableUsersComponent implements OnInit {
 
-  panelOpenState = false;
-  listUsers: User[] = new Array();
-  checked: boolean = true;
-  updatedUser: FormGroup;
-  id: string = '';
+
+  dataSource: User[] = [];
+  displayedColumns: string[] = ['img', 'name', 'surname', 'username', 'actions'];
+  edit: boolean = false;
+
 
   constructor(
     private userService: UserService,
-    private fctrl: FormBuilder,
-  ) {
-    this.updatedUser = this.fctrl.group(
-      {
-        id: [''],
-        name: [''],
-        surname: [''],
-        phone: [''],
-        address: [''],
-        email: [''],
-        username: [''],
-        password: [''],
-        rol: ['',]
-      });
-  }
-
+  ) { }
   async ngOnInit() {
 
     let response = await this.userService.getAllUsers();
-    response.forEach(x => this.listUsers.push(new User(x)));
+    this.dataSource = response.map(x => new User({ ...x, edit: 'false' }));
 
+  }
+
+
+
+  editUser(event: User) {
+    this.edit = !this.edit
+    let UserUpdated = new User(event)
+    UserUpdated.edit = true
+    this.dataSource.map(x => {
+      x.id == UserUpdated.id ? x.edit = false : x.edit = true
+    })
+    console.log(this.dataSource);
+
+
+  };
+
+  saveUser(event: User) {
+    console.log(event);
 
 
   }
 
-  onSubmit(updatedUser: AbstractControl) {
+  // onSubmit(updatedUser: AbstractControl) {
 
-    console.log(updatedUser.value);
+  //   console.log(updatedUser.value);
 
-  }
+  // }
 }

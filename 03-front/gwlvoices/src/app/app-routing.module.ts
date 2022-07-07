@@ -20,7 +20,7 @@ const routes: Routes = [
   { path: 'wk', component: TestWGComponent, canActivate: [AuthorizationGuard] },
   { path: 'register', component: RegisterComponent, canActivate: [AuthorizationGuard] },
   { path: 'detail/:iduser', component: UserDetailComponent, canActivate: [AuthorizationGuard] },
-  // { path: 'table', component: TableUsersComponent },
+  { path: 'table', component: TableUsersComponent },
   { path: '**', redirectTo: '/login' }
 ];
 

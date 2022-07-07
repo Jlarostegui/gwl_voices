@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { User } from 'src/app/models/user_model';
 import { UserService } from 'src/app/services/user.service';
 
@@ -9,14 +9,26 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class AdminPanelComponent implements OnInit {
 
+  dataSource: User[] = new Array();
+  edit: boolean = true;
 
-  constructor() { }
+
+
+  constructor(
+    private userService: UserService,
+  ) { }
 
   async ngOnInit() {
-
+    let response = await this.userService.getAllUsers();
+    response.forEach(x => this.dataSource.push(new User(x)));
   }
 
+  editUser() {
+    this.edit = !this.edit
+  };
 
+  saveUser() {
+    console.log('click');
 
-
+  }
 }
