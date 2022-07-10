@@ -4,16 +4,15 @@ namespace gwl_voices.ApplicationContracts.Services
 {
     public interface IUserService
     {
+        Task<UserResponse?> GetUserByName(string name);
 
-        UserResponse? GetUserByName(string name);
+        Task<UserResponse?> GetUserById(int id);
 
-        UserResponse? GetUserById(int id);
-
-        Task<List<UserResponse>> GetAllUsers(int numPag, int elementPag);
+        Task<UserListResponse> GetAllUsers(int numPag, int elementPag);
         UserResponse AddUser(UserRequest user);
 
-        bool DeleteUser(int id);
+        Task<bool> DeleteUser(int id);
 
-        UserResponse UpdateUser(UserUpdateRequest user, int id);
+        Task<UserResponse> UpdateUser(UserUpdateRequest user, int id);
     }
 }

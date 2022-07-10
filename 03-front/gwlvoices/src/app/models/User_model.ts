@@ -1,6 +1,6 @@
 export class User {
 
-  id?: string;
+  id?: number;
   username?: string;
   password?: string;
   rol?: string;
@@ -9,9 +9,10 @@ export class User {
   email?: string;
   img?: string;
   phone?: string;
-  adress?: string;
+  address?: string;
   urlGwl?: string;
   token?: string;
+  workingGroups?: any[];
   edit?: boolean;
 
   constructor(item?: Partial<User>) {
@@ -25,9 +26,10 @@ export class User {
     this.email = item?.email;
     this.img = item?.img;
     this.phone = item?.phone;
-    this.adress = item?.adress;
+    this.address = item?.address;
     this.urlGwl = item?.urlGwl;
     this.token = item?.token;
+    this.workingGroups = item?.workingGroups;
     this.edit = item?.edit;
   }
 

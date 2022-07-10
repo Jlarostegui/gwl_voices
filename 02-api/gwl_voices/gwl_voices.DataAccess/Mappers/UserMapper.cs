@@ -19,8 +19,11 @@ namespace gwl_voices.DataAccess.Mappers
                 Email = user.Email,
                 Img = user.Img,
                 Phone = user.Phone,
-                Adress = user.Adress,
+                Address = user.Adress,
                 UrlGwl = user.UrlGwl,
+                WorkingGroups = (user.TbiUserWgroups.Any()) ?
+                                user.TbiUserWgroups.Select(w => new WorkingGroupDto { Id = w.WorkingGr.Id, Name = w.WorkingGr.Name }).ToList()
+                                : new List<WorkingGroupDto>(),
             };
 
             return result;
@@ -39,11 +42,21 @@ namespace gwl_voices.DataAccess.Mappers
                 Email = userDto.Email,
                 Img = userDto.Img,
                 Phone = userDto.Phone,
-                Adress = userDto.Adress,
+                Adress = userDto.Address,
                 UrlGwl = userDto.UrlGwl,
             };
 
             return user;
+        }
+
+        public static UserDtoList MapToUserDtoListFromUserDto(UserDto userDto)
+        {
+            UserDtoList result = new UserDtoList
+            {
+                
+            };
+
+            return result;
         }
 
 

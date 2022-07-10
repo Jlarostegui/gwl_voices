@@ -12,9 +12,9 @@
         public string Email { get; set; } = null!;
         public string Img { get; set; } = null!;
         public string Phone { get; set; } = null!;
-        public string Adress { get; set; } = null!;
-        public string UrlGwl { get; set; } = null!;
-        
+        public string Address { get; set; } = null!;
+        public string UrlGwl { get; set; } = null!;        
+        public List<WorkingGroupDto> WorkingGroups { get; set; } = new List<WorkingGroupDto>();
         
     }
 }

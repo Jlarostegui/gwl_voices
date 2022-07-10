@@ -16,7 +16,7 @@ namespace gwl_voices.DataAccess.Repositories
             _context = context;
         }
 
-        public UserDto? GetUserByName(string name)
+        public async Task<UserDto?> GetUserByName(string name)
         {
 
             var query =
@@ -25,59 +25,81 @@ namespace gwl_voices.DataAccess.Repositories
                 select UserMapper.MapToUserDtoFromUser(user);
 
 
-            return query.FirstOrDefault();
+            return await query.FirstOrDefaultAsync();
         }
 
-        public UserDto? GetUserById(int id)
+        public async Task<UserDto?> GetUserById(int id)
         {
-            var query =
-                from user in _context.Users
-                where user.Id == id
-                select UserMapper.MapToUserDtoFromUser(user);
+            var query = _context.Users
+                            .Where(u => u.Id.Equals(id))
+                            .Select(u => new UserDto
+                            {
+                                Id = u.Id,
+                                Name = u.Name,
+                                Surname = u.Surname,
+                                Password = u.Password,
+                                Username = u.Username,
+                                Address = u.Adress,
+                                UrlGwl = u.UrlGwl,
+                                Email = u.Email,
+                                Img = u.Img,
+                                Phone = u.Phone,
+                                Rol = u.Rol,
+                                WorkingGroups = (u.TbiUserWgroups.Any()) ?
+                                                    u.TbiUserWgroups.Select(w => new WorkingGroupDto { Id = w.WorkingGr.Id, Name = w.WorkingGr.Name }).ToList()
+                                                    : new List<WorkingGroupDto>(),
+                            });
 
-            return query.FirstOrDefault();
+            return await query.FirstOrDefaultAsync();
         }
 
-        public async Task<List<UserDto>> GetAllUsers(int numPag,
+        public async Task<UserDtoList> GetAllUsers(int numPag,
                                                      int elementPag)
         {
-            
-                try
-                {
-                    var query = await _context.Users
-                                 .Select(u => new UserDto
-                                 {
-                                     Id = u.Id,
-                                     Name = u.Name,
-                                     Surname = u.Surname,
-                                     Password = u.Password,
-                                     Username = u.Username,
-                                     Adress = u.Adress,
-                                     UrlGwl = u.UrlGwl,
-                                     Email = u.Email,
-                                     Img = u.Img,
-                                     Phone = u.Phone,
-                                     Rol = u.Rol,
-                                     
 
-                                 })
-                                 .ToListAsync();
+            try
+            {
 
-
+                var query = _context.Users
+                             .Select(u => new UserDto
+                             {
+                                 Id = u.Id,
+                                 Name = u.Name,
+                                 Surname = u.Surname,
+                                 Password = u.Password,
+                                 Username = u.Username,
+                                 Address = u.Adress,
+                                 UrlGwl = u.UrlGwl,
+                                 Email = u.Email,
+                                 Img = u.Img,
+                                 Phone = u.Phone,
+                                 Rol = u.Rol,
+                                 WorkingGroups = (u.TbiUserWgroups.Any()) ?
+                                                    u.TbiUserWgroups.Select(w => new WorkingGroupDto { Id = w.WorkingGr.Id, Name = w.WorkingGr.Name }).ToList()
+                                                    : new List<WorkingGroupDto>(),
+                             });
 
                 UserDtoList result = new UserDtoList();
 
-                int skip = (numPag - 1) * elementPag;
 
-                result.Results = query.Skip(skip).Take(elementPag).ToList();
+                if (numPag == 0)
+                {
+                    result.Results = await query.ToListAsync();
+                }
+                else
+                {
+                    int skip = (numPag - 1) * elementPag;
+                    result.Results = await query.Skip(skip).Take(elementPag).ToListAsync();
+                }
+
                 result.Total = query.Count();
 
-                return query;
-                }
-                catch (Exception ex)
-                {
-                    throw ex;
-                }
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
 
 
         }
@@ -92,7 +114,7 @@ namespace gwl_voices.DataAccess.Repositories
 
             return result;
 
-         }
+        }
 
         public void DeleteUser(UserDto user)
         {

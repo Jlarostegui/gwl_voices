@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ROOT_URL_US } from '../../environments/config';
 import { User } from '../models/index.model'
 import { lastValueFrom } from 'rxjs';
+import { Userlist } from '../models/userlist_model';
 
 @Injectable({
   providedIn: 'root'
@@ -26,8 +27,8 @@ export class UserService {
     return result;
   }
 
-  getAllUsers(pPage: number = 1): Promise<any[]> {
-    let result = lastValueFrom(this.httpClient.get<any[]>(`${ROOT_URL_US}/all?numPag=` + pPage + `&elementPag=10`))
+  getAllUsers(pPage: number = 1): Promise<Userlist> {
+    let result = lastValueFrom(this.httpClient.get<Userlist>(`${ROOT_URL_US}/all?numPag=` + pPage + `&elementPag=10`))
     return result;
   }
 

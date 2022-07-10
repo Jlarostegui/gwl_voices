@@ -19,8 +19,10 @@ export class AdminPanelComponent implements OnInit {
   ) { }
 
   async ngOnInit() {
-    let response = await this.userService.getAllUsers();
-    response.forEach(x => this.dataSource.push(new User(x)));
+    let response = await this.userService.getAllUsers(0);
+    if (response.results != null) {
+      this.dataSource = response.results.map(x => new User({ ...x, edit: false }));
+    }
   }
 
   editUser() {
