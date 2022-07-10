@@ -65,7 +65,7 @@ export class IndexComponent implements OnInit {
         if (this.user.rol === 'user') {
           loginForm.reset();
           setTimeout(() => {
-            this.router.navigate(['/users'])
+            this.router.navigate(['/detail', this.user.id])
           }, 2000);
         } else {
           loginForm.reset();
