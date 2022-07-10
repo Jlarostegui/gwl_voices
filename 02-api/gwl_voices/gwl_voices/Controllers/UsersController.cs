@@ -25,9 +25,9 @@ namespace gwl_voices.API.Controllers
         [ProducesResponseType(typeof(UserResponse), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public IActionResult GetUserByName(string name)
+        public async Task<IActionResult> GetUserByName(string name)
         {
-            UserResponse? user = _userService.GetUserByName(name);
+            UserResponse? user = await _userService.GetUserByName(name);
 
             if (user != null)
             {
@@ -44,9 +44,9 @@ namespace gwl_voices.API.Controllers
         [ProducesResponseType(typeof(UserResponse), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public IActionResult GetUserById(int id)
+        public async Task<IActionResult> GetUserById(int id)
         {
-            UserResponse? user = _userService.GetUserById(id);
+            UserResponse? user = await _userService.GetUserById(id);
 
             if (user != null)
             {
@@ -61,12 +61,12 @@ namespace gwl_voices.API.Controllers
         [HttpGet]
         [Authorize]
         [Route("all")]
-        [ProducesResponseType(typeof(UserResponse), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(UserListResponse), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> GetAllUsers(int numPag, int elementPag)
         {
-            List<UserResponse> users = await _userService.GetAllUsers(numPag, elementPag);
+            UserListResponse users = await _userService.GetAllUsers(numPag, elementPag);
             if (users == null)
                 return NoContent();
             else
@@ -90,9 +90,9 @@ namespace gwl_voices.API.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public IActionResult DeleteUser(int id)
+        public async Task<IActionResult> DeleteUser(int id)
         {
-            bool result = _userService.DeleteUser(id);
+            bool result = await _userService.DeleteUser(id);
 
             if (result)
             {
@@ -111,10 +111,10 @@ namespace gwl_voices.API.Controllers
         [ProducesResponseType(typeof(UserResponse), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public IActionResult UpdateUser(UserUpdateRequest user, int id)
+        public async Task<IActionResult> UpdateUser(UserUpdateRequest user, int id)
         {
             
-            UserResponse userUpdated = _userService.UpdateUser(user, id);
+            UserResponse userUpdated = await _userService.UpdateUser(user, id);
 
             if (string.IsNullOrEmpty(userUpdated.Error))
                 return Ok(userUpdated);

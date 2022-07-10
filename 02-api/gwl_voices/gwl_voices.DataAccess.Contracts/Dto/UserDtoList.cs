@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace gwl_voices.DataAccess.Contracts.Dto
+﻿namespace gwl_voices.DataAccess.Contracts.Dto
 {
     public class UserDtoList
     {

@@ -1,4 +1,6 @@
-﻿namespace gwl_voices.BusinessModels.Models.User
+﻿using gwl_voices.BusinessModels.Models.WorkingGroup;
+
+namespace gwl_voices.BusinessModels.Models.User
 {
     public class UserResponse : BaseResponse
     {
@@ -13,6 +15,6 @@
         public string Phone { get; set; } = null!;
         public string Adress { get; set; } = null!;
         public string UrlGwl { get; set; } = null!;
-
+        public List<WorkingGroupResponse> WorkingGroups { get; set; } = new List<WorkingGroupResponse>();
     }
 }

@@ -1,6 +1,7 @@
 ﻿using gwl_voices.Application.Mappers;
 using gwl_voices.ApplicationContracts.Services;
 using gwl_voices.BusinessModels.Models.User;
+using gwl_voices.BusinessModels.Models.WorkingGroup;
 using gwl_voices.DataAccess.Contracts;
 using gwl_voices.DataAccess.Contracts.Dto;
 using gwl_voices.DataAccess.Contracts.Repositories;
@@ -13,13 +14,13 @@ namespace gwl_voices.Application.Services
         private IUnitOfWork _uOw;
 
         public UserService(IUserRepository userRepository, IUnitOfWork uOw)
-        { 
+        {
             _userRepository = userRepository;
             _uOw = uOw;
         }
-        public UserResponse? GetUserByName(string name)
+        public async Task<UserResponse?> GetUserByName(string name)
         {
-            UserDto? user = _userRepository.GetUserByName(name);
+            UserDto? user = await _userRepository.GetUserByName(name);
 
             UserResponse result = new UserResponse();
 
@@ -30,12 +31,12 @@ namespace gwl_voices.Application.Services
             else return null;
             return result;
 
-           
+
         }
 
-        public UserResponse? GetUserById(int id)
+        public async Task<UserResponse?> GetUserById(int id)
         {
-            UserDto? user = _userRepository.GetUserById(id);
+            UserDto? user = await _userRepository.GetUserById(id);
 
             UserResponse result = new UserResponse();
             if (user != null)
@@ -47,14 +48,14 @@ namespace gwl_voices.Application.Services
         }
 
 
-        public async Task<List<UserResponse>> GetAllUsers(int numPag, int elementPag)
+        public async Task<UserListResponse> GetAllUsers(int numPag, int elementPag)
         {
-            var response = new List<UserResponse>();
-           
-              try
+            var response = new UserListResponse();
+
+            try
             {
-                var users = await _userRepository.GetAllUsers(numPag, elementPag);
-                foreach (var user in users)
+                var result = await _userRepository.GetAllUsers(numPag, elementPag);
+                foreach (var user in result.Results)
                 {
                     var uResponse = new UserResponse
                     {
@@ -63,27 +64,27 @@ namespace gwl_voices.Application.Services
                         Surname = user.Surname,
                         Password = user.Password,
                         Username = user.Username,
-                        Adress = user.Adress,
+                        Adress = user.Address,
                         UrlGwl = user.UrlGwl,
                         Email = user.Email,
                         Img = user.Img,
                         Phone = user.Phone,
                         Rol = user.Rol,
-
-
-
+                        WorkingGroups = user.WorkingGroups.Any() ?
+                                    user.WorkingGroups.Select(w => new WorkingGroupResponse() { id = w.Id, Name = w.Name }).ToList()
+                                    : new List<WorkingGroupResponse>()
                     };
 
-                    response.Add(uResponse);
+                    response.Results.Add(uResponse);
                 }
 
-
-            return response;
+                response.Total = result.Total;
+                return response;
 
             }
-                
 
-             catch (Exception oException)
+
+            catch (Exception oException)
             {
                 throw oException;
             }
@@ -115,9 +116,9 @@ namespace gwl_voices.Application.Services
         }
 
 
-        public bool DeleteUser(int id)
+        public async Task<bool> DeleteUser(int id)
         {
-            UserDto? user = _userRepository.GetUserById(id);
+            UserDto? user = await _userRepository.GetUserById(id);
 
             if (user == null)
             {
@@ -133,10 +134,10 @@ namespace gwl_voices.Application.Services
             }
         }
 
-        public UserResponse UpdateUser(UserUpdateRequest user, int id)
+        public async Task<UserResponse> UpdateUser(UserUpdateRequest user, int id)
         {
             if (id == 0)
-                return new UserResponse {  Error = "El id del usuario no puede ser 0"};
+                return new UserResponse { Error = "El id del usuario no puede ser 0" };
 
             if (string.IsNullOrEmpty(user.Username)
             || string.IsNullOrEmpty(user.Password)
@@ -150,7 +151,7 @@ namespace gwl_voices.Application.Services
             || string.IsNullOrEmpty(user.UrlGwl)
             ) return new UserResponse { Error = "Todos los campos son obligatorios" };
 
-            UserDto? existingUser = _userRepository.GetUserById(id);
+            UserDto? existingUser = await _userRepository.GetUserById(id);
 
             if (existingUser == null)
                 return new UserResponse { Error = "El usuario no existe en BBDD" };
@@ -167,12 +168,12 @@ namespace gwl_voices.Application.Services
                 Email = user.Email,
                 Img = user.Img,
                 Phone = user.Phone,
-                Adress = user.Adress,
+                Address = user.Adress,
                 UrlGwl = user.UrlGwl,
             };
 
 
-            UserDto userUpdated = _userRepository.UpdateUser(newUser);
+            UserDto userUpdated =  _userRepository.UpdateUser(newUser);
 
             _uOw.SaveChanges();
 

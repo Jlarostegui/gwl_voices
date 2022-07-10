@@ -1,4 +1,5 @@
 ﻿using gwl_voices.BusinessModels.Models.User;
+using gwl_voices.BusinessModels.Models.WorkingGroup;
 using gwl_voices.DataAccess.Contracts.Dto;
 
 namespace gwl_voices.Application.Mappers
@@ -16,7 +17,9 @@ namespace gwl_voices.Application.Mappers
                 Rol = userDto.Rol,
                 Phone = userDto.Phone,
                 Email = userDto.Email,
-
+                WorkingGroups = userDto.WorkingGroups.Any() ?
+                                    userDto.WorkingGroups.Select(w => new WorkingGroupResponse() { id = w.Id, Name = w.Name }).ToList()
+                                    : new List<WorkingGroupResponse>()
             };
 
             return result;
@@ -35,7 +38,7 @@ namespace gwl_voices.Application.Mappers
                 Email = userRequest.Email,
                 Img = userRequest.Img,
                 Phone = userRequest.Phone,
-                Adress = userRequest.Adress,
+                Address = userRequest.Adress,
                 UrlGwl = userRequest.UrlGwl,
             };
 

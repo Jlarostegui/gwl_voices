@@ -5,16 +5,19 @@
 
     <div class="card-body">
 
-      <h2 class="card-title">Name: {{user?.name}}</h2>
+      <h2 class="card-title">{{user?.name}}</h2>
       <div class="card-text">
         <ul>
 
           <li>Surname: {{ user?.surname}}</li>
           <li>Email: {{ user?.email}}</li>
+          <li>Phone: {{ user?.phone}}</li>
         </ul>
-
+        
+        <mat-chip-list aria-label="Fish selection">
+          <mat-chip *ngFor="let wg of user?.workingGroups">{{wg.name}}</mat-chip>
+        </mat-chip-list>
       </div>
-
     </div>
   </div>
   <a class="btn w-50 mt-3" [routerLink]="['/users']">Volver al listado</a>

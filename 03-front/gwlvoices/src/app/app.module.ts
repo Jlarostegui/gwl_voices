@@ -30,8 +30,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatTableModule } from '@angular/material/table';
-
-
+import { MatChipsModule } from '@angular/material/chips'; 
 
 @NgModule({
   declarations: [
@@ -65,6 +64,7 @@ import { MatTableModule } from '@angular/material/table';
     MatSelectModule,
     MatTabsModule,
     MatTableModule,
+    MatChipsModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
