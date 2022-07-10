@@ -34,8 +34,7 @@ export class UserService {
 
 
   addNewUser(newUser: User): Promise<User> {
-    let result = lastValueFrom(this.httpClient.post<User>(ROOT_URL_US, newUser))
-    console.log(result)
+    let result = lastValueFrom(this.httpClient.post<User>(`${ROOT_URL_US}`, newUser))
     return result;
   }
 

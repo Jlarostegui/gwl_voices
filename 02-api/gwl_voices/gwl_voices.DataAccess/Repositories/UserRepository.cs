@@ -108,6 +108,10 @@ namespace gwl_voices.DataAccess.Repositories
         {
             User newUser = UserMapper.MapToUserFromUserDto(user);
 
+            int lastId = (_context.Users.Any())? _context.Users.OrderByDescending(u=> u.Id).First().Id : 0 ;
+
+            newUser.Id = lastId + 1;
+
             var userInserted = _context.Users.Add(newUser);
 
             UserDto result = UserMapper.MapToUserDtoFromUser(userInserted.Entity);

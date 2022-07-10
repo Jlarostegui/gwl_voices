@@ -6,141 +6,78 @@
 </div>
 
 <div class="formulario">
-
-
 <form class="example-form" [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm)">
-<!--
   <div class="fields p-3">
-  <mat-form-field class="example-full-width" appearance="outline" color="accent">
-    <mat-label>Email</mat-label>
-    <input formControlName="email" matInput placeholder="Ex. name@gwlvoices.com">
-  </mat-form-field></div>
-<div class="fields p-3">
-    <mat-form-field class="example-full-width" appearance="outline"  color="accent">
-      <mat-label>name</mat-label>
-      <input formControlName="name" matInput placeholder="Ex. First Name">
+    <mat-form-field appearance="fill" class="example-full-width">
+      <mat-label>Enter your Name</mat-label>
+      <input matInput formControlName="name" required>
+      <mat-error *ngIf="checkControl('name', 'required')">Name is required</mat-error>
+      <mat-error *ngIf="checkControl('name', 'minlength')">Name min length is 3</mat-error>
     </mat-form-field>
-
-    <mat-form-field class="example-full-width" appearance="outline"  color="accent">
-      <mat-label>surname</mat-label>
-      <input formControlName="surname" matInput placeholder="Ex. Last Name">
+  
+    <mat-form-field appearance="fill" class="example-full-width">
+      <mat-label>Enter your Last Name</mat-label>
+      <input matInput formControlName="surname" required>
+      <mat-error *ngIf="checkControl('surname', 'required')">Last Name is required</mat-error>
+      <mat-error *ngIf="checkControl('surname', 'minlength')">Last Name min length is 6</mat-error>
     </mat-form-field>
   </div>
-   
-  <div class="fields p-3">
 
-    <mat-form-field class="example-full-width" appearance="outline"  color="accent">
-      <mat-label>Address</mat-label>
-      <input formControlName="address" matInput placeholder="Ex. New Street 123">
-    </mat-form-field>
-      
-      <mat-form-field class="example-full-width" appearance="outline" color="accent">
-        <mat-label>Telephone</mat-label>
-        <input formControlName="phone" type="tel" matInput placeholder="555-555-1234">
+    <div class="fields p-3">
+      <mat-form-field appearance="fill" class="example-full-width">
+        <mat-label>Enter your Address</mat-label>
+        <input matInput placeholder="Ex. New Street 123" formControlName="address" required>
+        <mat-error *ngIf="checkControl('address', 'required')">Address is required</mat-error>
       </mat-form-field>
-  </div>
--->
-   <!--
-      <div class="fields p-3">
+    
+      <mat-form-field appearance="fill" class="example-full-width">
+        <mat-label>Enter your Phone</mat-label>
+        <input matInput placeholder="Ex. 685998877" formControlName="phone" required>
+        <mat-error *ngIf="checkControl('phone', 'required')">Phone is required</mat-error>
+      </mat-form-field>
+    </div>
 
-        <mat-form-field class="example-full-width" appearance="outline"  color="accent">
-          <mat-label>UrlGWL</mat-label>
-          <input formControlName="urlGWL" matInput placeholder="Ex. California">
-        </mat-form-field>
+        <div class="fields p-3">
+          <mat-form-field appearance="fill" class="example-full-width">
+            <mat-label>Enter your Email</mat-label>
+            <input matInput placeholder="Ex. name@gwlvoices.com" formControlName="email" required>
+            <mat-error *ngIf="checkControl('email', 'required')">Email is required</mat-error>
+            <mat-error *ngIf="checkControl('email', 'email')">Email is not valid</mat-error>
+          </mat-form-field>
         
-        <mat-form-field class="example-full-width" appearance="outline" color="accent">
-          <mat-label>Img</mat-label>
-          <input formControlName="img" matInput placeholder="Ex. name.surname.jpg">
-        </mat-form-field>
-     
-      </div>-->
-     <!--
-      <div class="fields p-3">
-      <mat-form-field class="example-full-width" appearance="outline" color="accent">
-        <mat-label>Username</mat-label>
-        <input type="text" id="username" formControlName="username" matInput placeholder="Ex. Username">
-      </mat-form-field>
+          <mat-form-field appearance="fill" class="example-full-width">
+            <mat-label>Enter your Username</mat-label>
+            <input matInput formControlName="username" required>
+            <mat-error *ngIf="checkControl('username', 'required')">UserName is required</mat-error>
+            <mat-error *ngIf="checkControl('surname', 'minlength')">Last Name min length is 3</mat-error>
+          </mat-form-field>
+        </div>
 
-        <mat-form-field class="example-full-width" appearance="outline"  color="accent">
-          <mat-label>Password</mat-label>
-          <input formControlName="password" matInput placeholder="Ex. password">
-        </mat-form-field>-->
-<!--      
-        <mat-form-field class="example-full-width" appearance="outline"  color="accent">
-          <mat-label>Repeat your password</mat-label>
-          <input formControlName="" matInput placeholder="Ex. password">
-        </mat-form-field>
-      -->
-      <!--</div>-->
-
-<div class="form-group">
-  <label for="name">Nombre (*)</label>
-  <input type="text" id="name" class="form-control" placeholder="introduce tu nombre" formControlName="name">
-
-  <p class="error" *ngIf="checkControl('name', 'required')">El campo es requerido</p>
-  <p class="error" *ngIf="checkControl('name', 'minlength')">El campo tiene que tener una longitud minima de 3</p>
-</div>
-
-<div class="form-group">
-  <label for="surname">Apellidos (*)</label>
-  <input type="text" id="surname" class="form-control" placeholder="introduce tus apellidos" formControlName="surname">
-  <p class="error" *ngIf="checkControl('surname', 'required')">El campo es requerido</p>
-  <p class="error" *ngIf="checkControl('surname', 'minlength')">El campo tiene que tener una longitud minima de 7</p>
-</div>
-
-<div class="form-group">
-  <label for="email">Email (*)</label>
-  <input type="text" id="email" class="form-control" placeholder="introduce tu email" formControlName="email">
-  <p class="error" *ngIf="checkControl('email', 'required')">El campo es requerido</p>
-  <p class="error" *ngIf="checkControl('email', 'pattern')">Por favor introduce un email valido</p>
-</div>
-
-<div class="form-group">
-  <label for="phone">Phone (*)</label>
-  <input type="text" id="phone" class="form-control" placeholder="introduce tu teléfono" formControlName="phone">
-
-  <p class="error" *ngIf="checkControl('phone', 'required')">El campo es requerido</p>
-</div>
-
-<div class="form-group">
-  <label for="address">Address (*)</label>
-  <input type="text" id="address" class="form-control" placeholder="introduce tu address" formControlName="address">
-
-  <p class="error" *ngIf="checkControl('address', 'required')">El campo es requerido</p>
-</div>
-
-<div class="form-group">
-  <label for="username">UserName (*)</label>
-  <input type="text" id="username" class="form-control" placeholder="introduce tu username" formControlName="username">
-
-  <p class="error" *ngIf="checkControl('username', 'required')">El campo es requerido</p>
-  <p class="error" *ngIf="checkControl('username', 'minlength')">El campo tiene que tener una longitud minima de 3</p>
-</div>
-
-<div class="form-group">
-  <label for="password">Password</label>
-  <input type="password" id="password" class="form-control" placeholder="introduce tu password"
-    formControlName="password">
-
-  <p class="error" *ngIf="checkControl('password', 'minlength')">Password tiene que tener 8 caracteres o mas</p>
-</div>
-
-<div class="form-group">
-  <label for="repitepassword">Repite Password </label>
-  <input type="password" id="repitepassword" class="form-control" placeholder="introduce de nuevo tu password"
-    formControlName="repitepassword">
-</div>
-
-<p class="error" *ngIf="registerForm.hasError('passwordvalidador')">Los dos campos de password no coinciden</p>
-
-
-<input type="submit" class="btn btn-warning mt-2" value="Enviar" [disabled]="!registerForm.valid">
+          <div class="fields p-3">
+            <mat-form-field appearance="fill" class="example-full-width">
+              <mat-label>Enter your password</mat-label>
+              <input matInput formControlName="password" required [type]="hide ? 'password' : 'text'">
+              <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+              <mat-error *ngIf="checkControl('password', 'required')">Password is required</mat-error>
+              <mat-error *ngIf="checkControl('password', 'minlength')">Password min length is 8</mat-error>
+            </mat-form-field>
+          
+            <mat-form-field appearance="fill" class="example-full-width">
+              <mat-label>Repeat your password</mat-label>
+              <input matInput formControlName="checkpassword" required [type]="hide ? 'password' : 'text'">
+              <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+              <mat-error *ngIf="checkControl('checkpassword', 'required')">Password is required</mat-error>
+              <mat-error *ngIf="passwordValidator()">Passwords do not match</mat-error>
+            </mat-form-field>
+          </div>
 
   <button mat-icon-button>
     <mat-icon>save</mat-icon>Register
   </button>
 
 </form>
-</div>
-</div>
-
+</div></div>
