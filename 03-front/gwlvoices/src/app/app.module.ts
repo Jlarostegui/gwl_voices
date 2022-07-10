@@ -21,7 +21,6 @@ import { TableUsersComponent } from './components/table-users/table-users.compon
 import { TabeWorkingGroupsComponent } from './components/tabe-working-groups/tabe-working-groups.component';
 import { FilesComponent } from './components/files/files.component';
 
-
 // Material modules
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -37,7 +36,6 @@ import { MatTableModule } from '@angular/material/table';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatRadioModule } from '@angular/material/radio';
-
 import { MatChipsModule } from '@angular/material/chips'; 
 
 @NgModule({
@@ -77,7 +75,7 @@ import { MatChipsModule } from '@angular/material/chips';
     MatTableModule,
     MatExpansionModule,
     MatProgressBarModule,
-    MatRadioModule
+    MatRadioModule,
     MatChipsModule
   ],
   providers: [{

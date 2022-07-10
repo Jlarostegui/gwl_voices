@@ -26,21 +26,8 @@ export class TableUsersComponent implements OnInit {
 
     let response = await this.userService.getAllUsers(0);
     if (response.results != null) {
-      response.results.forEach(x => this.listUsers.push(new User({
-        id: x['id'],
-        name: x['name'],
-        email: x['email'],
-        password: x['password'],
-        rol: x['rol'],
-        surname: x['surname'],
-        img: x['img'],
-        phone: x['phone'],
-    
-      })));
+      this.dataSource = response.results.map(x => new User({ ...x, edit: false }));
     }
-    let response = await this.userService.getAllUsers();
-    this.dataSource = response.map(x => new User({ ...x, edit: 'false' }));
-
   }
 
 
