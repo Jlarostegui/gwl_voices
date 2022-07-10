@@ -15,7 +15,7 @@ export class TableUsersComponent implements OnInit {
 
 
   dataSource: User[] = [];
-  displayedColumns: string[] = ['img', 'name', 'surname', 'password', 'phone', 'username', 'adress', 'rol', 'email', 'actions'];
+  displayedColumns: string[] = ['img', 'name', 'surname', 'password', 'phone', 'username', 'address', 'rol', 'email', 'actions'];
 
 
 
@@ -24,8 +24,10 @@ export class TableUsersComponent implements OnInit {
   ) { }
   async ngOnInit() {
 
-    let response = await this.userService.getAllUsers();
-    this.dataSource = response.map(x => new User({ edit: true, ...x }));
+    let response = await this.userService.getAllUsers(0);
+    if (response.results != null) {
+      this.dataSource = response.results.map(x => new User({ ...x, edit: false }));
+    }
     console.log(this.dataSource);
 
   }

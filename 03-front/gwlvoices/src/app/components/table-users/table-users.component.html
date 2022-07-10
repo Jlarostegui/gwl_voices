@@ -84,14 +84,14 @@
     </td>
   </ng-container>
 
-  <ng-container matColumnDef="adress">
+  <ng-container matColumnDef="address">
     <th mat-header-cell *matHeaderCellDef> Address </th>
     <td mat-cell *matCellDef="let object">
-      <span *ngIf="object.edit">{{object.adress}}</span>
+      <span *ngIf="object.edit">{{object.address}}</span>
       <span>
         <mat-form-field appearance="outline" *ngIf="!object.edit">
           <mat-label>Address</mat-label>
-          <input type="text" placeholder="{{object.adress}}" matInput [(ngModel)]="object.adress">
+          <input type="text" placeholder="{{object.address}}" matInput [(ngModel)]="object.address">
         </mat-form-field>
       </span>
     </td>
