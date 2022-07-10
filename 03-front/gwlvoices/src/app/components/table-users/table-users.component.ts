@@ -15,35 +15,39 @@ export class TableUsersComponent implements OnInit {
 
 
   dataSource: User[] = [];
-  displayedColumns: string[] = ['img', 'name', 'surname', 'password', 'phone', 'username', 'adress', 'rol', 'email', 'actions'];
-
+  displayedColumns: string[] = ['img', 'name', 'surname', 'password', 'phone', 'username', 'rol', 'email', 'actions'];
+  readonly: string = 'readonly';
 
 
   constructor(
     private userService: UserService,
   ) { }
-  async ngOnInit() {
 
-    let response = await this.userService.getAllUsers();
-    this.dataSource = response.map(x => new User({ edit: true, ...x }));
-    console.log(this.dataSource);
+  // async ngOnInit() {
+  //   let response = await this.userService.getAllUsers(0);
+  //   if (response.results != null) {
+  //     this.dataSource = response.results.map(x => new User({ ...x, edit: true }));
+  //   }
+  //   console.log(this.dataSource);
 
-  }
+  // }
 
 
 
   editUser(event: User) {
-    let UserUpdated = new User(event)
-    this.dataSource.some(x => {
-      if (x.id === UserUpdated.id) {
-        x.edit = !x.edit
-      }
-    });
+
+
+    // let UserUpdated = new User(event)
+    // this.dataSource.map(x => {
+    //   if (x.id === UserUpdated.id) {
+    //     x.edit = !x.edit
+    //   }
+    // });
   };
 
   saveUser(event: User) {
     let UserUpdated = new User(event)
-    this.dataSource.some(x => {
+    this.dataSource.map(x => {
       if (x.id === UserUpdated.id) {
         x.edit = !x.edit
       }
