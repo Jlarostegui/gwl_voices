@@ -39,7 +39,7 @@ export class UserService {
   }
 
   updateUser(updatedUser: User): Promise<User> {
-    let result = lastValueFrom(this.httpClient.put<User>(`${ROOT_URL_US}`, updatedUser))
+    let result = lastValueFrom(this.httpClient.put<User>(`${ROOT_URL_US}/${updatedUser.id}`, updatedUser))
     console.log(result)
     return result;
   }

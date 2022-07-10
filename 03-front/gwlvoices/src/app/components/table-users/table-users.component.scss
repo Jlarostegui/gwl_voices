@@ -1,16 +1,55 @@
 // @import url(../../app.component.scss);
 
-// td {
-//   color: #0e6ebe;
-//   vertical-align: middle;
+td {
+  color: #0e6ebe;
+  text-align: start;
+}
+
+
+// th.mat-header-cell {
+//   text-align: start;
 // }
 
 
+table {
+  width: 100%;
+}
+
+th {
+  color: #0e6ebe;
+
+}
 
 img {
-  height: 50px;
-  margin: 5px;
+  height: 6vh;
+  margin: 2vh;
 }
+
+// th.mat-header-cell,
+// td.mat-cell,
+// td.mat-footer-cell {
+//   padding: 0;
+//   border-bottom-width: none;
+//   border-bottom-style: none;
+// }
+
+// ::ng-deep {
+
+//   .mat-form-field-appearance-outline .mat-form-field-outline {
+//     color: white;
+
+//   }
+
+//   mat-form-field {
+
+//     .mat-hint,
+//     input,
+//     ::placeholder,
+//     .mat-form-field-label {
+//       color: white;
+//     }
+//   }
+// }
 
 // // form {
 // //   display: grow;
@@ -32,9 +71,6 @@ img {
 //   justify-content: start;
 // }
 
-// th {
-//   color: #0e6ebe;
-// }
 
 // button {
 //   margin-right: 10px;
