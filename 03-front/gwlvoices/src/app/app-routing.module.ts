@@ -8,6 +8,7 @@ import { UserListComponent } from './components/user-list/user-list.component';
 import { AuthorizationGuard } from './guards/authorization.guard'
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { AdminPanelComponent } from './components/admin-panel/admin-panel.component';
+import { TableUsersComponent } from './components/table-users/table-users.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/login' },
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'wk', component: TestWGComponent, canActivate: [AuthorizationGuard] },
   { path: 'register', component: RegisterComponent, canActivate: [AuthorizationGuard] },
   { path: 'detail/:iduser', component: UserDetailComponent, canActivate: [AuthorizationGuard] },
+  { path: 'table', component: TableUsersComponent },
   { path: '**', redirectTo: '/login' }
 ];
 

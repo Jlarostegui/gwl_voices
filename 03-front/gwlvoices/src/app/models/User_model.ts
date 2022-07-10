@@ -13,6 +13,7 @@ export class User {
   urlGwl?: string;
   token?: string;
   workingGroups?: any[];
+  edit?: boolean;
 
   constructor(item?: Partial<User>) {
 
@@ -29,6 +30,7 @@ export class User {
     this.urlGwl = item?.urlGwl;
     this.token = item?.token;
     this.workingGroups = item?.workingGroups;
+    this.edit = item?.edit;
   }
 
 

@@ -5,8 +5,9 @@ using System.Web.Http.Cors;
 
 namespace gwl_voices.API.Controllers
 {
-
-  
+    
+    [Route("api/[controller]")]
+    [ApiController]
     public class working_groupscontroller : Controller
     {
 
@@ -33,9 +34,6 @@ namespace gwl_voices.API.Controllers
             }
         }
 
-
-
-
         [HttpGet]
         public async Task<IActionResult> GetAllWorkingGroups()
         {
@@ -49,10 +47,6 @@ namespace gwl_voices.API.Controllers
 
 
         [HttpPost]
-        [ProducesResponseType(typeof(WorkingGroupResponse),StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status204NoContent)]
-        [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public IActionResult AddNewWorkingGroup(WorkingGroupRequest workingGroup)
         {
             WorkingGroupResponse? newWorkingGroup = _workingGroupService.AddWorkingGroup(workingGroup);
@@ -64,10 +58,6 @@ namespace gwl_voices.API.Controllers
         }
 
         [HttpPut]
-        [ProducesResponseType(typeof(WorkingGroupResponse), StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status204NoContent)]
-        [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public IActionResult UpdateWorkingGroup(WorkingGroupRequest workingGroup)
         {
             WorkingGroupResponse? uppdateworkingGrou = _workingGroupService.UpdateWorkingGroup(workingGroup);
@@ -79,7 +69,6 @@ namespace gwl_voices.API.Controllers
 
         [HttpDelete]
         [Route("{id}")]
-
         public IActionResult DeleteWorkingGroup(int id)
         {
 

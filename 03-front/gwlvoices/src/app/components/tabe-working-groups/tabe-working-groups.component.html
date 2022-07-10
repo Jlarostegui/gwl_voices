@@ -1,0 +1,28 @@
+<div class="">
+  <table class="table table-info">
+    <thead>
+      <tr>
+        <th scope="col">logo</th>
+        <th scope="col">Name</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <th scope="row"></th>
+      <tr *ngFor="let wg of wkgroups">
+        <td>
+          <img src="../../../assets/icons/{{wg.id}}.png" alt="">
+        </td>
+        <td>{{wg.name}}</td>
+        <td class="buttons">
+          <div>
+            <button mat-raised-button mat-button color="accent">Edit</button>
+          </div>
+          <div>
+            <button mat-raised-button color="warn">Delete</button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
