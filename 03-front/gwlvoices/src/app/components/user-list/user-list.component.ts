@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/models/user_model';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-user-list',
@@ -12,20 +13,17 @@ export class UserListComponent implements OnInit {
 
   ArrPagesButtons: any[] = new Array();
   ArrUsers: User[];
-  
 
 
   constructor(private userService: UserService,
-  private activatedRoute: ActivatedRoute) {
+  private activatedRoute: ActivatedRoute,
+    private router: Router) {
     this.ArrUsers = new Array();
   }
 
   async ngOnInit() {
     try {
-
-      
-     
-      
+              
       this.activatedRoute.params.subscribe(async params => {
         let numpag = parseInt('0' + params['numpag']);
         numpag = (numpag > 0) ? numpag : 1;
@@ -47,6 +45,7 @@ export class UserListComponent implements OnInit {
                 surname: x['surname'],
                 img: x['img'],
                 phone: x['phone'],
+                workingGroups: x['workingGroups'],
               
               })));
           }
@@ -57,6 +56,22 @@ export class UserListComponent implements OnInit {
 
     } catch (error) {
       console.log(error);
+    }
+
+  }
+
+  async onClickLogout() {
+    const result = await Swal.fire({
+      title: 'Logout',
+      text: 'Are you sure you want to logout?',
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonText: 'exit'
+    });
+
+    if (result.isConfirmed) {
+      sessionStorage.removeItem('token');
+      this.router.navigate(['/login']);
     }
 
   }

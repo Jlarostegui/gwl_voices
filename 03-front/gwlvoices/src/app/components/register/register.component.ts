@@ -39,7 +39,14 @@ export class RegisterComponent implements OnInit {
     const passwordValue = this.registerForm.get('password')?.value;
     const checkpasswordValue = this.registerForm.get('checkpassword')?.value;
 
-    return !(passwordValue === checkpasswordValue);
+    if (passwordValue === checkpasswordValue) {
+      this.registerForm.controls['checkpassword'].setErrors(null);
+      return false;
+    }
+    else {
+      this.registerForm.controls['checkpassword'].setErrors({'incorrect': true});      
+      return true;
+    }
   }
 
   async ngOnInit() {    

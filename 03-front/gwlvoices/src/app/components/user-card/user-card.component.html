@@ -14,7 +14,9 @@
           <ul>
             <li>Email: {{user?.email}}</li>
           </ul>
-    
+          <mat-chip-list aria-label="Fish selection">
+            <mat-chip *ngFor="let wg of user?.workingGroups">{{wg.name}}</mat-chip>
+          </mat-chip-list>
     
         </section>
       </mat-card-content>
