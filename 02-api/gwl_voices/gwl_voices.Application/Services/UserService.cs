@@ -101,7 +101,7 @@ namespace gwl_voices.Application.Services
             || string.IsNullOrEmpty(user.Email)
             || string.IsNullOrEmpty(user.Img)
             || string.IsNullOrEmpty(user.Phone)
-            || string.IsNullOrEmpty(user.Adress)
+            || string.IsNullOrEmpty(user.Address)
             || string.IsNullOrEmpty(user.UrlGwl)
             ) return new UserResponse { Error = "Todos los campos son obligatorios" };
 

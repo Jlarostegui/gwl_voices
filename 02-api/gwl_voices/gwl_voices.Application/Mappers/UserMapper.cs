@@ -38,7 +38,7 @@ namespace gwl_voices.Application.Mappers
                 Email = userRequest.Email,
                 Img = userRequest.Img,
                 Phone = userRequest.Phone,
-                Address = userRequest.Adress,
+                Address = userRequest.Address,
                 UrlGwl = userRequest.UrlGwl,
             };
 
