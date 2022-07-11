@@ -10,12 +10,18 @@ import { User } from '../models/user_model';
 })
 export class LoginService {
 
-  constructor(private http: HttpClient) { }
+  isAdmin: boolean;
+
+  constructor(private http: HttpClient) {
+   this.isAdmin = false; 
+   }
 
 
   login(loginForm: User): Observable<User> {
     let response = this.http.post<User>(ROOT_URL_ACCESS, loginForm);
     response.forEach(item => console.log(item));
+
+    response.subscribe(item => { this.isAdmin = (item.rol=="admin") });
 
     return response;
   }

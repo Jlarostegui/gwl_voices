@@ -20,6 +20,6 @@
       </div>
     </div>
   </div>
-  <a class="btn w-50 mt-3" [routerLink]="['/users']">Go to List</a>
+  <a class="btn w-50 mt-3" [routerLink]="['/users']" *ngIf="!isAdmin">Go to List</a>
 
 </section>

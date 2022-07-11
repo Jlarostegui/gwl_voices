@@ -33,7 +33,7 @@ namespace gwl_voices.DataAccess.Mappers
         {
             User user = new User
             {
-
+                Id = userDto.Id,
                 Username = userDto.Username,
                 Password = userDto.Password,
                 Rol = userDto.Rol,
