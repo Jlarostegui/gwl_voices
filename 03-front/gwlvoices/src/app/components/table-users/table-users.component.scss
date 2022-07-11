@@ -1,23 +1,24 @@
-// @import url(../../app.component.scss);
-
 td {
   color: #0e6ebe;
-  vertical-align: bottom;
-  // text-align: start;
+  font-style: italic;
+
+  button {
+    color: #0e6ebe;
+    font-style: italic;
+  }
 }
 
-// tr.mat-row td:nth-child(9) {
-//   vertical-align:
-// }
-
-.mat-header-row {
-  display: none;
+tr {
+  vertical-align: middle;
 }
 
-// th.mat-header-cell {
-//   text-align: start;
-// }
+mat-form-field {
+  padding-top: 2vh;
+}
+
 mat-label {
+  font-weight: bold;
+  font-size: medium;
   color: #d5e848;
 }
 
@@ -27,13 +28,37 @@ table {
 
 th {
   color: #0e6ebe;
-
 }
 
 img {
   height: 6vh;
-  margin: 2vh;
+
 }
+
+
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #0e6ebe;
+  background-color: #d5e848;
+  height: 47px;
+
+  button {
+    background-color: #0e6ebe;
+    color: #d5e848;
+  }
+
+  div {
+    width: 100%;
+    margin: 1vh;
+  }
+}
+
+
+
 
 // tr.mat-row {
 //   vertical-align: middle;

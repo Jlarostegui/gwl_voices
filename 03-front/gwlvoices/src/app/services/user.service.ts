@@ -28,7 +28,7 @@ export class UserService {
   }
 
   getAllUsers(pPage: number = 1): Promise<Userlist> {
-    let result = lastValueFrom(this.httpClient.get<Userlist>(`${ROOT_URL_US}/all?numPag=` + pPage + `&elementPag=10`))
+    let result = lastValueFrom(this.httpClient.get<Userlist>(`${ROOT_URL_US}/all?numPag=` + pPage + `&elementPag=8`))
     return result;
   }
 

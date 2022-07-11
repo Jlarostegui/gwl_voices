@@ -32,11 +32,12 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { RegisterComponent } from './components/register/register.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTabsModule } from '@angular/material/tabs';
-import { MatTableModule } from '@angular/material/table';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatRadioModule } from '@angular/material/radio';
-import { MatChipsModule } from '@angular/material/chips'; 
+import { MatChipsModule } from '@angular/material/chips';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -76,7 +77,9 @@ import { MatChipsModule } from '@angular/material/chips';
     MatExpansionModule,
     MatProgressBarModule,
     MatRadioModule,
-    MatChipsModule
+    MatChipsModule,
+    MatPaginatorModule
+
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

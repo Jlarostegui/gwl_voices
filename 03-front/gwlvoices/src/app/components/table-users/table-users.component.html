@@ -1,252 +1,131 @@
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+<div class="">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="img">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let object">
+        <div>
+          <img src="../../../assets/img/{{object.id}}.png" alt="">
+        </div>
+      </td>
+    </ng-container>
 
-  <ng-container matColumnDef="img">
-    <th mat-header-cell *matHeaderCellDef>Img</th>
-    <td mat-cell *matCellDef="let object">
-      <img src="../../../assets/img/{{object.id}}.png" alt="">
-    </td>
-  </ng-container>
-
-  <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef> Name </th>
-    <td mat-cell *matCellDef="let object">
-      <!-- <span *ngIf="object.edit">{{object.name}}</span> -->
-
-      <mat-form-field appearance="fill" *ngIf="object.edit">
-        <mat-label>Name</mat-label>
-        <input type="text" placeholder="{{object.name}}" matInput [(ngModel)]="object.name">
-      </mat-form-field>
-    </td>
-  </ng-container>
-
-  <ng-container matColumnDef="surname">
-    <th mat-header-cell *matHeaderCellDef> Surname </th>
-    <td mat-cell *matCellDef="let object">
-      <!-- <span *ngIf="object.edit">{{object.surname}}</span>
-      <span> -->
-      <mat-form-field appearance="fill" *ngIf="object.edit">
-        <mat-label>Surname</mat-label>
-        <input type="text" placeholder="{{object.surname}}" matInput [(ngModel)]="object.surname">
-      </mat-form-field>
-      <!-- </span> -->
-    </td>
-  </ng-container>
-
-  <ng-container matColumnDef="phone">
-    <th mat-header-cell *matHeaderCellDef> Phone </th>
-    <td mat-cell *matCellDef="let object">
-      <!-- <span *ngIf="object.edit">{{object.phone}}</span>
-      <span> -->
-      <mat-form-field appearance="fill" *ngIf="object.edit">
-        <mat-label>Phone</mat-label>
-        <input type="text" placeholder="{{object.phone}}" matInput [(ngModel)]="object.phone">
-      </mat-form-field>
-      <!-- </span> -->
-    </td>
-  </ng-container>
-
-  <ng-container matColumnDef="password">
-    <th mat-header-cell *matHeaderCellDef> Password </th>
-    <td mat-cell *matCellDef="let object">
-      <!-- <span *ngIf="object.edit">{{object.password}}</span>
-      <span> -->
-      <mat-form-field appearance="fill" *ngIf="object.edit">
-        <mat-label>Password</mat-label>
-        <input type="text" placeholder="{{object.password}}" matInput [(ngModel)]="object.password">
-      </mat-form-field>
-      <!-- </span> -->
-    </td>
-  </ng-container>
-
-  <ng-container matColumnDef="username">
-    <th mat-header-cell *matHeaderCellDef> Username </th>
-    <td mat-cell *matCellDef="let object">
-      <!-- <span *ngIf="object.edit">{{object.username}}</span>
-      <span> -->
-      <mat-form-field appearance="fill" *ngIf="object.edit">
-        <mat-label>User</mat-label>
-        <input type="text" placeholder="{{object.username}}" matInput [(ngModel)]="object.username">
-      </mat-form-field>
-      <!-- </span> -->
-    </td>
-  </ng-container>
-
-  <ng-container matColumnDef="rol">
-    <th mat-header-cell *matHeaderCellDef> Rol </th>
-    <td mat-cell *matCellDef="let object">
-      <!-- <span *ngIf="object.edit">{{object.rol}}</span>
-      <span> -->
-      <mat-form-field appearance="fill" *ngIf="object.edit">
-        <mat-label>Rol</mat-label>
-        <input type="text" placeholder="{{object.rol}}" matInput [(ngModel)]="object.rol">
-      </mat-form-field>
-      <!-- </span> -->
-    </td>
-  </ng-container>
-
-  <ng-container matColumnDef="address">
-    <th mat-header-cell *matHeaderCellDef> Address </th>
-    <td mat-cell *matCellDef="let object">
-      <!-- <span *ngIf="object.edit">{{object.adress}}</span>
-      <span> -->
-      <mat-form-field appearance="fill" *ngIf="object.edit">
-        <mat-label>Address</mat-label>
-        <input type="text" placeholder="{{object.adress}}" matInput [(ngModel)]="object.adress">
-      </mat-form-field>
-      <!-- </span> -->
-      <span *ngIf="object.edit">{{object.address}}</span>
-      <span>
-        <mat-form-field appearance="outline" *ngIf="!object.edit">
-          <mat-label>Address</mat-label>
-          <input type="text" placeholder="{{object.address}}" matInput [(ngModel)]="object.address">
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let object">
+        <mat-form-field appearance="outline" *ngIf="object.edit">
+          <input readonly type="text" matInput [(ngModel)]="object.name">
         </mat-form-field>
-      </span>
-    </td>
-  </ng-container>
+        <mat-form-field appearance="fill" *ngIf="!object.edit">
+          <input type="text" matInput [(ngModel)]="object.name">
+        </mat-form-field>
+      </td>
+    </ng-container>
 
-  <ng-container matColumnDef="email">
-    <th mat-header-cell *matHeaderCellDef> Email </th>
-    <td mat-cell *matCellDef="let object">
-      <!-- <span *ngIf="object.edit">{{object.email}}</span>
-      <span> -->
-      <mat-form-field appearance="fill" *ngIf="object.edit">
-        <mat-label>Email</mat-label>
-        <input type="text" placeholder="{{object.email}}" matInput [(ngModel)]="object.email">
-      </mat-form-field>
-      <!-- </span> -->
-    </td>
-  </ng-container>
+    <ng-container matColumnDef="surname">
+      <th mat-header-cell *matHeaderCellDef> Surname </th>
+      <td mat-cell *matCellDef="let object">
+        <mat-form-field appearance="outline" *ngIf="object.edit">
+          <input readonly type="text" matInput [(ngModel)]="object.surname">
+        </mat-form-field>
+        <mat-form-field appearance="fill" *ngIf="!object.edit">
+          <input type="text" matInput [(ngModel)]="object.surname">
+        </mat-form-field>
 
-  <ng-container matColumnDef="actions">
-    <th mat-header-cell *matHeaderCellDef> Actions </th>
-    <td mat-cell *matCellDef="let object">
-      <button mat-flat-button color="accent" *ngIf="object.edit" (click)="editUser(object)">Update</button>
-      <button mat-flat-button color="accent" *ngIf="!object.edit" type="submit" (click)="saveUser(object)">Save</button>
-    </td>
-  </ng-container>
+      </td>
+    </ng-container>
 
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
+    <ng-container matColumnDef="phone">
+      <th mat-header-cell *matHeaderCellDef> Phone </th>
+      <td mat-cell *matCellDef="let object">
+        <mat-form-field appearance="outline" *ngIf="object.edit">
+          <input readonly type="text" matInput [(ngModel)]="object.phone">
+        </mat-form-field>
+        <mat-form-field appearance="fill" *ngIf="!object.edit">
+          <input type="text" matInput [(ngModel)]="object.phone">
+        </mat-form-field>
+      </td>
+    </ng-container>
 
+    <ng-container matColumnDef="password">
+      <th mat-header-cell *matHeaderCellDef> Password </th>
+      <td mat-cell *matCellDef="let object">
+        <mat-form-field appearance="outline" *ngIf="object.edit">
+          <input readonly type="password" matInput [(ngModel)]="object.password">
+        </mat-form-field>
+        <mat-form-field appearance="fill" *ngIf="!object.edit">
+          <input type="text" matInput [(ngModel)]="object.password">
+        </mat-form-field>
+      </td>
+    </ng-container>
 
-<!-- 
- <table class="table table-info">
-    <thead>
-      <tr>
-        <th scope="col">img</th>
-        <th scope="col">Name</th>
-        <th scope="col">Surname</th>
-        <th scope="col">User</th>
-        <th scope="col">Password</th>
-        <th scope="col">Email</th>
-        <th scope="col">Phone</th>
-        <th scope="col">Address</th>
-        <th scope="col">Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <th scope="row"></th>
-      <tr>
-        <td>
-          <img src="../../../assets/img/{{user.id}}.png" alt="">
-        </td>
-        <td>
-          <span *ngIf="edit">{{user?.name}}</span>
-          <input *ngIf="!edit" placeholder="{{user?.name}}" value="{{user?.name}}">
-        </td>
-        <td>
-          <span *ngIf="edit">{{user?.name}}</span>
-          <input *ngIf="!edit" placeholder="{{user?.name}}" value="{{user?.name}}">
-        </td>
-        <td>
-          <span *ngIf="edit">{{user?.surname}}</span>
-          <input *ngIf="!edit" placeholder="{{user?.surname}}" value="{{user.surname}}">
-        </td>
-        <td>
-          <span *ngIf="edit">{{user?.username}}</span>
-          <input *ngIf="!edit" placeholder="{{user?.username}}" value="{{user?.username}}">
-        </td>
-        <td>
-          <span *ngIf="edit">{{user?.password}}</span>
-          <input *ngIf="!edit" placeholder="{{user?.password}}" value="{{user?.password}}">
-        </td>
-        <td>
-          <mat-form-field>
-            <input matInput placeholder="{{user?.name}}">
-          </mat-form-field>
-        </td>
-        <td>
-          <mat-form-field>
-            <input matInput placeholder="{{user?.name}}">
-          </mat-form-field>
-        </td>
-        <td>
-        </td>
-        <td class="buttons">
-          <button *ngIf="edit" mat-raised-button (click)="editUser()" color="accent">Edit</button>
-          <button *ngIf="!edit" mat-raised-button (click)="saveUser()" color="accent">Save</button>
-        </td>
-        <td>
-          <button mat-raised-button color="warn">Delete</button>
-        </td>
-      </tr>
-    </tbody>
-  </table> -->
+    <ng-container matColumnDef="username">
+      <th mat-header-cell *matHeaderCellDef> Username </th>
+      <td mat-cell *matCellDef="let object">
+        <mat-form-field appearance="outline" *ngIf="object.edit">
+          <input readonly type="text" matInput [(ngModel)]="object.username">
+        </mat-form-field>
+        <mat-form-field appearance="fill" *ngIf="!object.edit">
+          <input type="text" matInput [(ngModel)]="object.username">
+        </mat-form-field>
+      </td>
+    </ng-container>
 
-<!-- <mat-card>
-  <mat-accordion MatAccordionDisplayMode="flat" color="accent" *ngFor="let user of listUsers">
-    <mat-expansion-panel hideToggle>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          <img src="../../../assets/img/{{user.id}}.png" alt="">
-          {{user.name}}
-          {{user.surname}}
-        </mat-panel-title>
-        <mat-panel-description>
-          Edit User
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-      <form [formGroup]="updatedUser" (ngSubmit)="onSubmit(updatedUser)">
-        <mat-label>Name: </mat-label>
+    <ng-container matColumnDef="rol">
+      <th mat-header-cell *matHeaderCellDef> Rol </th>
+      <td mat-cell *matCellDef="let object">
         <mat-form-field appearance="fill">
-          <input formControlName="name" matInput placeholder="{{user.name}}">
-        </mat-form-field>
-        <mat-label>Surname: </mat-label>
-        <mat-form-field appearance="fill">
-          <input formControlName="surname" matInput placeholder="{{user.surname}}">
-        </mat-form-field>
-        <mat-label>Phone: </mat-label>
-        <mat-form-field appearance="fill">
-          <input formControlName="phone" matInput placeholder="{{user.phone}}">
-        </mat-form-field>
-        <mat-label>Address: </mat-label>
-        <mat-form-field appearance="fill">
-          <input formControlName="address" matInput placeholder="{{user.address}}">
-        </mat-form-field>
-        <mat-label>Email: </mat-label>
-        <mat-form-field appearance="fill">
-          <input formControlName="email" matInput placeholder="{{user.email}}">
-        </mat-form-field>
-        <mat-label>UserName: </mat-label>
-        <mat-form-field appearance="fill">
-          <input formControlName="username" matInput placeholder="{{user.username}}">
-        </mat-form-field>
-        <mat-label>Password: </mat-label>
-        <mat-form-field appearance="fill">
-          <input formControlName="password" matInput placeholder="{{user.password}}">
-        </mat-form-field>
-        <mat-label>Rol:</mat-label>
-        <mat-form-field appearance="fill">
-          <mat-select formControlName="rol">
-            <mat-option value="admin">Administrator </mat-option>
+          <!-- <mat-label>{{object.rol}}</mat-label> -->
+          <mat-select [(ngModel)]="object.rol" [disabled]="object.edit">
+            <mat-option value="admin">Admin</mat-option>
             <mat-option value="user">User</mat-option>
           </mat-select>
         </mat-form-field>
-        <div>
-          <button type="submit" mat-raised-button color="accent">Save change</button>
-        </div>
-      </form>
-    </mat-expansion-panel>
-  </mat-accordion>
-</mat-card> -->
+      </td>
+    </ng-container>
+
+    <!-- <ng-container matColumnDef="address">
+    <th mat-header-cell *matHeaderCellDef> Address </th>
+    <td mat-cell *matCellDef="let object">
+      <mat-form-field appearance="outline" *ngIf="object.edit">
+        <input readonly type="password" matInput [(ngModel)]="object.Address">
+      </mat-form-field>
+      <mat-form-field appearance="fill" *ngIf="!object.edit">
+        <input type="text" matInput [(ngModel)]="object.Address">
+      </mat-form-field>
+    </td>
+  </ng-container> -->
+
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef> Email </th>
+      <td mat-cell *matCellDef="let object">
+        <mat-form-field appearance="outline" *ngIf="object.edit">
+          <input readonly type="text" matInput [(ngModel)]="object.email">
+        </mat-form-field>
+        <mat-form-field appearance="fill" *ngIf="!object.edit">
+          <input type="text" matInput [(ngModel)]="object.email">
+        </mat-form-field>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Actions </th>
+
+      <td mat-cell *matCellDef="let object">
+        <button mat-flat-button color="accent" *ngIf="object.edit" (click)="editUser(object)">Update</button>
+        <button mat-flat-button color="accent" *ngIf="!object.edit" type="submit" (click)="saveUser(object)"> SaveCh
+        </button>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <div class="pagination">
+    <button (click)="beforePage()">
+      <mat-icon>navigate_before</mat-icon>
+    </button>
+    <div> Page : {{actualPage}} of {{totalPages}}</div>
+    <button (click)="netxPage()">
+      <mat-icon>navigate_next</mat-icon>
+    </button>
+  </div>
+</div>
