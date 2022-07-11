@@ -32,7 +32,7 @@ export class UserListComponent implements OnInit {
         this.ArrUsers = new Array();
         if (response != null) {
 
-          let pages = (response.total != null) ? Math.ceil(response.total / 10) : 1;          
+          let pages = (response.total != null) ? Math.ceil(response.total / 8) : 1;          
           this.ArrPagesButtons = new Array(pages);
 
           if (response.results != null) {
@@ -66,7 +66,7 @@ export class UserListComponent implements OnInit {
       text: 'Are you sure you want to logout?',
       icon: 'question',
       showCancelButton: true,
-      confirmButtonText: 'exit'
+      confirmButtonText: 'Exit'
     });
 
     if (result.isConfirmed) {
