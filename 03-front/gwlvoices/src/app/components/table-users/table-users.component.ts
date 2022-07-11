@@ -1,5 +1,4 @@
-import { Breakpoints } from '@angular/cdk/layout';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/models/user_model';
 import { UserService } from 'src/app/services/user.service';
 
@@ -16,39 +15,85 @@ export class TableUsersComponent implements OnInit {
 
   dataSource: User[] = [];
   displayedColumns: string[] = ['img', 'name', 'surname', 'password', 'phone', 'username', 'address', 'rol', 'email', 'actions'];
-
+  readonly: string = 'readonly';
+  actualPage: number = 1;
+  totalPages: number = 0;
 
 
   constructor(
     private userService: UserService,
-  ) { }
-  async ngOnInit() {
 
-    let response = await this.userService.getAllUsers(0);
-    if (response.results != null) {
-      this.dataSource = response.results.map(x => new User({ ...x, edit: false }));
-    }
-    console.log(this.dataSource);
+  ) { }
+
+  ngOnInit() {
+    this.getUsers(this.actualPage);
 
   }
 
+  async getUsers(page: number) {
+    let response = await this.userService.getAllUsers(page);
+    console.log(response);
 
+    if (response.results != null) {
+      this.dataSource = response.results.map(x => new User({ ...x, edit: true, address: x.adress }));
+      console.log(this.dataSource, 'datasource');
+
+    }
+    this.totalPages = (response.total != null) ? Math.ceil(response.total / 8) : 10;
+  }
+
+  netxPage() {
+    if (this.actualPage > 0 && this.actualPage < this.totalPages) {
+      this.actualPage++
+      this.getUsers(this.actualPage)
+    } else if (this.actualPage >= this.totalPages - 1) {
+      this.actualPage = 1
+      this.getUsers(this.actualPage)
+    }
+  }
+
+  beforePage() {
+    if (this.actualPage > 1 && this.actualPage <= this.totalPages) {
+      this.actualPage--
+      this.getUsers(this.actualPage)
+    } else if (this.actualPage >= this.totalPages) {
+      this.actualPage = 1
+      this.getUsers(this.actualPage)
+    }
+  }
 
   editUser(event: User) {
-    let UserUpdated = new User(event)
-    this.dataSource.some(x => {
-      if (x.id === UserUpdated.id) {
+    let userUpdated = new User(event)
+    this.dataSource.map(x => {
+      if (x.id === userUpdated.id) {
         x.edit = !x.edit
       }
     });
   };
 
   saveUser(event: User) {
-    let UserUpdated = new User(event)
-    this.dataSource.some(x => {
-      if (x.id === UserUpdated.id) {
+    let userUpdated = ({
+      "id": event.id,
+      "username": event.username,
+      "password": event.password,
+      "rol": event.rol,
+      "name": event.name,
+      "surname": event.surname,
+      "email": event.email,
+      "img": event.img,
+      "phone": event.phone,
+      "adress": event.address,
+      "urlGwl": event.urlGwl,
+    });
+
+    this.dataSource.map(x => {
+      if (x.id === userUpdated.id) {
         x.edit = !x.edit
       }
     });
+
+    this.userService.updateUser(userUpdated)
+    console.log(userUpdated);
+
   };
 }
