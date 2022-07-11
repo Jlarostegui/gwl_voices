@@ -14,7 +14,7 @@ export class TableUsersComponent implements OnInit {
 
 
   dataSource: User[] = [];
-  displayedColumns: string[] = ['img', 'name', 'surname', 'password', 'phone', 'username', 'rol', 'email', 'actions'];
+  displayedColumns: string[] = ['img', 'name', 'surname', 'password', 'phone', 'username', 'address', 'rol', 'email', 'actions'];
   readonly: string = 'readonly';
   actualPage: number = 1;
   totalPages: number = 0;
@@ -32,12 +32,14 @@ export class TableUsersComponent implements OnInit {
 
   async getUsers(page: number) {
     let response = await this.userService.getAllUsers(page);
+    console.log(response);
+
     if (response.results != null) {
-      this.dataSource = response.results.map(x => new User({ ...x, edit: true }));
+      this.dataSource = response.results.map(x => new User({ ...x, edit: true, address: x.adress }));
+      console.log(this.dataSource, 'datasource');
+
     }
     this.totalPages = (response.total != null) ? Math.ceil(response.total / 8) : 10;
-    console.log(this.totalPages);
-
   }
 
   netxPage() {
@@ -70,13 +72,28 @@ export class TableUsersComponent implements OnInit {
   };
 
   saveUser(event: User) {
-    let userUpdated = new User(event)
-    console.log(userUpdated);
+    let userUpdated = ({
+      "id": event.id,
+      "username": event.username,
+      "password": event.password,
+      "rol": event.rol,
+      "name": event.name,
+      "surname": event.surname,
+      "email": event.email,
+      "img": event.img,
+      "phone": event.phone,
+      "adress": event.address,
+      "urlGwl": event.urlGwl,
+    });
 
     this.dataSource.map(x => {
       if (x.id === userUpdated.id) {
         x.edit = !x.edit
       }
     });
+
+    this.userService.updateUser(userUpdated)
+    console.log(userUpdated);
+
   };
 }

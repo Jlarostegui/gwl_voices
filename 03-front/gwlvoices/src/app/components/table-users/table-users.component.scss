@@ -1,6 +1,7 @@
 td {
   color: #0e6ebe;
   font-style: italic;
+  margin: 0;
 
   button {
     color: #0e6ebe;
@@ -12,7 +13,9 @@ tr {
   vertical-align: middle;
 }
 
+
 mat-form-field {
+  margin: 0;
   padding-top: 2vh;
 }
 
@@ -32,7 +35,6 @@ th {
 
 img {
   height: 6vh;
-
 }
 
 
@@ -44,7 +46,7 @@ img {
   text-align: center;
   color: #0e6ebe;
   background-color: #d5e848;
-  height: 47px;
+  height: 40px;
 
   button {
     background-color: #0e6ebe;
