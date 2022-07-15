@@ -22,7 +22,9 @@ namespace gwl_voices.CrossCutting.Configuration
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<ILoginRepository, LoginRepository>();
             services.AddTransient<ILoginService, loginService>();
-     
+            services.AddTransient<ImailService, mailService>();
+
+
 
 
             return services;

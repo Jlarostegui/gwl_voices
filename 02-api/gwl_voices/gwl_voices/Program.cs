@@ -1,6 +1,9 @@
 using gwl_voices.CrossCutting.Configuration;
 using gwl_voices.DataAccess;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 var env = builder.Environment;
@@ -9,12 +12,36 @@ var env = builder.Environment;
 // Add services to the container.
 IoC.Register(builder.Services, builder.Configuration);
 string mySqlConnectionStr = builder.Configuration.GetConnectionString("DefaultConnection");
+var secret = builder.Configuration.GetSection("AppSettings").GetSection("Secret");
+var key = Encoding.ASCII.GetBytes(secret.Value);
+
 
 builder.Services.AddDbContext<heroku_7ff63ad7795b383Context>(
     item => item.UseMySql(mySqlConnectionStr, ServerVersion.AutoDetect(mySqlConnectionStr)));
 
 builder.Services.AddCors();
-builder.Services.AddAuthentication();
+
+
+builder.Services.AddAuthentication(x =>
+{
+    x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+
+.AddJwtBearer(x =>
+ {
+     x.RequireHttpsMetadata = false;
+     x.SaveToken = true;
+     x.TokenValidationParameters = new TokenValidationParameters
+     {
+         ValidateIssuerSigningKey = true,
+         IssuerSigningKey = new SymmetricSecurityKey(key),
+         ValidateIssuer = false,
+         ValidateAudience = false
+     };
+ });
+
+
 
 
 

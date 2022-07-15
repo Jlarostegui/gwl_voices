@@ -1,83 +1,85 @@
-
-
 <div class="container">
-<div class="logo">
-  <img src="../../../assets/img/logo_Blanco.png">
-</div>
+  <!-- <div class="logo">
+   <img src="../../../assets/img/logo_Blanco.png"> -->
+  <!-- </div>  -->
 
-<div class="formulario">
-<form class="example-form" [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm)">
-  <div class="fields p-3">
-    <mat-form-field appearance="fill" class="example-full-width">
-      <mat-label>Enter your Name</mat-label>
-      <input matInput formControlName="name" required>
-      <mat-error *ngIf="checkControl('name', 'required')">Name is required</mat-error>
-      <mat-error *ngIf="checkControl('name', 'minlength')">Name min length is 3</mat-error>
-    </mat-form-field>
-  
-    <mat-form-field appearance="fill" class="example-full-width">
-      <mat-label>Enter your Last Name</mat-label>
-      <input matInput formControlName="surname" required>
-      <mat-error *ngIf="checkControl('surname', 'required')">Last Name is required</mat-error>
-      <mat-error *ngIf="checkControl('surname', 'minlength')">Last Name min length is 6</mat-error>
-    </mat-form-field>
+  <div class="formulario">
+    <h3>Create New user</h3>
+    <form class="example-form" [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm)">
+      <div class="fields p-3">
+        <mat-form-field appearance="outline" color="accent">
+          <mat-label>Enter your Name</mat-label>
+          <input matInput formControlName="name" required>
+          <mat-error *ngIf="checkControl('name', 'required')">Name is required</mat-error>
+          <mat-error *ngIf="checkControl('name', 'minlength')">Name min length is 3</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" color="accent">
+          <mat-label>Enter your Last Name</mat-label>
+          <input matInput formControlName="surname" required>
+          <mat-error *ngIf="checkControl('surname', 'required')">Last Name is required</mat-error>
+          <mat-error *ngIf="checkControl('surname', 'minlength')">Last Name min length is 6</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="fields p-3">
+        <mat-form-field appearance="outline" color="accent">
+          <mat-label>Enter your Address</mat-label>
+          <input matInput placeholder="Ex. New Street 123" formControlName="address" required>
+          <mat-error *ngIf="checkControl('address', 'required')">Address is required</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" color="accent">
+          <mat-label>Enter your Phone</mat-label>
+          <input matInput placeholder="Ex. 685998877" formControlName="phone" required>
+          <mat-error *ngIf="checkControl('phone', 'required')">Phone is required</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="fields p-3">
+        <mat-form-field appearance="outline" color="accent">
+          <mat-label>Enter your Email</mat-label>
+          <input matInput placeholder="Ex. name@gwlvoices.com" formControlName="email" required>
+          <mat-error *ngIf="checkControl('email', 'required')">Email is required</mat-error>
+          <mat-error *ngIf="checkControl('email', 'email')">Email is not valid</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" color="accent">
+          <mat-label>Enter your Username</mat-label>
+          <input matInput formControlName="username" required>
+          <mat-error *ngIf="checkControl('username', 'required')">UserName is required</mat-error>
+          <mat-error *ngIf="checkControl('surname', 'minlength')">Last Name min length is 3</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="fields p-3 save">
+        <mat-form-field appearance="outline" color="accent">
+          <mat-label>Enter your password</mat-label>
+          <input matInput formControlName="password" required [type]="hide ? 'password' : 'text'">
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+          <mat-error *ngIf="checkControl('password', 'required')">Password is required</mat-error>
+          <mat-error *ngIf="checkControl('password', 'minlength')">Password min length is 8</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" color="accent">
+          <mat-label>Repeat your password</mat-label>
+          <input matInput formControlName="checkpassword" required [type]="hide ? 'password' : 'text'">
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+          <mat-error *ngIf="checkControl('checkpassword', 'required')">Password is required</mat-error>
+          <mat-error *ngIf="passwordValidator()">Passwords do not match</mat-error>
+        </mat-form-field>
+
+        <button mat-icon-button [disabled]="!registerForm.valid">
+          <mat-icon>save</mat-icon>
+        </button>
+      </div>
+
+    </form>
   </div>
-
-    <div class="fields p-3">
-      <mat-form-field appearance="fill" class="example-full-width">
-        <mat-label>Enter your Address</mat-label>
-        <input matInput placeholder="Ex. New Street 123" formControlName="address" required>
-        <mat-error *ngIf="checkControl('address', 'required')">Address is required</mat-error>
-      </mat-form-field>
-    
-      <mat-form-field appearance="fill" class="example-full-width">
-        <mat-label>Enter your Phone</mat-label>
-        <input matInput placeholder="Ex. 685998877" formControlName="phone" required>
-        <mat-error *ngIf="checkControl('phone', 'required')">Phone is required</mat-error>
-      </mat-form-field>
-    </div>
-
-        <div class="fields p-3">
-          <mat-form-field appearance="fill" class="example-full-width">
-            <mat-label>Enter your Email</mat-label>
-            <input matInput placeholder="Ex. name@gwlvoices.com" formControlName="email" required>
-            <mat-error *ngIf="checkControl('email', 'required')">Email is required</mat-error>
-            <mat-error *ngIf="checkControl('email', 'email')">Email is not valid</mat-error>
-          </mat-form-field>
-        
-          <mat-form-field appearance="fill" class="example-full-width">
-            <mat-label>Enter your Username</mat-label>
-            <input matInput formControlName="username" required>
-            <mat-error *ngIf="checkControl('username', 'required')">UserName is required</mat-error>
-            <mat-error *ngIf="checkControl('surname', 'minlength')">Last Name min length is 3</mat-error>
-          </mat-form-field>
-        </div>
-
-          <div class="fields p-3">
-            <mat-form-field appearance="fill" class="example-full-width">
-              <mat-label>Enter your password</mat-label>
-              <input matInput formControlName="password" required [type]="hide ? 'password' : 'text'">
-              <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-              </button>
-              <mat-error *ngIf="checkControl('password', 'required')">Password is required</mat-error>
-              <mat-error *ngIf="checkControl('password', 'minlength')">Password min length is 8</mat-error>
-            </mat-form-field>
-          
-            <mat-form-field appearance="fill" class="example-full-width">
-              <mat-label>Repeat your password</mat-label>
-              <input matInput formControlName="checkpassword" required [type]="hide ? 'password' : 'text'">
-              <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-              </button>
-              <mat-error *ngIf="checkControl('checkpassword', 'required')">Password is required</mat-error>
-              <mat-error *ngIf="passwordValidator()">Passwords do not match</mat-error>
-            </mat-form-field>
-          </div>
-
-  <button mat-icon-button [disabled]="!registerForm.valid">
-    <mat-icon>save</mat-icon>Register
-  </button>
-
-</form>
-</div></div>
+</div>

@@ -4,11 +4,11 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
 
 // components
 import { AuthService } from './services/auth.service';
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
 import { TestWGComponent } from './components/test-wg/test-wg.component';
 import { TestUsersComponent } from './components/test-users/test-users.component';
 import { IndexComponent } from './components/index/index.component';
@@ -38,6 +38,8 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { InvitationComponent } from './components/invitation/invitation.component';
+
 
 @NgModule({
   declarations: [
@@ -54,6 +56,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     TableUsersComponent,
     TabeWorkingGroupsComponent,
     FilesComponent,
+    InvitationComponent,
+
 
 
   ],
@@ -79,7 +83,6 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatRadioModule,
     MatChipsModule,
     MatPaginatorModule
-
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

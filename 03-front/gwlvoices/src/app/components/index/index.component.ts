@@ -40,9 +40,10 @@ export class IndexComponent implements OnInit {
       resp => {
 
         this.user = resp;
-
         if (this.user.token != null) {
+
           sessionStorage.setItem('token', this.user.token)
+
 
           const alert = Swal.mixin({
             // toast: false,
@@ -59,6 +60,7 @@ export class IndexComponent implements OnInit {
           alert.fire({
             icon: 'success',
             title: 'Welcome   ' + this.user.name,
+
           });
         };
 
@@ -68,6 +70,7 @@ export class IndexComponent implements OnInit {
             this.router.navigate(['/detail', this.user.id])
           }, 2000);
         } else {
+          loginForm.markAsPending();
           loginForm.reset();
           setTimeout(() => {
             this.router.navigate([`/admin/`, this.user.id])

@@ -16,6 +16,6 @@ namespace gwl_voices.DataAccess.Contracts.Repositories
         void DeleteUser(UserDto user);
 
         UserDto UpdateUser(UserDto user);
-               
+
     }
 }

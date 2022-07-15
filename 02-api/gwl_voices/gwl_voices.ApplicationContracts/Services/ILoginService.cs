@@ -9,7 +9,6 @@ namespace gwl_voices.Application.Contracts.Services
 
         string GenerateToken(LoginResponse user);
 
-        bool ValidateToken(string token);
     }
 
 }

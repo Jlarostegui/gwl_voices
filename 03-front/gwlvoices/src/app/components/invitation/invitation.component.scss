@@ -1,0 +1,36 @@
+@import url(../../app.component.scss);
+
+.form {
+  color: white;
+  font-style: italic;
+  padding: 2vh;
+  border: 2px solid white;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.formfield {
+  width: 90%;
+}
+
+button {
+  font-style: italic;
+  color: white;
+}
+
+::ng-deep {
+
+  .mat-form-field-appearance-outline .mat-form-field-outline {
+    color: white;
+  }
+
+  mat-form-field {
+
+    .mat-hint,
+    input,
+    ::placeholder,
+    .mat-form-field-label {
+      color: white;
+    }
+  }
+}

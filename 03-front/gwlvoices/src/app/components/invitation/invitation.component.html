@@ -1,0 +1,18 @@
+<form class="form" [formControl]="emailInvitation" (ngSubmit)="onSubmit(emailInvitation)">
+  <h3>Send an invitation to register</h3>
+  <mat-form-field color="accent" class="formfield" appearance="outline">
+    <mat-label>Email</mat-label>
+    <input type="email" matInput [formControl]="emailInvitation" [errorStateMatcher]="matcher"
+      placeholder="Introduce an email">
+    <mat-hint></mat-hint>
+    <mat-error *ngIf="emailInvitation.hasError('email') && !emailInvitation.hasError('required')">
+      Please enter a valid email address
+    </mat-error>
+    <mat-error *ngIf="emailInvitation.hasError('required')">
+      Email is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+  <button class="btn" mat-icon-button>
+    <mat-icon>send</mat-icon>
+  </button>
+</form>

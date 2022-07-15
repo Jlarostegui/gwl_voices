@@ -30,8 +30,8 @@ export class ForgotPasswordComponent implements OnInit {
   }
 
   onSubmit(mail: AbstractControl) {
-
     this.loginService.forgotPassword(mail.value)
+
     const alert = Swal.mixin({
       showConfirmButton: true,
       timer: 2000,
@@ -47,7 +47,7 @@ export class ForgotPasswordComponent implements OnInit {
       icon: 'info',
       title: 'We send an email for recovery your password'
     }).then(function () {
-      window.location.href = "/login";
+      // window.location.href = "/login";
     })
 
   }

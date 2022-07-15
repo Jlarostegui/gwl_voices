@@ -11,6 +11,7 @@ import { LoginService } from '../services/login.service';
 export class AuthorizationGuard implements CanActivate {
 
   token = sessionStorage.getItem('token')
+  rol = sessionStorage.getItem('rol')
 
   constructor(
     private logiservice: LoginService,
@@ -23,7 +24,6 @@ export class AuthorizationGuard implements CanActivate {
       this.router.navigate(['/login']);
       return false;
     }
-
   }
 
 }

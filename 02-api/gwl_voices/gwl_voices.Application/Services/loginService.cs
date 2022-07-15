@@ -1,7 +1,10 @@
 ﻿using gwl_voices.Application.Contracts.Services;
+using gwl_voices.Application.Mappers;
 using gwl_voices.BusinessModels.Models.login;
+using gwl_voices.BusinessModels.Models.User;
 using gwl_voices.DataAccess.Contracts.Dto;
 using gwl_voices.DataAccess.Contracts.Repositories;
+using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -12,12 +15,16 @@ namespace gwl_voices.Application.Services
     public class loginService : ILoginService
     {
         private ILoginRepository _loginRepository;
+        private IConfiguration _configuration;
+        private IUserRepository _userRepository;
 
+        private ImailService _mailService;
 
-        public loginService(ILoginRepository loginRepository)
+        public loginService(ILoginRepository loginRepository, IConfiguration configuration, ImailService mailService)
         {
             _loginRepository = loginRepository;
-
+            _configuration = configuration;
+            _mailService = mailService;
         }
 
         public LoginResponse? login(LoginRequest login)
@@ -47,11 +54,13 @@ namespace gwl_voices.Application.Services
         }
 
 
-
         public string GenerateToken(LoginResponse user)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
-            var secret_key = Encoding.ASCII.GetBytes("kjiouhvbuhvoiearhçpqvhbaUYVCCBÑDEVkLNSJDBCLLdvlmms");
+            var secret = _configuration.GetSection("AppSettings").GetSection("Secret");
+            var key = Encoding.ASCII.GetBytes(secret.Value);
+
+            var secret_key = Encoding.ASCII.GetBytes(secret.Value);
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(new[] { new Claim("id", user.Id.ToString()) }),
@@ -63,35 +72,6 @@ namespace gwl_voices.Application.Services
             return tokenHandler.WriteToken(token);
         }
 
-        public bool ValidateToken(string token)
-        {
-            if (token == null)
-                return false;
 
-            var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes("kjiouhvbuhvoiearhçpqvhbaUYVCCBÑDEVkLNSJDBCLLdvlmms");
-            try
-            {
-                tokenHandler.ValidateToken(token, new TokenValidationParameters
-                {
-                    ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(key),
-                    ValidateIssuer = false,
-                    ValidateAudience = false,
-                    ClockSkew = TimeSpan.Zero
-                }, out SecurityToken validatedToken);
-
-                var jwtToken = (JwtSecurityToken)validatedToken;
-                var userId = int.Parse(jwtToken.Claims.First(x => x.Type == "id").Value);
-                if (userId != 0)
-                    return true;
-                else
-                    return false; 
-            }
-            catch
-            {
-                return false;
-            }
-        }
     }
 }

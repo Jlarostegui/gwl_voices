@@ -35,8 +35,7 @@ export class TableUsersComponent implements OnInit {
     console.log(response);
 
     if (response.results != null) {
-      this.dataSource = response.results.map(x => new User({ ...x, edit: true, address: x.adress }));
-      console.log(this.dataSource, 'datasource');
+      this.dataSource = response.results.map(x => new User({ ...x, edit: true, address: x.adress }))
 
     }
     this.totalPages = (response.total != null) ? Math.ceil(response.total / 8) : 10;
@@ -93,7 +92,6 @@ export class TableUsersComponent implements OnInit {
     });
 
     this.userService.updateUser(userUpdated)
-    console.log(userUpdated);
 
   };
 }
