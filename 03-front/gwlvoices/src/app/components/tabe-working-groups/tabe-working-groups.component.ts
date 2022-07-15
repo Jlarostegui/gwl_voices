@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { MatGridTileHeaderCssMatStyler } from '@angular/material/grid-list';
 import { Working_groups } from 'src/app/models/working_groups.model';
 import { WgService } from 'src/app/services/wg.service';
 
@@ -10,7 +9,11 @@ import { WgService } from 'src/app/services/wg.service';
 })
 export class TabeWorkingGroupsComponent implements OnInit {
 
-  wkgroups: Working_groups[] = new Array();
+  list: Working_groups[] = [];
+  displayedColumns: string[] = ['name'];
+
+
+
 
   constructor(
     private wgservices: WgService
@@ -19,8 +22,9 @@ export class TabeWorkingGroupsComponent implements OnInit {
   async ngOnInit() {
     try {
 
-      this.wkgroups = await this.wgservices.getAllWorkingGroups();
-      console.log(this.wkgroups);
+      let response = await this.wgservices.getAllWorkingGroups();
+      response.forEach(wk => this.list.push(wk));
+
     } catch {
 
     }

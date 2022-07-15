@@ -32,7 +32,7 @@ export class TableUsersComponent implements OnInit {
 
   async getUsers(page: number) {
     let response = await this.userService.getAllUsers(page);
-    console.log(response);
+
 
     if (response.results != null) {
       this.dataSource = response.results.map(x => new User({ ...x, edit: true, address: x.adress }))

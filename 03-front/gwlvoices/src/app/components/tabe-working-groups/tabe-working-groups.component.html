@@ -1,28 +1,18 @@
-<div class="">
-  <table class="table table-info">
-    <thead>
-      <tr>
-        <th scope="col">logo</th>
-        <th scope="col">Name</th>
-        <th scope="col">Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <th scope="row"></th>
-      <tr *ngFor="let wg of wkgroups">
-        <td>
-          <img src="../../../assets/icons/{{wg.id}}.png" alt="">
-        </td>
-        <td>{{wg.name}}</td>
-        <td class="buttons">
-          <div>
-            <button mat-raised-button mat-button color="accent">Edit</button>
-          </div>
-          <div>
-            <button mat-raised-button color="warn">Delete</button>
-          </div>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+<mat-tab-group mat-align-tabs="start" backgroundColor="primary">
+  <mat-tab label="New Working Group">
+    <app-create-wg></app-create-wg>
+  </mat-tab>
+  <mat-tab *ngFor="let item of list" label="{{item.name}}">
+    <mat-card>
+      <mat-card-title>
+        <img src="../../../assets/icons/{{item.id}}.png" alt="">
+        {{item.name}}
+      </mat-card-title>
+      <mat-card-content>
+
+      </mat-card-content>
+    </mat-card>
+  </mat-tab>
+</mat-tab-group>
+<mat-tab-group mat-align-tabs="center" backgroundColor="primary">
+</mat-tab-group>

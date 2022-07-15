@@ -39,6 +39,8 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { InvitationComponent } from './components/invitation/invitation.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { CreateWgComponent } from './components/create-wg/create-wg.component';
 
 
 @NgModule({
@@ -57,6 +59,7 @@ import { InvitationComponent } from './components/invitation/invitation.componen
     TabeWorkingGroupsComponent,
     FilesComponent,
     InvitationComponent,
+    CreateWgComponent,
 
 
 
@@ -82,7 +85,8 @@ import { InvitationComponent } from './components/invitation/invitation.componen
     MatProgressBarModule,
     MatRadioModule,
     MatChipsModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatSidenavModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
