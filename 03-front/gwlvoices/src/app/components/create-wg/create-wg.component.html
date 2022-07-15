@@ -1,1 +1,15 @@
-<p>create-wg works!</p>
+<div class="container">
+  <form class="form" novalidate [formGroup]="wgForm" (ngSubmit)="onSubmit(wgForm)">
+    <mat-form-field class="form formfield" appearance="outline" color="accent">
+      <mat-label>Name: </mat-label>
+      <input formControlName="name" matInput placeholder="name">
+    </mat-form-field>
+    <mat-form-field class="form formfield" appearance="outline" color="accent">
+      <mat-label>Logo: </mat-label>
+      <input formControlName="logo" matInput type="" placeholder="logo">
+    </mat-form-field>
+    <button mat-icon-button>
+      <mat-icon>login</mat-icon>
+    </button>
+  </form>
+</div>

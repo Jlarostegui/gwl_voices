@@ -1,16 +1,19 @@
 @import url(../../app.component.scss);
 
 .form {
+  margin-top: 5vh;
   color: white;
   font-style: italic;
   padding: 2vh;
   border: 2px solid white;
   border-radius: 10px;
   text-align: center;
+  background: rgba(14, 110, 190, 0.50);
+  width: 100%;
 }
 
 .formfield {
-  width: 90%;
+  width: 50%;
 }
 
 button {

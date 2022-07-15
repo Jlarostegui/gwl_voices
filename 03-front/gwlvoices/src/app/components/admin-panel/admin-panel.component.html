@@ -9,14 +9,22 @@
     <app-table-users></app-table-users>
   </mat-tab>
   <mat-tab label="New User">
-    <mat-grid-list cols="2" class="newUser">
+    <mat-tab-group mat-align-tabs="center" backgroundColor="primary">
+      <mat-tab label="Register new user">
+        <app-register></app-register>
+      </mat-tab>
+      <mat-tab label="Send invitation">
+        <app-invitation></app-invitation>
+      </mat-tab>
+    </mat-tab-group>
+    <!-- <mat-grid-list cols="2" class="newUser">
       <mat-grid-tile>
         <app-register></app-register>
       </mat-grid-tile>
       <mat-grid-tile>
         <app-invitation></app-invitation>
-      </mat-grid-tile>
-    </mat-grid-list>
+      </mat-grid-tile> -->
+    <!-- </mat-grid-list> -->
   </mat-tab>
   <mat-tab label="Working Groups">
     <app-tabe-working-groups></app-tabe-working-groups>

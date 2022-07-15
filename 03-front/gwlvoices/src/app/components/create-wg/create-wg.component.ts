@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-create-wg',
@@ -7,9 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateWgComponent implements OnInit {
 
-  constructor() { }
+  wgForm: FormGroup;
+  constructor(
+    private fctrl: FormBuilder,
+  ) {
+
+    this.wgForm = this.fctrl.group(
+      {
+        user: ['', Validators.required],
+        password: ['', Validators.required]
+      });
+  }
 
   ngOnInit(): void {
+  }
+
+  onSubmit(wgForm: AbstractControl) {
+
   }
 
 }
