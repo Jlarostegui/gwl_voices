@@ -20,6 +20,7 @@ import { UserListComponent } from './components/user-list/user-list.component';
 import { TableUsersComponent } from './components/table-users/table-users.component';
 import { TabeWorkingGroupsComponent } from './components/tabe-working-groups/tabe-working-groups.component';
 import { FilesComponent } from './components/files/files.component';
+import { CreateWgComponent } from './components/create-wg/create-wg.component';
 
 // Material modules
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -40,7 +41,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { InvitationComponent } from './components/invitation/invitation.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { CreateWgComponent } from './components/create-wg/create-wg.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { UserListFilterComponent } from './components/user-list-filter/user-list-filter.component';
 
 
 @NgModule({
@@ -60,6 +62,7 @@ import { CreateWgComponent } from './components/create-wg/create-wg.component';
     FilesComponent,
     InvitationComponent,
     CreateWgComponent,
+    UserListFilterComponent,
 
 
 
@@ -86,7 +89,8 @@ import { CreateWgComponent } from './components/create-wg/create-wg.component';
     MatRadioModule,
     MatChipsModule,
     MatPaginatorModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatToolbarModule,
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

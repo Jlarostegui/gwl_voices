@@ -40,6 +40,7 @@ namespace gwl_voices.API.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         [Route("{id:int}")]
         [ProducesResponseType(typeof(UserResponse), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
@@ -75,6 +76,7 @@ namespace gwl_voices.API.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         [ProducesResponseType(typeof(UserResponse), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public IActionResult AddUser(UserRequest user)
@@ -86,6 +88,7 @@ namespace gwl_voices.API.Controllers
 
 
         [HttpDelete]
+        [Authorize]
         [Route("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -107,6 +110,7 @@ namespace gwl_voices.API.Controllers
         }
 
         [HttpPut]
+        [Authorize]
         [Route("{id}")]
         [ProducesResponseType(typeof(UserResponse), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]

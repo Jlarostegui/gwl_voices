@@ -1,4 +1,5 @@
 ﻿using gwl_voices.ApplicationContracts.Services;
+using gwl_voices.BusinessModels.Models.TbiUserWg;
 using gwl_voices.BusinessModels.Models.WorkingGroup;
 using gwl_voices.DataAccess.Contracts;
 using gwl_voices.DataAccess.Contracts.Dto;
@@ -124,7 +125,11 @@ namespace gwl_voices.Application.Services
 
         }
 
-
+        public List<int> getUsersOfWg(int x)
+        {
+            List<int> list = _workingGroupRepository.getUsersOfWg(x);
+            return list;
+        }
     }
 }
 

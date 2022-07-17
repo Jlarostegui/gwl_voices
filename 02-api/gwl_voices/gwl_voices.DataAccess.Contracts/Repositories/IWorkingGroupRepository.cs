@@ -13,6 +13,9 @@ namespace gwl_voices.DataAccess.Contracts.Repositories
         public WorkingGroupDto? UpdateWorkingGroup(WorkingGroupDto workingGroup);
 
         void DeleteWorkinGroup(int id);
+
+        List<int> getUsersOfWg(int x);
+
     }
 
 

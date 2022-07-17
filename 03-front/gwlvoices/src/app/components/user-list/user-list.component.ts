@@ -52,7 +52,6 @@ export class UserListComponent implements OnInit {
         }
       })
 
-      console.log(this.ArrUsers, "test");
 
     } catch (error) {
       console.log(error);

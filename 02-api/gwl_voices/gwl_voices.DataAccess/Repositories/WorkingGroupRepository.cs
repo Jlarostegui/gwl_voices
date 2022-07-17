@@ -108,6 +108,22 @@ namespace gwl_voices.DataAccess.Repositories
         }
 
 
+        public List<int> getUsersOfWg(int x)
+        {
+            var query =
+                _context.TbiUserWgroups
+                .Where(wk => wk.WorkingGrId == x)
+                .Select(user => user.UserId)
+                .ToList();
+
+
+            return query;
+
+        }
+
+
+
+
 
 
     }

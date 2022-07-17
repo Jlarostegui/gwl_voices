@@ -12,6 +12,7 @@ var env = builder.Environment;
 // Add services to the container.
 IoC.Register(builder.Services, builder.Configuration);
 string mySqlConnectionStr = builder.Configuration.GetConnectionString("DefaultConnection");
+string secret_key = builder.Configuration.GetValue<string>("secretKey");
 var secret = builder.Configuration.GetSection("AppSettings").GetSection("Secret");
 var key = Encoding.ASCII.GetBytes(secret.Value);
 
@@ -24,11 +25,9 @@ builder.Services.AddCors();
 
 builder.Services.AddAuthentication(x =>
 {
-    x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-})
-
-.AddJwtBearer(x =>
+    x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(x =>
  {
      x.RequireHttpsMetadata = false;
      x.SaveToken = true;

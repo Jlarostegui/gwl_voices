@@ -52,4 +52,11 @@ export class WgService {
     let response = lastValueFrom(this.httpClient.delete<any>(`${ROOT_URL_WK}/${pId}`));
     return response
   }
+
+  getUsersOfWg(wgId: number = 0): Promise<any> {
+    let response = lastValueFrom(this.httpClient.get<any>(`${ROOT_URL_WK}/get/${wgId}`));
+    console.log(response);
+
+    return response;
+  }
 }

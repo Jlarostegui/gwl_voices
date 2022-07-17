@@ -2,13 +2,15 @@
 
 namespace gwl_voices.ApplicationContracts.Services
 {
-    public interface IWorkingGroupService
+    public interface IWorkingGroupService 
     {
         WorkingGroupResponse GetWorkingGroupById(int id);
         Task<List<WorkingGroupResponse>> GetAllWorkingGroups();
         WorkingGroupResponse? AddWorkingGroup(WorkingGroupRequest workingGroup);
         WorkingGroupResponse? UpdateWorkingGroup(WorkingGroupRequest workingGroup);
         bool DeleteWorkingGroup(int Id);
+        List<int> getUsersOfWg(int x);
+
 
     }
 }

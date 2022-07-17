@@ -1,11 +1,10 @@
 ﻿using gwl_voices.ApplicationContracts.Services;
 using gwl_voices.BusinessModels.Models.WorkingGroup;
 using Microsoft.AspNetCore.Mvc;
-using System.Web.Http.Cors;
 
 namespace gwl_voices.API.Controllers
 {
-    
+
     [Route("api/[controller]")]
     [ApiController]
     public class working_groupscontroller : Controller
@@ -19,6 +18,7 @@ namespace gwl_voices.API.Controllers
         }
     
         [HttpGet]
+        [Authorize]
         [Route("{id}")]
         public IActionResult GetWorkingGroupById(int id)
         {
@@ -35,6 +35,7 @@ namespace gwl_voices.API.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> GetAllWorkingGroups()
         {
             List<WorkingGroupResponse> workingGroups = await _workingGroupService.GetAllWorkingGroups();
@@ -47,6 +48,7 @@ namespace gwl_voices.API.Controllers
 
 
         [HttpPost]
+        [Authorize]
         public IActionResult AddNewWorkingGroup(WorkingGroupRequest workingGroup)
         {
             WorkingGroupResponse? newWorkingGroup = _workingGroupService.AddWorkingGroup(workingGroup);
@@ -58,6 +60,7 @@ namespace gwl_voices.API.Controllers
         }
 
         [HttpPut]
+        [Authorize]
         public IActionResult UpdateWorkingGroup(WorkingGroupRequest workingGroup)
         {
             WorkingGroupResponse? uppdateworkingGrou = _workingGroupService.UpdateWorkingGroup(workingGroup);
@@ -68,6 +71,7 @@ namespace gwl_voices.API.Controllers
         }
 
         [HttpDelete]
+        [Authorize]
         [Route("{id}")]
         public IActionResult DeleteWorkingGroup(int id)
         {
@@ -78,6 +82,15 @@ namespace gwl_voices.API.Controllers
             else
                 return NoContent();
 
+        }
+
+        [HttpGet]
+        [Authorize]
+        [Route("get/{id}")]
+        public IActionResult getUsersOfWg(int id)
+        {
+            List<int> users = _workingGroupService.getUsersOfWg(id);
+            return Ok(users);
         }
     }
 }
