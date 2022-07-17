@@ -1,7 +1,16 @@
 <mat-tab-group mat-align-tabs="start" backgroundColor="primary" #tabGroup (selectedTabChange)="actualTab($event)">
   <mat-tab *ngFor="let item of list" label="{{item.name}}">
-    <img src="../../../assets/icons/{{item.id}}.png" alt="">
-    <app-user-list-filter [users]="arrUsers"></app-user-list-filter>
+    <div *ngIf="isAdmin">
+      <img src="../../../assets/icons/{{item.id}}.png" alt="">
+      <mat-form-field appearance="outline" color=accent>
+        <mat-label>Select User</mat-label>
+        <mat-select [(ngModel)]="userID">
+          <mat-option *ngFor="let user of allUsers" value="{{user.id}}">{{user.name}} {{user.surname}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <button (click)="addUser()" mat-raised-button color="accent">Add user</button>
+    </div>
+    <app-user-list-filter [users]=" arrUsers"></app-user-list-filter>
   </mat-tab>
 </mat-tab-group>
 <mat-tab-group mat-align-tabs="center" backgroundColor="primary">

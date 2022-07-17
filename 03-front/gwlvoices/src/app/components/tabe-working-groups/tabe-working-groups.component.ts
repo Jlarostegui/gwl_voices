@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { AbstractControl, FormControl } from '@angular/forms';
 import { MatTabChangeEvent } from '@angular/material/tabs';
 import { User } from 'src/app/models/user_model';
 import { Working_groups } from 'src/app/models/working_groups.model';
+import { LoginService } from 'src/app/services/login.service';
 import { UserService } from 'src/app/services/user.service';
 import { WgService } from 'src/app/services/wg.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-tabe-working-groups',
@@ -13,9 +16,13 @@ import { WgService } from 'src/app/services/wg.service';
 export class TabeWorkingGroupsComponent implements OnInit {
   rol: string | null = sessionStorage.getItem('rol')
   isAdmin: boolean = false;
-
   list: Working_groups[] = [];
   arrUsers: User[] = [];
+  allUsers: User[] = [];
+  userID: number = 0
+
+
+
 
   constructor(
     private wgservices: WgService,
@@ -24,6 +31,8 @@ export class TabeWorkingGroupsComponent implements OnInit {
     if (this.rol === 'admin') {
       this.isAdmin = true
     }
+
+
 
   }
 
@@ -41,9 +50,18 @@ export class TabeWorkingGroupsComponent implements OnInit {
       this.arrUsers.push(user)
     })
     this.arrUsers = [];
+
+    let response = await this.userService.getAllUsers(0);
+    if (response.results != null) {
+      this.allUsers = response.results.map(x => new User(x));
+    }
+
   }
 
+  addUser() {
 
+
+  }
 
 }
 
