@@ -50,9 +50,7 @@ export class AuthService implements HttpInterceptor {
 
           this.router.navigateByUrl('/login');
         }
-
-        return throwError(() => console.log()
-        );
+        return next.handle(req)
 
       })
     );

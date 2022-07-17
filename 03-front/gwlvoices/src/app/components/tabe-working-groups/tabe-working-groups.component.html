@@ -1,7 +1,4 @@
 <mat-tab-group mat-align-tabs="start" backgroundColor="primary" #tabGroup (selectedTabChange)="actualTab($event)">
-  <mat-tab label="New Working Group">
-    <app-create-wg></app-create-wg>
-  </mat-tab>
   <mat-tab *ngFor="let item of list" label="{{item.name}}">
     <img src="../../../assets/icons/{{item.id}}.png" alt="">
     <app-user-list-filter [users]="arrUsers"></app-user-list-filter>

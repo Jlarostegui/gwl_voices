@@ -44,7 +44,6 @@ export class IndexComponent implements OnInit {
 
           sessionStorage.setItem('token', this.user.token)
 
-
           const alert = Swal.mixin({
             // toast: false,
             showConfirmButton: false,
@@ -65,15 +64,18 @@ export class IndexComponent implements OnInit {
         };
 
         if (this.user.rol === 'user') {
+          sessionStorage.setItem('rol', this.user.rol)
           loginForm.reset();
           setTimeout(() => {
-            this.router.navigate(['/detail', this.user.id])
+            this.router.navigate(['/index/', this.user.id])
           }, 2000);
-        } else {
+
+        } if (this.user.rol === 'admin') {
+          sessionStorage.setItem('rol', this.user.rol)
           loginForm.markAsPending();
           loginForm.reset();
           setTimeout(() => {
-            this.router.navigate([`/admin/`, this.user.id])
+            this.router.navigate([`/index/`, this.user.id])
           }, 2000);
         }
 

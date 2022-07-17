@@ -11,42 +11,36 @@ import { WgService } from 'src/app/services/wg.service';
   styleUrls: ['./tabe-working-groups.component.scss']
 })
 export class TabeWorkingGroupsComponent implements OnInit {
-
+  rol: string | null = sessionStorage.getItem('rol')
+  isAdmin: boolean = false;
 
   list: Working_groups[] = [];
-  id?: number = 0;
   arrUsers: User[] = [];
 
   constructor(
     private wgservices: WgService,
     private userService: UserService,
   ) {
-
-  }
-
-  async ngOnInit() {
-    try {
-
-      let response = await this.wgservices.getAllWorkingGroups();
-      response.forEach(wk => this.list.push(wk));
-
-
-    } catch {
-
+    if (this.rol === 'admin') {
+      this.isAdmin = true
     }
 
   }
 
+  async ngOnInit() {
+    let response = await this.wgservices.getAllWorkingGroups();
+    response.forEach(wk => this.list.push(wk));
+  }
+
 
   async actualTab(tabChangeEvent: MatTabChangeEvent) {
-    this.id = this.list[tabChangeEvent.index - 1].id;
-    let users = await this.wgservices.getUsersOfWg(this.id);
+    let id = this.list[tabChangeEvent.index].id;
+    let users = await this.wgservices.getUsersOfWg(id);
     users.forEach(async (x: number) => {
       let user = await this.userService.getUserById(x)
       this.arrUsers.push(user)
     })
     this.arrUsers = [];
-    return this.id
   }
 
 
