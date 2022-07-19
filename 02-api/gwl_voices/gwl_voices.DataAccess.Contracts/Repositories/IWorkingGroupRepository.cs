@@ -16,6 +16,9 @@ namespace gwl_voices.DataAccess.Contracts.Repositories
 
         List<int> getUsersOfWg(int x);
 
+        TbiUserWgroupDto? addUserToWg(TbiUserWgroupDto tbiuserwgroup);
+
+
     }
 
 

@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Working_groups } from '../models/working_groups.model';
 import { lastValueFrom, map } from 'rxjs';
 import { ROOT_URL_WK } from '../../environments/config';
+import { tbiUserWg } from '../models/tbI_wg_model';
 
 @Injectable({
   providedIn: 'root'
@@ -59,4 +60,14 @@ export class WgService {
 
     return response;
   }
+
+  addUserToWorkingGroup(userToWorkingGr: tbiUserWg): Promise<tbiUserWg> {
+    console.log(userToWorkingGr);
+
+    let response = lastValueFrom(this.httpClient.post<tbiUserWg>(`${ROOT_URL_WK}/add/usertbi`, userToWorkingGr))
+    console.log(response);
+
+    return response;
+  }
+
 }

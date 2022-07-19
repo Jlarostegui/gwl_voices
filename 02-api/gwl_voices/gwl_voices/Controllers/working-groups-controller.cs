@@ -1,4 +1,5 @@
 ﻿using gwl_voices.ApplicationContracts.Services;
+using gwl_voices.BusinessModels.Models.TbiUserWg;
 using gwl_voices.BusinessModels.Models.WorkingGroup;
 using Microsoft.AspNetCore.Mvc;
 
@@ -91,6 +92,15 @@ namespace gwl_voices.API.Controllers
         {
             List<int> users = _workingGroupService.getUsersOfWg(id);
             return Ok(users);
+        }
+
+        [HttpPost]
+        [Authorize]
+        [Route("add/usertbi")]
+        public IActionResult addUserToWg(TbiUserWgRequest tbiuserwgroup)
+        {
+            _workingGroupService.addUserToWg(tbiuserwgroup);
+            return Ok();
         }
     }
 }

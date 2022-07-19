@@ -130,6 +130,23 @@ namespace gwl_voices.Application.Services
             List<int> list = _workingGroupRepository.getUsersOfWg(x);
             return list;
         }
+
+        public void  addUserToWg(TbiUserWgRequest tbiuserwgroup)
+        {
+            TbiUserWgroupDto tbiUser = new TbiUserWgroupDto
+            {
+                UserId = tbiuserwgroup.UserId,
+                WorkingGrId = tbiuserwgroup.WorkingGrId
+
+            };
+
+            TbiUserWgroupDto tbiUserWgroupInserted = _workingGroupRepository.addUserToWg(tbiUser);
+            _uOw.SaveChanges();
+
+
+       
+        }
+
     }
 }
 

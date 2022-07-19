@@ -11,10 +11,12 @@ export class UserListFilterComponent implements OnInit {
   @Input('users') users: User[] | undefined;
 
 
-  constructor() { }
+
+  constructor() {
+
+  }
 
   ngOnInit(): void {
-
 
   }
 

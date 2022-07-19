@@ -121,6 +121,26 @@ namespace gwl_voices.DataAccess.Repositories
 
         }
 
+        public TbiUserWgroupDto? addUserToWg(TbiUserWgroupDto tbiuserwgroup)
+        {
+
+            TbiUserWgroup newuser = new TbiUserWgroup
+            {
+                UserId = tbiuserwgroup.UserId,
+                WorkingGrId = tbiuserwgroup.WorkingGrId,
+            };
+            
+            var tbiuserwgroupAdded = _context.TbiUserWgroups.Add(newuser);
+
+            TbiUserWgroupDto result = new TbiUserWgroupDto
+            {
+                id = tbiuserwgroupAdded.Entity.Id,
+                UserId = tbiuserwgroupAdded.Entity.UserId,
+                WorkingGrId = tbiuserwgroupAdded.Entity.WorkingGrId
+            };
+
+            return result;
+        }
 
 
 

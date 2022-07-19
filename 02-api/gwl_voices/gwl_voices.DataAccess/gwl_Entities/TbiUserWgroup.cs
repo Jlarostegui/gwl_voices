@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace gwl_voices.DataAccess.gwl_Context
+﻿namespace gwl_voices.DataAccess.gwl_Context
 {
     public partial class TbiUserWgroup
     {
