@@ -1,1 +1,88 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+
+$blue: (
+  50 : #e2f1fa,
+  100 : #b9dbfa,
+  200 : #8ec5ed,
+  300 : #64aee6,
+  400 : #439ee2,
+  500 : #248edd,
+  600 : #1d81d0,
+  700 : #156fbe,
+  800 : #0d5fac,
+  900 : #00428d,
+  contrast: (50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #000000,
+    400 : #ffffff,
+    500 : #ffffff,
+    600 : #ffffff,
+    700 : #ffffff,
+    800 : #ffffff,
+    900 : #ffffff,
+  )
+);
+
+$green: (
+  50 : #f9fce6,
+  100 : #f1f7c0,
+  200 : #e7f297,
+  300 : #deed6c,
+  400 : #d5e848,
+  500 : #cee41b,
+  600 : #c2d213,
+  700 : #b1bb03,
+  800 : #a1a400,
+  900 : #867d00,
+  contrast: (50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #000000,
+    400 : #000000,
+    500 : #000000,
+    600 : #ffffff,
+    700 : #ffffff,
+    800 : #ffffff,
+    900 : #ffffff,
+  )
+);
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$gwl_voices-primary: mat.define-palette($green);
+$gwl_voices-accent: mat.define-palette($blue);
+
+// The warn palette is optional (defaults to red).
+$gwl_voices-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$gwl_voices-theme: mat.define-light-theme((
+  color: (
+    primary: $gwl_voices-primary,
+    accent: $gwl_voices-accent,
+    warn: $gwl_voices-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($gwl_voices-theme);
+
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
